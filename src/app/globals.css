@@ -130,6 +130,132 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Figma Button Styles */
+.figma-button-blur {
+  width: 148.048px;
+  height: 43.181px;
+  border-radius: 23.133px;
+  opacity: 0.55;
+  filter: blur(20.048px);
+  background: linear-gradient(90deg, rgba(131, 114, 95, 0.5) 0%, rgba(201, 183, 171, 0.5) 100%), linear-gradient(rgb(216, 215, 213) 14.286%, rgb(140, 136, 129) 115.18%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.figma-button-container {
+  width: 154.217px;
+  height: 49.349px;
+  border-radius: 25.446px;
+  background: linear-gradient(to bottom, #f4f4f4 0%, #565656 50%, #b3a293 100%);
+  border: 0.771px solid #c9c9c9;
+}
+
+.figma-button-inner {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 148.048px;
+  height: 43.181px;
+  border-radius: 23.133px;
+  background: linear-gradient(to bottom, #d5d8d8 14.286%, #8c8881 115.18%);
+  box-shadow: 0px -2.313px 6.323px 0px inset rgba(68,68,68,0.25), 0px 3.084px 8.79px 0px inset rgba(0,0,0,0.25), 0px 2.313px 8.251px 0px inset rgba(222,140,78,0.37);
+}
+
+.figma-button-decorative-1 {
+  left: 32.38px;
+  top: 10.79px;
+  width: 75.78px;
+  height: 26.52px;
+}
+
+.figma-button-decorative-1-inner {
+  transform: rotate(181.266deg) skewX(6.148deg);
+  flex: none;
+}
+
+.figma-button-decorative-1-image {
+  width: 73.67px;
+  height: 24.992px;
+  position: relative;
+}
+
+.figma-button-decorative-1-inset {
+  position: absolute;
+  inset: -265.34% -90.01%;
+}
+
+.figma-button-decorative-2 {
+  left: 17.49px;
+  top: 9.87px;
+  width: 75.611px;
+  height: 26.998px;
+}
+
+.figma-button-decorative-2-inner {
+  transform: rotate(181.628deg) skewX(6.148deg);
+  flex: none;
+}
+
+.figma-button-decorative-2-image {
+  width: 73.67px;
+  height: 24.992px;
+  position: relative;
+}
+
+.figma-button-decorative-2-inset {
+  position: absolute;
+  inset: -265.34% -90.01%;
+}
+
+.figma-button-decorative-3 {
+  left: 87.9px;
+  top: 13.11px;
+  width: 54.88px;
+  height: 28.058px;
+}
+
+.figma-button-decorative-3-inner {
+  transform: rotate(3.314deg) skewX(6.148deg);
+  flex: none;
+}
+
+.figma-button-decorative-3-image {
+  width: 53.727px;
+  height: 24.992px;
+  position: relative;
+}
+
+.figma-button-decorative-3-inset {
+  position: absolute;
+  inset: -265.34% -123.42%;
+}
+
+.figma-button-text {
+  left: 77.07px;
+  top: 14.11px;
+  transform: translateX(-50%);
+}
+
+.figma-button-text-span {
+  background: linear-gradient(180deg, #FCD292 -55.17%, #1A1A1A 100%);
+
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 0;
+  letter-spacing: -0.8px;
+  text-shadow: rgba(255,255,255,0.25) 0px 1.542px 7.634px;
+  white-space: pre;
+  text-align: center;
+  font-family: 'Inter:Semi_Bold', sans-serif;
+  font-style: normal;
+  position: relative;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
