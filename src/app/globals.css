@@ -130,6 +130,31 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Custom breakpoint for 1366px viewport */
+@media (min-width: 1366px) {
+  .xl\:right-0 {
+    right: 0;
+  }
+  .xl\:top-\[30px\] {
+    top: 30px;
+  }
+  .xl\:top-\[190px\] {
+    top: 190px;
+  }
+  .xl\:left-\[-20px\] {
+    left: -20px;
+  }
+  .xl\:left-\[-120px\] {
+    left: -120px;
+  }
+  .xl\:top-\[170px\] {
+    top: 170px;
+  }
+  .xl\:top-\[250px\] {
+    top: 250px;
+  }
+}
+
 /* Figma Button Styles */
 .figma-button-blur {
   width: 148.048px;

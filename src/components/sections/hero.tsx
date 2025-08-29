@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import { Button } from "../ui/button";
 import { BorderTrail } from "../../../components/motion-primitives/border-trail";
 import { FigmaButton } from "../ui/figma-button";
 
@@ -20,10 +19,10 @@ export function Hero() {
         width={100}
         height={36}
         priority
-        className="absolute z-10 right-0 top-[30px] h-[200px] w-[100px] md:h-[350px] md:w-[180px] lg:h-[506px] lg:w-[278px]"
+        className="absolute z-10 right-0 top-[30px]  h-[120px] w-[60px] sm:h-[150px] sm:w-[75px] md:h-[250px] md:w-[130px] lg:h-[400px] lg:w-[220px] xl:h-[506px] xl:w-[278px] xl:right-0 xl:top-[30px]"
       />
 
-      <div className="absolute right-[-200px] top-[50px] flex h-[500px] w-[300px] flex-col items-center justify-center rounded-md  px-5 py-2 dark:bg-zinc-800">
+      <div className="absolute right-[-200px] top-[50px] hidden lg:flex h-[500px] w-[300px] flex-col items-center justify-center rounded-md px-5 py-2 dark:bg-zinc-800">
         <BorderTrail
           style={{
             boxShadow:
@@ -34,7 +33,7 @@ export function Hero() {
         />
       </div>
 
-      <div className="absolute left-[-150px] top-[150px] flex h-[500px] w-[300px] flex-col items-center justify-center rounded-md  px-5 py-2 dark:bg-zinc-800">
+      <div className="absolute left-[-150px] top-[150px] hidden lg:flex h-[500px] w-[300px] flex-col items-center justify-center rounded-md px-5 py-2 dark:bg-zinc-800">
         <BorderTrail
           style={{
             boxShadow:
@@ -51,7 +50,7 @@ export function Hero() {
         width={100}
         height={36}
         priority
-        className="absolute right-0 top-[190px] h-[150px] w-[130px] md:h-[250px] md:w-[220px] lg:h-[369px] lg:w-[325px]"
+        className="absolute right-0 top-[190px] h-[80px] w-[70px] sm:h-[100px] sm:w-[85px] md:h-[180px] md:w-[160px] lg:h-[280px] lg:w-[250px] xl:h-[369px] xl:w-[325px] xl:right-0 xl:top-[190px]"
       />
          <Image
         src="/leftBG.svg"
@@ -59,7 +58,7 @@ export function Hero() {
         width={100}
         height={36}
         priority
-        className="absolute left-[-20px] top-[170px] h-[120px] w-[200px] md:h-[200px] md:w-[320px] lg:h-[316px] lg:w-[508px]"
+        className="absolute left-[-20px] top-[170px] h-[80px] w-[130px] sm:h-[100px] sm:w-[160px] md:h-[150px] md:w-[240px] lg:h-[250px] lg:w-[400px] xl:h-[316px] xl:w-[508px] xl:left-[-20px] xl:top-[170px]"
       />
 
       <Image
@@ -68,7 +67,7 @@ export function Hero() {
         width={100}
         height={36}
         priority
-        className="absolute left-[-120px] top-[250px] h-[120px] w-[200px] md:h-[200px] md:w-[320px] lg:h-[316px] lg:w-[508px]"
+        className="absolute left-[-120px] top-[250px] h-[80px] w-[130px] sm:h-[100px] sm:w-[160px] md:h-[150px] md:w-[240px] lg:h-[250px] lg:w-[400px] xl:h-[316px] xl:w-[508px] xl:left-[-120px] xl:top-[250px]"
       />
 
       <div className="container mx-auto max-w-[1200px] px-4 pt-20 pb-16 text-center">
