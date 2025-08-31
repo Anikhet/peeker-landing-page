@@ -13,7 +13,7 @@ export default function InboxCalculator() {
   const [provider, setProvider] = useState<"outlook" | "google">("outlook");
 
   return (
-    <div className="min-h-screen w-full text-center bg-background">
+    <div className="min-h-screen w-full text-center ">
       <div className="flex justify-center py-4">
         <Tabs className=""
           value={provider}
@@ -21,24 +21,42 @@ export default function InboxCalculator() {
             val && setProvider(val as "outlook" | "google")
           }
         >
-          <TabsList className="bg-black border border-white/6 rounded-lg p-1">
+          <TabsList className="bg-white/2 rounded-lg h-[44px] space-x-4 ">
             <TabsTrigger 
-            className="text-white bg-black"
+            className=""
             value="outlook">
               {provider === "outlook" ? (
                 <FigmaButton>Outlook</FigmaButton>
               ) : (
-                <span className="px-4 py-2">
-                  Outlook
+                <span 
+                  className="px-4 py-2 font-['Inter:Semi_Bold',_sans-serif] font-semibold text-[12px] tracking-[-0.48px] leading-[normal] opacity-[0.93]"
+                  style={{
+                    background: "linear-gradient(180deg, #ffffff 17.647%, #ffcf98 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                    textShadow: "rgba(0,0,0,0.18) 0px 1.39px 4.517px"
+                  }}
+                >
+                  OUTLOOK
                 </span>
               )}
             </TabsTrigger>
-            <TabsTrigger className="text-white bg-black" value="google">
+            <TabsTrigger className="text-white" value="google">
               {provider === "google" ? (
                 <FigmaButton>Google</FigmaButton>
               ) : (
-                <span className="px-4 py-2 text-white ">
-                  Google
+                <span 
+                  className="px-4 py-2 font-['Inter:Semi_Bold',_sans-serif] font-semibold text-[12px] tracking-[-0.48px] leading-[normal] opacity-[0.93]"
+                  style={{
+                    background: "linear-gradient(180deg, #ffffff 17.647%, #ffcf98 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                    textShadow: "rgba(0,0,0,0.18) 0px 1.39px 4.517px"
+                  }}
+                >
+                  GOOGLE
                 </span>
               )}
             </TabsTrigger>

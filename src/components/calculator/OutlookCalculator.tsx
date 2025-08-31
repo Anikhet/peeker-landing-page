@@ -12,6 +12,9 @@ import {
   formatCurrency,
 } from "@/utils/calculator";
 import { CalculationResults } from "@/types/calculator";
+import Image from "next/image";
+import { FigmaButton } from "../ui/figma-button";
+import { motion } from "framer-motion";
 
 export default function OutlookCalculator() {
   const [results, setResults] = useState<CalculationResults | null>(null);
@@ -198,12 +201,18 @@ export default function OutlookCalculator() {
 
                   {/* Calculate Button */}
                   <div className="absolute bottom-6 left-6 right-6">
-                    <button
+                    <motion.button
                       onClick={handleSubmit(onSubmit)}
-                      className="w-full bg-[#ffbf7e] text-black font-medium py-3 px-8 rounded-lg hover:bg-[#ffbf7e]/90 transition-colors text-lg"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 17
+                      }}
                     >
-                      Calculate Savings
-                    </button>
+                      <Image src="/CalculateSavings.svg" alt="Get Started" width={100} height={100} className="w-[200px] h-[100px]" />
+                    </motion.button>
                   </div>
                 </div>
               </div>
@@ -266,79 +275,76 @@ export default function OutlookCalculator() {
                           </p>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Decorative Ellipse */}
-                    <div className="absolute h-[115px] left-[63px] top-[164px] w-[158px] opacity-20">
-                      {/* Ellipse decorative element would go here */}
+                      <Image src="/greenTint.svg" alt="Auto Inbox Purchasing Badge" width={100} height={100} className="w-[400px] h-[120px] absolute bottom-0 z-[100] blur-lg" />
                     </div>
                   </div>
                 </div>
               </div>
 
-                             {/* Savings Impact Cards - Matching Figma Design */}
-               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                 {/* Inbox Savings Card - Matching Selected Figma Frame */}
-                 <div className="relative h-[149px] w-[391px]">
-                   <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
-                   
-                   {/* Main Card Content */}
-                   <div className="absolute inset-2 backdrop-blur-[4.6px] bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
-                     <div className="h-full relative">
-                       {/* Background Decorative Elements */}
-                       <div className="absolute h-[281px] left-[150px] top-[652px] w-[283px] opacity-20">
-                         {/* Ellipse decorative element would go here */}
-                       </div>
+              {/* Savings Impact Cards - Matching Figma Design */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Inbox Savings Card - Matching Selected Figma Frame */}
+                <div className="relative h-[149px] w-[391px]">
+                  <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
+                  
+                  {/* Main Card Content */}
+                  <div className="absolute inset-2 backdrop-blur-[4.6px] bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
+                    <div className="h-full relative">
+                      {/* Background Decorative Elements */}
+                      <div className="absolute h-[281px] left-[150px] top-[652px] w-[283px] opacity-20">
+                        {/* Ellipse decorative element would go here */}
+                      </div>
 
-                       {/* Content */}
-                       <div className="relative z-10 h-full flex flex-col justify-center items-center">
-                         {/* Label */}
-                         <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight mb-2">
-                           Inbox Savings
-                         </p>
-                         
-                         {/* Value */}
-                         <p className="text-[48px] font-medium text-[#b5b5b5] tracking-tight">
-                           {formatCurrency(results.emailInboxSavings)}
-                         </p>
+                      {/* Content */}
+                      <div className="relative z-10 h-full flex flex-col justify-center items-center">
+                        {/* Label */}
+                        <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight mb-2">
+                          Inbox Savings
+                        </p>
+                        
+                        {/* Value */}
+                        <p className="text-[48px] font-medium text-[#b5b5b5] tracking-tight">
+                          {formatCurrency(results.emailInboxSavings)}
+                        </p>
 
-                         {/* Deliverability Badge */}
-                         <p className="text-[12px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent mt-2">
-                           (Deliverability &gt;98%)
-                         </p>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
+                        {/* Deliverability Badge */}
+                        <p className="text-[12px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent mt-2">
+                          (Deliverability &gt;98%)
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-                 {/* Domain Savings Card */}
-                 <div className="relative h-[149px] w-[391px]">
-                   <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
-                   
-                   {/* Main Card Content */}
-                   <div className="absolute inset-2 backdrop-blur-[4.6px] bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
-                     <div className="h-full relative">
-                       {/* Background Decorative Elements */}
-                       <div className="absolute h-[281px] left-[150px] top-[652px] w-[283px] opacity-20">
-                         {/* Ellipse decorative element would go here */}
-                       </div>
+                {/* Domain Savings Card */}
+                <div className="relative h-[149px] w-[391px]">
+                  <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
+                  
+                  {/* Main Card Content */}
+                  <div className="absolute inset-2 backdrop-blur-[4.6px] bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
+                    <div className="h-full relative">
+                      {/* Background Decorative Elements */}
+                      <div className="absolute h-[281px] left-[150px] top-[652px] w-[283px] opacity-20">
+                        {/* Ellipse decorative element would go here */}
+                      </div>
 
-                       {/* Content */}
-                       <div className="relative z-10 h-full flex flex-col justify-center items-center">
-                         {/* Label */}
-                         <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight mb-2">
-                           Domain Savings
-                         </p>
-                         
-                         {/* Value */}
-                         <p className="text-[48px] font-medium text-[#b5b5b5] tracking-tight">
-                           {formatCurrency(results.domainSavings)}
-                         </p>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-               </div>
+                      {/* Content */}
+                      <div className="relative z-10 h-full flex flex-col justify-center items-center">
+                        {/* Label */}
+                        <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight mb-2">
+                          Domain Savings
+                        </p>
+                        
+                        {/* Value */}
+                        <p className="text-[48px] font-medium text-[#b5b5b5] tracking-tight">
+                          {formatCurrency(results.domainSavings)}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               {/* Before and After Comparison - Matching Selected Figma Frame */}
               <div className="relative h-[265px] w-[794px]">
@@ -359,7 +365,7 @@ export default function OutlookCalculator() {
                       {/* Top Section - Current Cost vs Our Offer */}
                       <div className="flex justify-between items-center px-16 pt-12">
                         {/* Current Cost */}
-                        <div className="text-center">
+                        <div className="text-left">
                           <p className="text-[#fc9292] text-sm font-semibold tracking-tight mb-2">
                             Current Cost
                           </p>
@@ -375,9 +381,12 @@ export default function OutlookCalculator() {
                         </div>
 
                         {/* Our Offer */}
-                        <div className="text-center">
-                          <p className="text-[#72aa83] text-sm font-semibold tracking-tight mb-2">
+                        <div className="text-left">
+                          <p className="text-[#72aa83] text-sm font-semibold tracking-tight mb-2 flex items-center justify-center gap-4">
                             Our Offer
+
+                            {/* Auto Inbox Purchasing Badge */}
+                            <Image src="/Calculator Images/Auto Purchase Enabled.svg" alt="Auto Inbox Purchasing Badge" width={100} height={100} className="w-[200px] h-[30px]" />
                           </p>
                           <p className="text-[48px] font-medium tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
                             {formatCurrency(results.ourTotalCost)}
@@ -391,7 +400,7 @@ export default function OutlookCalculator() {
                       {/* Bottom Section - Detailed Breakdown */}
                       <div className="flex justify-between items-center px-16 mt-8">
                         {/* Current Costs Breakdown */}
-                        <div className="text-center">
+                        <div className="text-left">
                           <p className="text-[#b5b5b5] text-sm font-medium tracking-tight mb-2">
                             Inbox Cost :
                           </p>
@@ -410,7 +419,7 @@ export default function OutlookCalculator() {
                         </div>
 
                         {/* Our Offer Breakdown */}
-                        <div className="text-center">
+                        <div className="text-left">
                           <p className="text-[#b5b5b5] text-sm font-medium tracking-tight mb-2">
                             Inbox Cost :
                           </p>
@@ -430,15 +439,9 @@ export default function OutlookCalculator() {
                             )}
                           </p>
                         </div>
-                      </div>
 
-                      {/* Auto Inbox Purchasing Badge */}
-                      <div className="absolute top-[25px] right-[25px]">
-                        <div className="bg-[rgba(255,224,175,0)] border border-[darkorange] rounded-[55.224px] px-3 py-1">
-                          <p className="text-[#ddd7f9] text-xs font-medium tracking-tight">
-                            Auto Inbox Purchasing Enabled
-                          </p>
-                        </div>
+                        {/* Auto Inbox Purchasing Badge */}
+                        <Image src="/greenTint.svg" alt="Auto Inbox Purchasing Badge" width={100} height={100} className="w-[400px] h-[120px] absolute bottom-0 right-0 z-[100] blur-lg" />
                       </div>
 
                       {/* Decorative Ellipse */}
@@ -462,9 +465,12 @@ export default function OutlookCalculator() {
                     </div>
 
                     {/* Main Content */}
-                    <div className="relative z-10 h-full flex flex-col justify-center items-center">
+                    <div className="relative z-10 h-full flex justify-center items-center">
+                      {/* Auto Inbox Purchasing Badge */}
+                      <Image src="/orangeTint.svg" alt="Auto Inbox Purchasing Badge" width={100} height={100} className="w-[400px] h-[120px] absolute bottom-0 z-[100] blur-lg" />
+                      
                       {/* Main Text */}
-                      <div className="text-center mb-4">
+                      <div className="text-left mb-4">
                         <p className="text-[20px] font-semibold text-[darkgrey] tracking-tight">
                           Ready to start saving{" "}
                           <span className="font-bold bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
@@ -476,28 +482,23 @@ export default function OutlookCalculator() {
 
                       {/* Get Started Button */}
                       <div className="relative">
-                        <div className="bg-gradient-to-b from-[#f4f4f4] via-[#565656] to-[#b3a293] rounded-[25.446px] px-6 py-3 border border-[#c9c9c9] shadow-lg">
-                          <div className="flex items-center gap-3">
-                            {/* Decorative Ellipse 1 */}
-                            <div className="w-6 h-6 opacity-60">
-                              {/* Ellipse decorative element would go here */}
-                            </div>
-                            
-                            {/* Button Text */}
-                            <button
-                              onClick={() => {
-                                window.location.href =
-                                  "https://cal.com/conrad-niedzielski/peeker-inboxes";
-                              }}
-                              className="text-[16px] font-semibold bg-gradient-to-b from-[#fcd292] from-[55.172%] to-[#1a1a1a] bg-clip-text text-transparent bg-transparent border-none cursor-pointer"
-                            >
-                              Get Started
-                            </button>
-                            
-                            {/* Decorative Ellipse 2 */}
-                            <div className="w-6 h-6 opacity-60">
-                              {/* Ellipse decorative element would go here */}
-                            </div>
+                        <div className="flex items-center gap-3">
+                          {/* Decorative Ellipse 1 */}
+                          
+                          {/* Button Text */}
+                          <button
+                            onClick={() => {
+                              window.location.href =
+                                "https://cal.com/conrad-niedzielski/peeker-inboxes";
+                            }}
+                            className="cursor-pointer"
+                          >
+                            <FigmaButton>Get Started</FigmaButton>
+                          </button>
+                          
+                          {/* Decorative Ellipse 2 */}
+                          <div className="w-6 h-6 opacity-60">
+                            {/* Ellipse decorative element would go here */}
                           </div>
                         </div>
                       </div>

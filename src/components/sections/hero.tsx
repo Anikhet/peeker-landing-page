@@ -205,19 +205,16 @@ export function Hero() {
         initial={{ opacity: 0, y: 30, scale: 0.9 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
-        whileHover={{ 
-          scale: 1.02,
-          boxShadow: "0 10px 30px rgba(0,0,0,0.3)"
-        }}
+     
         whileTap={{ scale: 0.98 }}
       >
         <motion.input
           type="email"
           placeholder="Enter your email address"
-          className="flex-1 rounded-full border-none bg-[#070707] px-4 py-3 text-sm text-white placeholder:text-neutral-600 placeholder:pl-2 focus:outline-none focus:ring-2 focus:ring-amber-400/50"
+          className="flex-1 rounded-full border-none bg-[#070707] px-4 py-3 text-sm text-white placeholder:text-neutral-600 placeholder:pl-2 focus:outline-none "
           aria-label="Email"
           required
-          whileFocus={{ scale: 1.02 }}
+
           transition={{ duration: 0.2 }}
         />
         <motion.div

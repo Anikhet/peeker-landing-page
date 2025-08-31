@@ -10,9 +10,13 @@ import Testimonials from "@/components/sections/testimonials";
 import { MarqueeDemo } from "@/components/ui/marquee";
 import FAQ from "@/components/sections/faq";
 import Footer from "@/components/sections/footer";
+import { SmoothCursor } from "@/components/ui/smooth-cursor";
+
 export default function Page() {
+  
   return (
     <main className="relative min-h-screen w-screen overflow-x-hidden">
+      <SmoothCursor />
       <div className="relative space-y-10">
         <div className="relative space-y-90 lg:space-y-10">
           <Hero />
