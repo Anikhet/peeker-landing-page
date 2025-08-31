@@ -12,6 +12,7 @@ import {
   formatCurrency,
 } from "@/utils/calculator";
 import { CalculationResults } from "@/types/calculator";
+import Image from "next/image";
 
 export default function GoogleCalculator() {
   const [googleResults, setGoogleResults] = useState<CalculationResults | null>(
@@ -106,7 +107,7 @@ export default function GoogleCalculator() {
               <div className="absolute inset-2 backdrop-blur-[4.6px] bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
                 <div className="p-6 h-full">
                   {/* Header */}
-                  <div className="text-center mb-8">
+                  <div className="text-left mb-8">
                     <h2 className="text-[#ffbf7e] text-xl font-medium tracking-tight">
                       Enter Your Current Costs
                     </h2>
@@ -119,7 +120,7 @@ export default function GoogleCalculator() {
                   <div className="space-y-6">
                     {/* Email Sequencer Cost */}
                     <div className="relative">
-                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-center mb-2 tracking-tight">
+                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         Email sequencer cost (per month)
                       </label>
                       <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
@@ -128,12 +129,12 @@ export default function GoogleCalculator() {
                           {...registerGoogle("currentCosts.emailSequencerCost", {
                             valueAsNumber: true,
                           })}
-                          className="bg-transparent text-white text-xl font-medium text-center w-full h-full px-4 tracking-tight"
+                          className="bg-transparent text-white text-xl font-medium text-left w-full h-full px-4 tracking-tight"
                           placeholder="97"
                         />
                       </div>
                       {errorsGoogle.currentCosts?.emailSequencerCost && (
-                        <p className="text-red-600 text-sm mt-1 text-center">
+                        <p className="text-red-600 text-sm mt-1 text-left">
                           {errorsGoogle.currentCosts.emailSequencerCost.message}
                         </p>
                       )}
@@ -141,7 +142,7 @@ export default function GoogleCalculator() {
 
                     {/* Emails Per Day */}
                     <div className="relative">
-                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-center mb-2 tracking-tight">
+                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         How many emails do you send per day currently?
                       </label>
                       <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
@@ -150,12 +151,12 @@ export default function GoogleCalculator() {
                           {...registerGoogle("currentCosts.dailyEmailVolume", {
                             valueAsNumber: true,
                           })}
-                          className="bg-transparent text-white text-xl font-medium text-center w-full h-full px-4 tracking-tight"
+                          className="bg-transparent text-white text-xl font-medium text-left w-full h-full px-4 tracking-tight"
                           placeholder="2000"
                         />
                       </div>
                       {errorsGoogle.currentCosts?.dailyEmailVolume && (
-                        <p className="text-red-600 text-sm mt-1 text-center">
+                        <p className="text-red-600 text-sm mt-1 text-left">
                           {errorsGoogle.currentCosts.dailyEmailVolume.message}
                         </p>
                       )}
@@ -163,7 +164,7 @@ export default function GoogleCalculator() {
 
                     {/* Inboxes Per Domain */}
                     <div className="relative">
-                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-center mb-2 tracking-tight">
+                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         How many inboxes do you have on each domain?
                       </label>
                       <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
@@ -172,12 +173,12 @@ export default function GoogleCalculator() {
                           {...registerGoogle("currentCosts.inboxesPerDomain", {
                             valueAsNumber: true,
                           })}
-                          className="bg-transparent text-white text-xl font-medium text-center w-full h-full px-4 tracking-tight"
+                          className="bg-transparent text-white text-xl font-medium text-left w-full h-full px-4 tracking-tight"
                           placeholder="3"
                         />
                       </div>
                       {errorsGoogle.currentCosts?.inboxesPerDomain && (
-                        <p className="text-red-600 text-sm mt-1 text-center">
+                        <p className="text-red-600 text-sm mt-1 text-left">
                           {errorsGoogle.currentCosts.inboxesPerDomain.message}
                         </p>
                       )}
@@ -185,7 +186,7 @@ export default function GoogleCalculator() {
 
                     {/* Domains Purchased */}
                     <div className="relative">
-                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-center mb-2 tracking-tight">
+                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         How many domains did you purchase to send this volume?
                       </label>
                       <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
@@ -194,12 +195,12 @@ export default function GoogleCalculator() {
                           {...registerGoogle("currentCosts.numberOfDomains", {
                             valueAsNumber: true,
                           })}
-                          className="bg-transparent text-white text-xl font-medium text-center w-full h-full px-4 tracking-tight"
+                          className="bg-transparent text-white text-xl font-medium text-left w-full h-full px-4 tracking-tight"
                           placeholder="23"
                         />
                       </div>
                       {errorsGoogle.currentCosts?.numberOfDomains && (
-                        <p className="text-red-600 text-sm mt-1 text-center">
+                        <p className="text-red-600 text-sm mt-1 text-left">
                           {errorsGoogle.currentCosts.numberOfDomains.message}
                         </p>
                       )}
@@ -207,7 +208,7 @@ export default function GoogleCalculator() {
 
                     {/* Cost Per Inbox */}
                     <div className="relative">
-                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-center mb-2 tracking-tight">
+                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         Current cost per inbox per month?
                       </label>
                       <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
@@ -217,12 +218,12 @@ export default function GoogleCalculator() {
                           {...registerGoogle("currentCosts.costPerInbox", {
                             valueAsNumber: true,
                           })}
-                          className="bg-transparent text-white text-xl font-medium text-center w-full h-full px-4 tracking-tight"
+                          className="bg-transparent text-white text-xl font-medium text-left w-full h-full px-4 tracking-tight"
                           placeholder="7.2"
                         />
                       </div>
                       {errorsGoogle.currentCosts?.costPerInbox && (
-                        <p className="text-red-600 text-sm mt-1 text-center">
+                        <p className="text-red-600 text-sm mt-1 text-left">
                           {errorsGoogle.currentCosts.costPerInbox.message}
                         </p>
                       )}
@@ -230,7 +231,7 @@ export default function GoogleCalculator() {
 
                     {/* Cost Per Domain */}
                     <div className="relative">
-                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-center mb-2 tracking-tight">
+                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         Cost per domain?
                       </label>
                       <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
@@ -240,12 +241,12 @@ export default function GoogleCalculator() {
                           {...registerGoogle("currentCosts.domainCost", {
                             valueAsNumber: true,
                           })}
-                          className="bg-transparent text-white text-xl font-medium text-center w-full h-full px-4 tracking-tight"
+                          className="bg-transparent text-white text-xl font-medium text-left w-full h-full px-4 tracking-tight"
                           placeholder="11.99"
                         />
                       </div>
                       {errorsGoogle.currentCosts?.domainCost && (
-                        <p className="text-red-600 text-sm mt-1 text-center">
+                        <p className="text-red-600 text-sm mt-1 text-left">
                           {errorsGoogle.currentCosts.domainCost.message}
                         </p>
                       )}
@@ -274,7 +275,7 @@ export default function GoogleCalculator() {
                 <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
                 
                 {/* Main Results Content */}
-                <div className="absolute inset-2 backdrop-blur-[4.6px] bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
+                <div className="absolute inset-2  bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
                   <div className="h-full relative">
                     {/* Background Decorative Elements */}
                     <div className="absolute inset-[-41.21%_-80.59%_-102.95%_-82.52%] flex items-center justify-center">
@@ -287,36 +288,40 @@ export default function GoogleCalculator() {
                     <div className="relative z-10 h-full flex flex-col justify-center">
                       {/* Top Row - Labels */}
                       <div className="flex justify-between items-center px-16 mb-4">
-                        <div className="text-center">
+                        <div className="text-left">
                           <p className="text-[#72aa83] text-sm font-semibold tracking-tight">
                             Savings Calculated :
                           </p>
                         </div>
-                        <div className="text-center">
+                        <div className="text-left">
                           <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight">
                             Monthly Savings :
                           </p>
                         </div>
-                        <div className="text-center">
+                        <div className="text-left">
                           <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight">
                             Annual Savings :
                           </p>
                         </div>
+
                       </div>
+
+                      {/* Auto Inbox Purchasing Badge */}
+             <Image src="/greenTint.svg" alt="Auto Inbox Purchasing Badge" width={100} height={100} className="w-[300px] h-[30px] absolute bottom-0 z-[100]" />
 
                       {/* Bottom Row - Values */}
                       <div className="flex justify-between items-center px-16">
-                        <div className="text-center">
+                        <div className="text-left">
                           <p className="text-[48px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
                             {formatCurrency(googleResults.totalSavings)}
                           </p>
                         </div>
-                        <div className="text-center">
+                        <div className="text-left">
                           <p className="text-[32px] font-medium text-[#b5b5b5] tracking-tight">
                             {formatCurrency(googleResults.totalSavings)}
                           </p>
                         </div>
-                        <div className="text-center">
+                        <div className="text-left">
                           <p className="text-[32px] font-medium text-[#b5b5b5] tracking-tight">
                             {formatCurrency(googleResults.totalSavings * 12)}
                           </p>
@@ -415,7 +420,7 @@ export default function GoogleCalculator() {
                       {/* Top Section - Current Cost vs Our Offer */}
                       <div className="flex justify-between items-center px-16 pt-12">
                         {/* Current Cost */}
-                        <div className="text-center">
+                        <div className="text-left">
                           <p className="text-[#fc9292] text-sm font-semibold tracking-tight mb-2">
                             Current Cost
                           </p>
@@ -431,9 +436,12 @@ export default function GoogleCalculator() {
                         </div>
 
                         {/* Our Offer */}
-                        <div className="text-center">
-                          <p className="text-[#72aa83] text-sm font-semibold tracking-tight mb-2">
+                        <div className="text-left ">
+                          <p className="text-[#72aa83] text-sm font-semibold tracking-tight mb-2 flex items-center justify-center gap-4">
                             Our Offer
+
+                      {/* Auto Inbox Purchasing Badge */}
+             <Image src="/Calculator Images/Auto Purchase Enabled.svg" alt="Auto Inbox Purchasing Badge" width={100} height={100} className="w-[200px] h-[30px]" />
                           </p>
                           <p className="text-[48px] font-medium tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
                             {formatCurrency(googleResults.ourTotalCost)}
@@ -447,7 +455,7 @@ export default function GoogleCalculator() {
                       {/* Bottom Section - Detailed Breakdown */}
                       <div className="flex justify-between items-center px-16 mt-8">
                         {/* Current Costs Breakdown */}
-                        <div className="text-center">
+                        <div className="text-left">
                           <p className="text-[#b5b5b5] text-sm font-medium tracking-tight mb-2">
                             Inbox Cost :
                           </p>
@@ -463,7 +471,7 @@ export default function GoogleCalculator() {
                         </div>
 
                         {/* Our Offer Breakdown */}
-                        <div className="text-center">
+                        <div className="text-left">
                           <p className="text-[#b5b5b5] text-sm font-medium tracking-tight mb-2">
                             Inbox Cost :
                           </p>
@@ -479,19 +487,8 @@ export default function GoogleCalculator() {
                         </div>
                       </div>
 
-                      {/* Auto Inbox Purchasing Badge */}
-                      <div className="absolute top-[25px] right-[25px]">
-                        <div className="bg-[rgba(255,224,175,0)] border border-[darkorange] rounded-[55.224px] px-3 py-1">
-                          <p className="text-[#ddd7f9] text-xs font-medium tracking-tight">
-                            Auto Inbox Purchasing Enabled
-                          </p>
-                        </div>
-                      </div>
 
-                      {/* Decorative Ellipse */}
-                      <div className="absolute h-[92px] left-[446px] top-[234px] w-[126px] opacity-20">
-                        {/* Ellipse decorative element would go here */}
-                      </div>
+                   
                     </div>
                   </div>
                 </div>
@@ -511,7 +508,7 @@ export default function GoogleCalculator() {
                     {/* Main Content */}
                     <div className="relative z-10 h-full flex flex-col justify-center items-center">
                       {/* Main Text */}
-                      <div className="text-center mb-4">
+                      <div className="text-left mb-4">
                         <p className="text-[20px] font-semibold text-[darkgrey] tracking-tight">
                           Ready to start saving{" "}
                           <span className="font-bold bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">

@@ -7,11 +7,7 @@ const HowItWorks = () => {
       <div className="max-w-7xl mx-auto space-y-20">
         {/* Header Section */}
         <div className="flex flex-col items-center justify-center gap-10">
-          <p
-            className="mx-auto mb-5 z-20 inline rounded-full px-3 py-1 text-xs text-neutral-300 ring-1 ring-white/10 how-it-works-badge"
-          >
-            Built for Cold Emailers
-          </p>
+       <Image src="/How It Works Section/Eye-brow Text.svg" alt="Eye-brow Text" width={100} height={100} className="h-[60px] w-[120px]" />
           
           <div className="text-center">
             <h1 className="font-['Inter:Medium',_sans-serif] font-medium text-[32px] md:text-[40px] lg:text-[44px] text-white tracking-[-2.2px] leading-tight mb-4">
@@ -30,7 +26,7 @@ const HowItWorks = () => {
       
             <Image src="/How It Works Section/Step 1 Card.svg" alt="step1" width={65} height={19} className="w-full h-full object-cover" />
            
-            <div className="space-y-4">
+            <div className="space-y-4 flex flex-col justify-center mb-10" >
               <Image src="step1.svg" alt="step1" width={65} height={19} className="w-[65px] h-[19px]" />
               <h2 className="font-['Inter:Medium',_sans-serif] font-medium text-[32px] md:text-[40px] lg:text-[44px] text-white tracking-[-2.2px] leading-tight">
                 Connect Your Email Sender and Domains
@@ -89,9 +85,9 @@ const HowItWorks = () => {
           </section>
 
           {/* Step 2 */}
-          <section className="grid grid-cols-2 gap-20">
+          <section className="grid grid-cols-2 gap-16">
         <Image src="/How It Works Section/Step 2 Card.svg" alt="step2" width={65} height={19} className="w-full h-full object-cover" />
-            <div className="space-y-4">
+            <div className="space-y-4 flex flex-col justify-center mb-20" >
               <Image src="/How It Works Section/Step 2 text.svg" alt="step2" width={65} height={19} className="w-[65px] h-[19px]" />
               <h2 className="font-['Inter:Medium',_sans-serif] font-medium text-[32px] md:text-[40px] lg:text-[44px] text-white tracking-[-2.2px] leading-tight">
                 Request The Inboxes You Need
@@ -160,8 +156,8 @@ const HowItWorks = () => {
               <section className="grid grid-cols-2 gap-20">
             <div className="w-full h-[380px] border rounded-2xl bg-gray-800/20">
             <Image src="/How It Works Section/Step 3 Card.svg" alt="step3" width={65} height={19} className="w-[65px] h-[19px]" />
-            </div>
-            <div className="space-y-4">
+            </div> 
+            <div className="space-y-4 flex flex-col justify-center mb-10" >
               <Image src="/How It Works Section/Step 3 Text.svg" alt="step3" width={65} height={19} className="w-[65px] h-[19px]" />
               <h2 className="font-['Inter:Medium',_sans-serif] font-medium text-[32px] md:text-[40px] lg:text-[44px] text-white tracking-[-1.6px] leading-tight opacity-90">
                 Automatically Set Up, Track and Replace

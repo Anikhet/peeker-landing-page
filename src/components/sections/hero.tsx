@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 
 import { FigmaButton } from "../ui/figma-button";
 import { motion } from "framer-motion";
+import { WindowIcon } from "../icons";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -223,7 +224,7 @@ export function Hero() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <FigmaButton className="z-10">Get Started</FigmaButton>
+        <Image src="/GetStarted.svg" alt="Get Started" width={100} height={100} className="z-10 h-[40px] w-[180px] lg:h-[50px] lg:w-[150px]" />
         </motion.div>
       </motion.form>
 

@@ -28,8 +28,15 @@ export function Navbar() {
 					whileHover={{ scale: 1.05 }}
 					whileTap={{ scale: 0.95 }}
 				>
-					<Link href="/" className="flex items-center gap-2" aria-label="Peeker home">
-						<Image src="/peekerlogo.svg" alt="Peeker" width={100} height={36} priority className="h-10 w-10 " />
+					<Link href="/" className="flex items-center space-x-2">
+						<motion.div
+							initial={{ opacity: 0, x: -20 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.6, ease: "easeOut" }}
+							whileHover={{ scale: 1.05 }}
+						>
+							<Image src="/peekerlogo.svg" alt="Peeker" width={100} height={36} className="h-10 w-10 " />
+						</motion.div>
 					</Link>
 				</motion.div>
 
@@ -70,7 +77,7 @@ export function Navbar() {
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.95 }}
 					>
-						<Button asChild className="rounded-full bg-white text-black px-4 w-[100px] h-[30px] py-2 text-sm">
+						<Button asChild className="rounded-full bg-white text-black hover:bg-white/80 hover:text-black px-4 w-[100px] h-[30px] py-2 text-sm">
 							<Link href="#book-a-call">Book a Call</Link>
 						</Button>
 					</motion.div>

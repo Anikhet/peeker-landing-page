@@ -7,23 +7,42 @@ import Link from "next/link";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../ui/tabs";
 import OutlookCalculator from "./OutlookCalculator";
 import GoogleCalculator from "./GoogleCalculator";
+import { FigmaButton } from "../ui/figma-button";
 
 export default function InboxCalculator() {
   const [provider, setProvider] = useState<"outlook" | "google">("outlook");
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen w-full text-center bg-background">
       <div className="flex justify-center py-4">
-        <Tabs
+        <Tabs className=""
           value={provider}
           onValueChange={(val) =>
             val && setProvider(val as "outlook" | "google")
           }
         >
-          <TabsList>
-            <TabsTrigger value="outlook">Outlook</TabsTrigger>
-            <TabsTrigger value="google">Google</TabsTrigger>
-          </TabsList>
+          <TabsList className="bg-black border border-white/6 rounded-lg p-1">
+            <TabsTrigger 
+            className="text-white bg-black"
+            value="outlook">
+              {provider === "outlook" ? (
+                <FigmaButton>Outlook</FigmaButton>
+              ) : (
+                <span className="px-4 py-2">
+                  Outlook
+                </span>
+              )}
+            </TabsTrigger>
+            <TabsTrigger className="text-white bg-black" value="google">
+              {provider === "google" ? (
+                <FigmaButton>Google</FigmaButton>
+              ) : (
+                <span className="px-4 py-2 text-white ">
+                  Google
+                </span>
+              )}
+            </TabsTrigger>
+          </TabsList> 
           <TabsContent value="outlook">
             <OutlookCalculator />
           </TabsContent>
@@ -32,25 +51,7 @@ export default function InboxCalculator() {
           </TabsContent>
         </Tabs>
       </div>
-      <footer className="text-center py-6 border-t bg-card">
-        <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-          <span>Powered by</span>
-          <Link 
-            href="https://peeker.ai" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="hover:opacity-80 transition-opacity"
-          >
-            <Image
-              src="/peekerlogo.svg"
-              alt="Peeker.ai"
-              width={80}
-              height={24}
-              className="h-6 w-auto"
-            />
-          </Link>
-        </div>
-      </footer>
+
     </div>
   );
 }

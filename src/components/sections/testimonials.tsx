@@ -51,10 +51,10 @@ export default function Testimonials() {
               height={100} 
               className="h-[60px] w-[100px]" 
             />
-        <h2 className="text-4xl font-medium text-white tracking-tight">
+        <h2 className="text-[44px]  font-medium text-white tracking-tight">
           Why Cold Emailers
         </h2>
-        <div className="testimonials-title-gradient testimonials-title-container">
+        <div className="testimonials-title-gradient text-[44px] testimonials-title-container">
           <p>Love Self Healing Inboxes</p>
         </div>
         <p className="text-[#bcbcbc] text-base tracking-tight">
