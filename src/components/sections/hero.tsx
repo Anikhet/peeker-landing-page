@@ -22,7 +22,34 @@ export function Hero() {
         className="absolute z-10 right-0 top-[30px]  h-[120px] w-[60px] sm:h-[150px] sm:w-[75px] md:h-[250px] md:w-[130px] lg:h-[400px] lg:w-[220px] xl:h-[506px] xl:w-[278px] xl:right-0 xl:top-[30px]"
       />
 
-      <div className="absolute right-[-200px] top-[50px] hidden lg:flex h-[500px] w-[300px] flex-col items-center justify-center rounded-md px-5 py-2 dark:bg-zinc-800">
+<Image
+        src="/rightBG.svg"
+        alt="Peeker"
+        width={100}
+        height={36}
+        priority
+        className="absolute right-0 top-[190px] h-[80px] w-[70px] sm:h-[100px] sm:w-[85px] md:h-[180px] md:w-[160px] lg:h-[280px] lg:w-[250px] xl:h-[369px] xl:w-[325px] xl:right-0 xl:top-[190px]"
+      />
+      <Image
+        src="/leftBG.svg"
+        alt="Peeker"
+        width={100}
+        height={36}
+        priority
+        className="absolute left-[-20px] top-[170px] h-[80px] w-[130px] sm:h-[100px] sm:w-[160px] md:h-[150px] md:w-[240px] lg:h-[250px] lg:w-[400px] xl:h-[316px] xl:w-[508px] xl:left-[-20px] xl:top-[170px]"
+      />
+
+      <Image
+        src="/heroLeft.svg"
+        alt="Peeker"
+        width={100}
+        height={36}
+        priority
+        className="absolute left-[-120px] top-[250px] h-[80px] w-[130px] sm:h-[100px] sm:w-[160px] md:h-[150px] md:w-[240px] lg:h-[250px] lg:w-[400px] xl:h-[316px] xl:w-[508px] xl:left-[-120px] xl:top-[250px]"
+      />
+
+
+      {/* <div className="absolute right-[-200px] top-[50px] hidden lg:flex h-[500px] w-[300px] flex-col items-center justify-center rounded-md px-5 py-2 dark:bg-zinc-800">
         <BorderTrail
           style={{
             boxShadow:
@@ -42,66 +69,28 @@ export function Hero() {
           size={50}
           className="bg-linear-to-l from-yellow-500  to-yellow-900"
         />
-      </div>
+      </div> */}
 
-      <Image
-        src="/rightBG.svg"
-        alt="Peeker"
-        width={100}
-        height={36}
-        priority
-        className="absolute right-0 top-[190px] h-[80px] w-[70px] sm:h-[100px] sm:w-[85px] md:h-[180px] md:w-[160px] lg:h-[280px] lg:w-[250px] xl:h-[369px] xl:w-[325px] xl:right-0 xl:top-[190px]"
-      />
-         <Image
-        src="/leftBG.svg"
-        alt="Peeker"
-        width={100}
-        height={36}
-        priority
-        className="absolute left-[-20px] top-[170px] h-[80px] w-[130px] sm:h-[100px] sm:w-[160px] md:h-[150px] md:w-[240px] lg:h-[250px] lg:w-[400px] xl:h-[316px] xl:w-[508px] xl:left-[-20px] xl:top-[170px]"
-      />
 
-      <Image
-        src="/heroLeft.svg"
-        alt="Peeker"
-        width={100}
-        height={36}
-        priority
-        className="absolute left-[-120px] top-[250px] h-[80px] w-[130px] sm:h-[100px] sm:w-[160px] md:h-[150px] md:w-[240px] lg:h-[250px] lg:w-[400px] xl:h-[316px] xl:w-[508px] xl:left-[-120px] xl:top-[250px]"
-      />
-
-      <div className="container mx-auto max-w-[1200px] px-4 pt-20 pb-16 text-center">
-        <p
-          className="mx-auto mb-5 z-20 inline rounded-full px-3 py-1 text-xs text-neutral-300 ring-1 ring-white/10"
-          style={{
-            background: `
-							radial-gradient(27% 93.87% at 15.6% 0%, rgba(218, 182, 243, 0.3) 0%, rgba(0, 0, 0, 0) 100%),
-							linear-gradient(180deg, rgba(187, 175, 255, 0) 23.61%, rgba(187, 175, 255, 0.2) 137.5%),
-							rgba(187, 175, 255, 0.09)
-						`,
-            backgroundBlendMode: "screen",
-          }}
+      <div className="container  mx-auto max-w-[1200px] px-4 pt-20 pb-16 text-center">
+        <div className="flex flex-col items-center justify-center gap-2">
+        {/* <p
+          className="mx-auto mb-5 z-20 inline rounded-full px-3 py-1 text-xs text-neutral-300 ring-1 ring-white/10 hero-badge"
         >
           Built for Cold Emailers
-        </p>
+        </p> */}
+        <Image src="/Hero Section/Eye-brow Text.svg" alt="Peeker" width={100} height={36} priority className=" mx-auto h-[40px] w-[180px] lg:h-[60px] lg:w-[150px] " />
 
         <h1
-          className={`mx-auto z-20 w-[544px] text-center font-medium ${inter.className}
-              text-[32px] leading-[40px] md:text-[48px] md:leading-[58px] lg:text-[60px] lg:leading-[73px] tracking-[-0.05em]
-              bg-clip-text text-transparent`}
-          style={{
-            // keep 187.86deg, but avoid pure white
-            background:
-              "linear-gradient(187.86deg, #FFDDBA 20%, #FFBF7E 55%, #FFE9D2 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
+          className={`mx-auto z-20 w-full lg:w-[544px] text-center font-medium ${inter.className}
+              text-[32px] leading-[40px] lg:text-[60px] lg:leading-[73px] tracking-[-0.05em]
+              bg-clip-text text-transparent hero-title-gradient`}
         >
           Self-Healing Inboxes
         </h1>
 
         <h1
-          className={`ml-48 relative z-20 text-white max-w-[900px] text-balance text-center font-medium leading-[100%] tracking-[-0.05em] ${inter.className} text-[32px] md:text-[48px] lg:text-[60px] flex items-center justify-center gap-3`}
+          className={` lg:ml-32 relative z-20 text-white max-w-[900px] text-balance text-center font-medium leading-[100%] tracking-[-0.05em] ${inter.className} text-[32px] lg:text-[60px] flex flex-col lg:flex-row items-center justify-center gap-3`}
         >
           for Cold Email
           <Image
@@ -110,9 +99,10 @@ export function Hero() {
             width={100}
             height={36}
             priority
-            className="ml-2 mt-4 h-[30px] w-[60px] md:h-[40px] md:w-[80px] lg:h-[50px] lg:w-[100px]"
+            className="mt-2 hidden lg:inline lg:mt-4 lg:ml-2 h-[30px] w-[60px] lg:h-[50px] lg:w-[100px]"
           />
         </h1>
+        </div>
 
         <p className="mx-auto z-20 mt-4 max-w-[720px] text-pretty text-sm text-neutral-300 px-4">
           Auto-create (Gsuite & MS Azure) inboxes, track deliverability, and
@@ -139,13 +129,11 @@ export function Hero() {
         <input
           type="email"
           placeholder="Enter your email address"
-          className="flex-1 rounded-full border-none bg-[#070707] px-4 py-3 text-sm text-white 0 placeholder:text-neutral-600 placeholder:pl-2 focus:outline-none focus:ring-2 focus:ring-amber-400/50"
+          className="flex-1 rounded-full border-none bg-[#070707] px-4 py-3 text-sm text-white placeholder:text-neutral-600 placeholder:pl-2 focus:outline-none focus:ring-2 focus:ring-amber-400/50"
           aria-label="Email"
           required
         />
-        <FigmaButton className="z-10">
-          Get Started
-        </FigmaButton>
+        <FigmaButton className="z-10">Get Started</FigmaButton>
       </form>
 
       {/* floating stat cards (hide on small screens) */}

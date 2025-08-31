@@ -1,61 +1,80 @@
+import Image from "next/image";
 import React from "react";
 
 const InboxReality = () => {
   return (
-    <div className="contents ">
-      {/* Main heading */}
-      <div className="absolute flex flex-col font-['Inter:Medium',_sans-serif] font-medium justify-end leading-[0] not-italic text-[44px] text-center text-nowrap text-white top-[2289px] tracking-[-2.2px] translate-x-[-50%] translate-y-[-100%]" style={{ left: "calc(50% + 0.5px)" }}>
-        <p className="leading-[normal] whitespace-pre">Why Managing Deliverability at Scale Feels Impossible</p>
+    <div className="relative px-4">
+      {/* Badge section - at the very top */}
+      <div className="text-center mb-8">
+        <div className="inline-flex items-center justify-center px-4 py-2 bg-[rgba(187,175,255,0.09)] rounded-full border border-[#dab6f3]">
+          <span className="font-['Inter:Medium',_sans-serif] font-medium text-[#ddd7f9] text-sm tracking-tight">
+            Inbox Reality
+          </span>
+        </div>
       </div>
-      
 
-      
-      {/* Left text */}
-      <div className="absolute flex flex-col font-['Inter:Medium',_sans-serif] font-medium justify-end leading-[0] not-italic text-[32px] text-white top-[2931px] tracking-[-1.6px] translate-y-[-100%] w-[362px]" style={{ left: "calc(50% - 649px)" }}>
-        <p className="leading-[normal]">{`You land in spam and don't even know it`}</p>
+      {/* Main heading - below badge */}
+      <div className="text-center mb-16">
+        <h1 className="font-['Inter:Medium',_sans-serif] font-medium text-[32px] md:text-[40px] lg:text-[44px] text-white tracking-[-2.2px] leading-tight">
+          Why Managing Deliverability at Scale Feels Impossible
+        </h1>
       </div>
       
-      {/* Right image container */}
-      <div className="absolute flex h-[468px] items-center justify-center left-[1101px] top-[2359px] w-[516px]">
-        <div className="flex-none rotate-[180deg] scale-y-[-100%]">
-          <div className="h-[468px] relative rounded-[20px] w-[516px]">
-            <div aria-hidden="true" className="absolute border-[#474747] border-[0.592px] border-dashed inset-0 pointer-events-none rounded-[20px]" />
+      {/* Content grid - two columns with different proportions */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-14">
+        {/* Left side - larger column (7/12) */}
+        <div className="lg:col-span-7 space-y-8">
+          {/* Left image container */}
+          <div className="flex justify-center">
+            <div className="h-[300px] md:h-[400px] lg:h-[468px] w-[700px] md:w-[400px] lg:w-[756px] relative rounded-[20px]  flex items-center justify-center">
+            <Image src="/Inbox Reality Section/Left Image Full Extended.svg" alt="inbox reality" width={100} height={100} className="w-full h-full" />
+            </div>
           </div>
-        </div>
-      </div>
-      
-      {/* Left image container */}
-      <div className="absolute flex h-[468px] items-center justify-center left-[303px] top-[2359px] w-[756px]">
-        <div className="flex-none rotate-[180deg] scale-y-[-100%]">
-          <div className="h-[468px] relative rounded-[20px] w-[756px]">
-            <div aria-hidden="true" className="absolute border-[#474747] border-[0.592px] border-dashed inset-0 pointer-events-none rounded-[20px]" />
+          
+          {/* Left text - below image */}
+          <div className="text-left">
+            <p className="font-['Inter:Medium',_sans-serif] font-medium text-[24px] md:text-[28px] lg:text-[32px] text-white tracking-[-1.6px] leading-tight">
+              You land in spam and <br/> don&apos;t even know it
+            </p>
           </div>
-        </div>
-      </div>
-      
-      {/* Right text */}
-      <div className="absolute flex flex-col font-['Inter:Medium',_sans-serif] font-medium justify-end leading-[0] not-italic text-[32px] text-white top-[2931px] tracking-[-1.6px] translate-y-[-100%] w-[469px]" style={{ left: "calc(50% + 149px)" }}>
-        <p className="leading-[normal]">You overpay, your infrastructure burns, and support disappears</p>
-      </div>
-      
-      {/* Bottom description text */}
-      <div className="absolute flex flex-col font-['Inter:Medium',_sans-serif] font-medium justify-end leading-[0] not-italic text-[#686868] text-[18px] top-[2926px] tracking-[-0.72px] translate-y-[-100%] w-[342px]" style={{ left: "calc(50% - 243px)" }}>
-        <p className="leading-[normal] whitespace-pre-wrap">{`You might be landing in spam and have no idea.  Warmup reply rates don't reflect where your actual emails go.`}</p>
-      </div>
-      
-      {/* Badge section */}
-      <div className="absolute contents left-1/2 top-[2186px] translate-x-[-50%]">
-        {/* Badge */}
-        <div className="absolute bg-[rgba(187,175,255,0.09)] box-border content-stretch flex from-[#bbafff00] from-[23.611%] gap-[8.367px] h-[30px] items-center justify-center p-[3.347px] rounded-[55.224px] to-[#bbafff33] to-[137.5%] top-[2186px] translate-x-[-50%] w-[111px]" style={{ left: "calc(50% + 0.5px)" }}>
-          <div aria-hidden="true" className="absolute border-[#dab6f3] border-[0.837px] border-solid inset-0 pointer-events-none rounded-[55.224px]" />
-          <div className="font-['Inter:Medium',_sans-serif] font-medium leading-[0] not-italic relative shrink-0 text-[#ddd7f9] text-[13.388px] text-center text-nowrap tracking-[-0.2678px]">
-            <p className="leading-[1.1] whitespace-pre">Inbox Reality</p>
+
+          {/* Description text - positioned at bottom right corner of left container */}
+          <div className="text-left" style={{
+            width: "342px",
+            marginTop: "-108px",
+            fontFamily: "'Inter'",
+            fontStyle: "normal",
+            fontWeight: "500",
+            fontSize: "18px",
+            lineHeight: "22px",
+            letterSpacing: "-0.04em",
+            color: "#686868",
+            marginLeft: "auto"
+          }}>
+            <p className="text-right">
+              You might be landing in spam and have no idea. Warmup reply rates don&apos;t reflect where your actual emails go.
+            </p>
           </div>
         </div>
         
-        {/* Orange rectangle */}
-        <div className="absolute bg-[#ff5900] h-[30px] left-[878px] mix-blend-hue top-[2186px] w-[164px]" />
+        {/* Right side - smaller column (5/12) */}
+        <div className="lg:col-span-5 space-y-8">
+          {/* Right image container */}
+          <div className="flex justify-center">
+            <div className="h-[300px] md:h-[400px] lg:h-[468px] w-[500px] md:w-[400px] lg:w-[516px] relative rounded-[20px] flex items-center justify-center">
+            <Image src="/Inbox Reality Section/Right Image Full Extended.svg" alt="inbox reality" width={100} height={100} className="w-full h-full object-right opacity-30" />
+            </div>
+          </div>
+          
+          {/* Right text - below image */}
+          <div className="text-left">
+            <p className="font-['Inter:Medium',_sans-serif] font-medium text-[24px] md:text-[28px] lg:text-[32px] text-white/20 tracking-[-1.6px] leading-tight">
+              You overpay, your infrastructure <br/> burns, and support disappears
+            </p>
+          </div>
+        </div>
       </div>
+      
     </div>
   );
 };

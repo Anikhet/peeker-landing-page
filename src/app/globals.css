@@ -157,6 +157,7 @@
 
 /* Figma Button Styles */
 .figma-button-blur {
+  position: absolute;
   width: 148.048px;
   height: 43.181px;
   border-radius: 23.133px;
@@ -188,6 +189,7 @@
 }
 
 .figma-button-decorative-1 {
+  position: absolute;
   left: 32.38px;
   top: 10.79px;
   width: 75.78px;
@@ -207,10 +209,12 @@
 
 .figma-button-decorative-1-inset {
   position: absolute;
-  inset: -265.34% -90.01%;
+  inset: -100% -50%;
+  overflow: hidden;
 }
 
 .figma-button-decorative-2 {
+  position: absolute;
   left: 17.49px;
   top: 9.87px;
   width: 75.611px;
@@ -230,10 +234,12 @@
 
 .figma-button-decorative-2-inset {
   position: absolute;
-  inset: -265.34% -90.01%;
+  inset: -100% -50%;
+  overflow: hidden;
 }
 
 .figma-button-decorative-3 {
+  position: absolute;
   left: 87.9px;
   top: 13.11px;
   width: 54.88px;
@@ -253,10 +259,12 @@
 
 .figma-button-decorative-3-inset {
   position: absolute;
-  inset: -265.34% -123.42%;
+  inset: -100% -50%;
+  overflow: hidden;
 }
 
 .figma-button-text {
+  position: absolute;
   left: 77.07px;
   top: 14.11px;
   transform: translateX(-50%);
@@ -279,6 +287,160 @@
   font-family: 'Inter:Semi_Bold', sans-serif;
   font-style: normal;
   position: relative;
+}
+
+/* Hero Component Styles */
+.hero-badge {
+  background: radial-gradient(27% 93.87% at 15.6% 0%, rgba(218, 182, 243, 0.3) 0%, rgba(0, 0, 0, 0) 100%),
+              linear-gradient(180deg, rgba(187, 175, 255, 0) 23.61%, rgba(187, 175, 255, 0.2) 137.5%),
+              rgba(187, 175, 255, 0.09);
+  background-blend-mode: screen;
+}
+
+.hero-title-gradient {
+  background: linear-gradient(187.86deg, #FFDDBA 20%, #FFBF7E 55%, #FFE9D2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Problem Section Styles */
+.problem-badge {
+  background: radial-gradient(27% 93.87% at 15.6% 0%, rgba(218, 182, 243, 0.3) 0%, rgba(0, 0, 0, 0) 100%),
+              linear-gradient(180deg, rgba(187, 175, 255, 0) 23.61%, rgba(187, 175, 255, 0.2) 137.5%),
+              rgba(187, 175, 255, 0.09);
+  background-blend-mode: screen;
+}
+
+.problem-title-gradient {
+  background: linear-gradient(177.56deg, #FFBF7E 27.53%, #FFA041 54.43%, #FFBF7E 85.38%, #FFFFFF 118.96%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.problem-title-container {
+  width: 896px;
+  height: 97px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 80px;
+  line-height: 97px;
+  letter-spacing: -0.05em;
+}
+
+/* How It Works Section Styles */
+.how-it-works-badge {
+  background: radial-gradient(27% 93.87% at 15.6% 0%, rgba(218, 182, 243, 0.3) 0%, rgba(0, 0, 0, 0) 100%),
+              linear-gradient(180deg, rgba(187, 175, 255, 0) 23.61%, rgba(187, 175, 255, 0.2) 137.5%),
+              rgba(187, 175, 255, 0.09);
+  background-blend-mode: screen;
+}
+
+.how-it-works-title-gradient {
+  background: linear-gradient(177.56deg, #FFBF7E 27.53%, #FFA041 54.43%, #FFBF7E 85.38%, #FFFFFF 118.96%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.how-it-works-title-container {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 97px;
+  letter-spacing: -0.05em;
+}
+
+.how-it-works-description {
+  font-family: 'Inter:Medium', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: normal;
+  color: #686868;
+  letter-spacing: -0.72px;
+}
+
+.how-it-works-accent-text {
+  color: #ffa041;
+}
+
+.how-it-works-muted-text {
+  color: #686868;
+}
+
+.help-chat-bubble {
+  backdrop-filter: blur(4.6px);
+  overflow: hidden;
+  border-radius: 85px;
+  width: 450px;
+  height: 50px;
+}
+
+.help-chat-background {
+  inset: -302.89% -206.17% -346.92% -151.3%;
+}
+
+.help-chat-ellipse {
+  inset: -299.68% -80.78%;
+}
+
+.help-chat-text {
+  font-family: 'Inter:Medium', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.208;
+  letter-spacing: -0.42px;
+}
+
+.help-chat-button {
+  background: white;
+  height: 31px;
+  border-radius: 45px;
+  width: 103px;
+}
+
+.help-chat-button-text {
+  font-family: 'Inter:Medium', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.208;
+  letter-spacing: -0.42px;
+  color: black;
+}
+
+.help-chat-button-top {
+  top: calc(50% - 0.5px);
+}
+
+.help-chat-button-text-top {
+  top: calc(50% + 7.5px);
+}
+
+/* Testimonials Section Styles */
+.testimonials-badge {
+  background: radial-gradient(27% 93.87% at 15.6% 0%, rgba(218, 182, 243, 0.3) 0%, rgba(0, 0, 0, 0) 100%),
+              linear-gradient(180deg, rgba(187, 175, 255, 0) 23.61%, rgba(187, 175, 255, 0.2) 137.5%),
+              rgba(187, 175, 255, 0.09);
+  background-blend-mode: screen;
+}
+
+.testimonials-title-gradient {
+  background: linear-gradient(177.56deg, #FFBF7E 27.53%, #FFA041 54.43%, #FFBF7E 85.38%, #FFFFFF 118.96%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.testimonials-title-container {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 97px;
+  letter-spacing: -0.05em;
 }
 
 @layer base {
