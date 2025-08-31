@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
+import { useState, useRef } from 'react';
 
 export interface Testimonial {
   id: string;
@@ -78,7 +77,7 @@ export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) 
         className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        {testimonials.map((testimonial, index) => (
+        {testimonials.map((testimonial) => (
           <div
             key={testimonial.id}
             className="flex-none w-[456px] snap-start"

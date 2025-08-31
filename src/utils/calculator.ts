@@ -21,8 +21,7 @@ function calculateGoogleSavings(
   currentCosts: CurrentCosts,
   ourOffer: OurOffer
 ): CalculationResults {
-  // Calculate current sending volume per inbox
-  const currentSendsPerInbox = currentCosts.dailyEmailVolume / (currentCosts.numberOfDomains * currentCosts.inboxesPerDomain);
+
   
   // Current costs breakdown
   const currentSequencerCost = currentCosts.emailSequencerCost;

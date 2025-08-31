@@ -8,7 +8,8 @@ import ProblemSection from "@/components/sections/problemSection";
 import SolutionSection from "@/components/sections/solutionSection";
 import Testimonials from "@/components/sections/testimonials";
 import { MarqueeDemo } from "@/components/ui/marquee";
-
+import FAQ from "@/components/sections/faq";
+import Footer from "@/components/sections/footer";
 export default function Page() {
   return (
     <main className="relative min-h-screen w-screen overflow-x-hidden">
@@ -24,6 +25,8 @@ export default function Page() {
         <HowItWorks />
         <Testimonials />
         <Calculator />
+        <FAQ />
+        <Footer />
       </div>
     </main>
   );

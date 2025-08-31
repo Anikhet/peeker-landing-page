@@ -10,30 +10,8 @@ import {
 import {
   calculateSavings,
   formatCurrency,
-  formatPercentage,
 } from "@/utils/calculator";
 import { CalculationResults } from "@/types/calculator";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-
-import { Separator } from "@/components/ui/separator";
-import {
-
-  TrendingUp,
-
-  BarChart3,
-} from "lucide-react";
-import { cn } from "@/lib/utils";
-// import { PulsatingButton } from "./magicui/pulsating-button";
-import Image from "next/image";
-import Link from "next/link";
 
 export default function OutlookCalculator() {
   const [results, setResults] = useState<CalculationResults | null>(null);
@@ -42,7 +20,6 @@ export default function OutlookCalculator() {
     register,
     handleSubmit,
     watch,
-    setValue,
     formState: { errors },
   } = useForm<CalculatorFormSchema>({
     resolver: zodResolver(calculatorFormSchema),
@@ -52,20 +29,23 @@ export default function OutlookCalculator() {
         emailSequencerName: "Instantly",
         dailyEmailVolume: 2000,
         numberOfDomains: 23,
+        inboxesPerDomain: 3,
+        costPerInbox: 7.2,
         totalMonthlyCost: 400,
         domainCost: 11.99,
       },
       ourOffer: {
         emailSequencerCost: 70,
         desiredDailyVolume: 2000,
+        inboxesPerDomain: 3,
+        sendsPerInbox: 30,
+        costPerInbox: 3.5,
         costPerDomain: 60,
         useExistingDomains: false,
         costForDomains: 11.99,
       },
     },
   });
-
-  const useExistingDomains = watch("ourOffer.useExistingDomains");
 
   const onSubmit = (data: CalculatorFormSchema) => {
     if (data.ourOffer.useExistingDomains) {
@@ -93,7 +73,7 @@ export default function OutlookCalculator() {
               <div className="absolute inset-2 backdrop-blur-[4.6px] bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
                 <div className="p-6 h-full">
                   {/* Header */}
-                  <div className="text-center mb-8">
+                  <div className="text-left mb-8">
                     <h2 className="text-[#ffbf7e] text-xl font-medium tracking-tight">
                       Enter Your Current Costs
                     </h2>
@@ -106,7 +86,7 @@ export default function OutlookCalculator() {
                   <div className="space-y-6">
                     {/* Email Sequencer Cost */}
                     <div className="relative">
-                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-center mb-2 tracking-tight">
+                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         Email sequencer cost (per month)
                       </label>
                       <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
@@ -115,12 +95,12 @@ export default function OutlookCalculator() {
                           {...register("currentCosts.emailSequencerCost", {
                             valueAsNumber: true,
                           })}
-                          className="bg-transparent text-white text-xl font-medium text-center w-full h-full px-4 tracking-tight"
+                          className="bg-transparent text-white text-xl font-medium text-left w-full h-full px-4 tracking-tight"
                           placeholder="97"
                         />
                       </div>
                       {errors.currentCosts?.emailSequencerCost && (
-                        <p className="text-red-600 text-sm mt-1 text-center">
+                        <p className="text-red-600 text-sm mt-1 text-left">
                           {errors.currentCosts.emailSequencerCost.message}
                         </p>
                       )}
@@ -128,7 +108,7 @@ export default function OutlookCalculator() {
 
                     {/* Emails Per Day */}
                     <div className="relative">
-                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-center mb-2 tracking-tight">
+                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         How many emails do you send per day currently?
                       </label>
                       <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
@@ -137,12 +117,12 @@ export default function OutlookCalculator() {
                           {...register("currentCosts.dailyEmailVolume", {
                             valueAsNumber: true,
                           })}
-                          className="bg-transparent text-white text-xl font-medium text-center w-full h-full px-4 tracking-tight"
+                          className="bg-transparent text-white text-xl font-medium text-left w-full h-full px-4 tracking-tight"
                           placeholder="2000"
                         />
                       </div>
                       {errors.currentCosts?.dailyEmailVolume && (
-                        <p className="text-red-600 text-sm mt-1 text-center">
+                        <p className="text-red-600 text-sm mt-1 text-left">
                           {errors.currentCosts.dailyEmailVolume.message}
                         </p>
                       )}
@@ -150,7 +130,7 @@ export default function OutlookCalculator() {
 
                     {/* Domains Purchased */}
                     <div className="relative">
-                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-center mb-2 tracking-tight">
+                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         How many domains did you purchase to send this volume?
                       </label>
                       <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
@@ -159,12 +139,12 @@ export default function OutlookCalculator() {
                           {...register("currentCosts.numberOfDomains", {
                             valueAsNumber: true,
                           })}
-                          className="bg-transparent text-white text-xl font-medium text-center w-full h-full px-4 tracking-tight"
+                          className="bg-transparent text-white text-xl font-medium text-left w-full h-full px-4 tracking-tight"
                           placeholder="23"
                         />
                       </div>
                       {errors.currentCosts?.numberOfDomains && (
-                        <p className="text-red-600 text-sm mt-1 text-center">
+                        <p className="text-red-600 text-sm mt-1 text-left">
                           {errors.currentCosts.numberOfDomains.message}
                         </p>
                       )}
@@ -172,7 +152,7 @@ export default function OutlookCalculator() {
 
                     {/* Current cost of inboxes per month */}
                     <div className="relative">
-                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-center mb-2 tracking-tight">
+                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         Current cost of inboxes per month?
                       </label>
                       <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
@@ -182,12 +162,12 @@ export default function OutlookCalculator() {
                           {...register("currentCosts.totalMonthlyCost", {
                             valueAsNumber: true,
                           })}
-                          className="bg-transparent text-white text-xl font-medium text-center w-full h-full px-4 tracking-tight"
+                          className="bg-transparent text-white text-xl font-medium text-left w-full h-full px-4 tracking-tight"
                           placeholder="400"
                         />
                       </div>
                       {errors.currentCosts?.totalMonthlyCost && (
-                        <p className="text-red-600 text-sm mt-1 text-center">
+                        <p className="text-red-600 text-sm mt-1 text-left">
                           {errors.currentCosts.totalMonthlyCost.message}
                         </p>
                       )}
@@ -195,7 +175,7 @@ export default function OutlookCalculator() {
 
                     {/* Cost Per Domain */}
                     <div className="relative">
-                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-center mb-2 tracking-tight">
+                      <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         Cost per domain?
                       </label>
                       <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
@@ -204,12 +184,12 @@ export default function OutlookCalculator() {
                           {...register("currentCosts.domainCost", {
                             valueAsNumber: true,
                           })}
-                          className="bg-transparent text-white text-xl font-medium text-center w-full h-full px-4 tracking-tight"
+                          className="bg-transparent text-white text-xl font-medium text-left w-full h-full px-4 tracking-tight"
                           placeholder="11.99"
                         />
                       </div>
                       {errors.currentCosts?.domainCost && (
-                        <p className="text-red-600 text-sm mt-1 text-center">
+                        <p className="text-red-600 text-sm mt-1 text-left">
                           {errors.currentCosts.domainCost.message}
                         </p>
                       )}
@@ -251,17 +231,17 @@ export default function OutlookCalculator() {
                     <div className="relative z-10 h-full flex flex-col justify-center">
                       {/* Top Row - Labels */}
                       <div className="flex justify-between items-center px-16 mb-4">
-                        <div className="text-center">
+                        <div className="text-left">
                           <p className="text-[#72aa83] text-sm font-semibold tracking-tight">
                             Savings Calculated :
                           </p>
                         </div>
-                        <div className="text-center">
+                        <div className="text-left">
                           <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight">
                             Monthly Savings :
                           </p>
                         </div>
-                        <div className="text-center">
+                        <div className="text-left">
                           <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight">
                             Annual Savings :
                           </p>
@@ -270,17 +250,17 @@ export default function OutlookCalculator() {
 
                       {/* Bottom Row - Values */}
                       <div className="flex justify-between items-center px-16">
-                        <div className="text-center">
+                        <div className="text-left">
                           <p className="text-[48px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
                             {formatCurrency(results.totalSavings)}
                           </p>
                         </div>
-                        <div className="text-center">
+                        <div className="text-left">
                           <p className="text-[32px] font-medium text-[#b5b5b5] tracking-tight">
                             {formatCurrency(results.totalSavings)}
                           </p>
                         </div>
-                        <div className="text-center">
+                        <div className="text-left">
                           <p className="text-[32px] font-medium text-[#b5b5b5] tracking-tight">
                             {formatCurrency(results.totalSavings * 12)}
                           </p>
@@ -360,149 +340,176 @@ export default function OutlookCalculator() {
                  </div>
                </div>
 
-              {/* Before and After Comparison */}
-              <Card className="border-2 border-green-200 shadow-lg">
-                <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 border-b border-green-200">
-                  <CardTitle className="flex items-center gap-2 text-green-800">
-                    <BarChart3 className="h-5 w-5 sm:h-6 sm:w-6" />
-                    Before & After Comparison
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6 pt-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Before */}
-                    <div className="space-y-4">
-                      <div className="text-center">
-                        <h3 className="text-lg font-semibold text-red-700 mb-2">
-                          Current Costs
-                        </h3>
-                        <div className="text-3xl font-bold text-red-600">
-                          {formatCurrency(
-                            results.currentTotalWithDomains -
-                              results.currentDomainCost
-                          )}
+              {/* Before and After Comparison - Matching Selected Figma Frame */}
+              <div className="relative h-[265px] w-[794px]">
+                <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
+                
+                {/* Main Comparison Content */}
+                <div className="absolute inset-2 backdrop-blur-[4.6px] bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
+                  <div className="h-full relative">
+                    {/* Background Decorative Elements */}
+                    <div className="absolute flex inset-[-27.31%_-80.59%_-34.48%_-82.52%] items-center justify-center">
+                      <div className="flex-none h-[402.861px] rotate-[180deg] scale-y-[-100%] w-[2047.02px] opacity-20">
+                        {/* Union background image would go here */}
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="relative z-10 h-full">
+                      {/* Top Section - Current Cost vs Our Offer */}
+                      <div className="flex justify-between items-center px-16 pt-12">
+                        {/* Current Cost */}
+                        <div className="text-center">
+                          <p className="text-[#fc9292] text-sm font-semibold tracking-tight mb-2">
+                            Current Cost
+                          </p>
+                          <p className="text-[48px] font-medium tracking-tight bg-gradient-to-b from-[#fc9292] from-[16.848%] to-[#ff0000] to-[163.59%] bg-clip-text text-transparent">
+                            {formatCurrency(
+                              results.currentTotalWithDomains -
+                                results.currentDomainCost
+                            )}
+                          </p>
+                          <p className="text-[#777777] text-sm font-semibold tracking-tight mt-1">
+                            / per month
+                          </p>
                         </div>
-                        <p className="text-sm text-gray-600">per month</p>
+
+                        {/* Our Offer */}
+                        <div className="text-center">
+                          <p className="text-[#72aa83] text-sm font-semibold tracking-tight mb-2">
+                            Our Offer
+                          </p>
+                          <p className="text-[48px] font-medium tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+                            {formatCurrency(results.ourTotalCost)}
+                          </p>
+                          <p className="text-[#777777] text-sm font-semibold tracking-tight mt-1">
+                            / per month
+                          </p>
+                        </div>
                       </div>
 
-                      <div className="space-y-3">
-                        <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg border border-red-200">
-                          <span className="text-sm font-medium text-gray-700">
-                            Email Sequencer
-                          </span>
-                          <span className="font-semibold text-red-600">
-                            {formatCurrency(
-                              watch("currentCosts.emailSequencerCost")
-                            )}
-                          </span>
-                        </div>
-                        <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg border border-red-200">
-                          <span className="text-sm font-medium text-gray-700">
-                            Inbox Costs
-                          </span>
-                          <span className="font-semibold text-red-600">
-                            {formatCurrency(
-                              watch("currentCosts.totalMonthlyCost")
-                            )}
-                          </span>
-                        </div>
-                        <div className="flex justify-center items-center">
-                          <span className="text-4xl font-extrabold text-gray-700">
-                            +
-                          </span>
-                        </div>
-                        <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg border border-red-200">
-                          <span className="text-sm font-medium text-gray-700">
-                            Domain Costs
-                          </span>
-                          <span className="font-semibold text-red-600">
+                      {/* Bottom Section - Detailed Breakdown */}
+                      <div className="flex justify-between items-center px-16 mt-8">
+                        {/* Current Costs Breakdown */}
+                        <div className="text-center">
+                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight mb-2">
+                            Inbox Cost :
+                          </p>
+                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight">
+                            {formatCurrency(watch("currentCosts.totalMonthlyCost"))}
+                          </p>
+                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight mt-2">
+                            Domain Cost :
+                          </p>
+                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight">
                             {formatCurrency(
                               watch("currentCosts.numberOfDomains") *
                                 watch("currentCosts.domainCost")
                             )}
-                          </span>
+                          </p>
                         </div>
-                      </div>
-                    </div>
 
-                    {/* After */}
-                    <div className="space-y-4">
-                      <div className="text-center">
-                        <h3 className="text-lg font-semibold text-green-700 mb-2">
-                          Our Offer
-                        </h3>
-                        <div className="text-3xl font-bold text-green-600">
-                          {formatCurrency(results.ourTotalCost)}
-                        </div>
-                        <p className="text-sm text-gray-600">per month</p>
-                      </div>
-
-                      <div className="space-y-3">
-                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg border border-green-200">
-                          <span className="text-sm font-medium text-gray-700">
-                            Our Email Sequencer
-                          </span>
-                          <span className="font-semibold text-green-600">
-                            {formatCurrency(
-                              watch("ourOffer.emailSequencerCost")
-                            )}
-                          </span>
-                        </div>
-                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg border border-green-200">
-                          <span className="text-sm font-medium text-gray-700">
-                            Our Inbox Costs
-                          </span>
-                          <span className="font-semibold text-green-600">
+                        {/* Our Offer Breakdown */}
+                        <div className="text-center">
+                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight mb-2">
+                            Inbox Cost :
+                          </p>
+                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight">
                             {formatCurrency(
                               results.domainsNeeded *
                                 watch("ourOffer.costPerDomain")
                             )}
-                          </span>
-                        </div>
-                        <div className="flex justify-center items-center">
-                          <span className="text-4xl font-extrabold text-gray-700">
-                            +
-                          </span>
-                        </div>
-                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg border border-green-200">
-                          <span className="text-sm font-medium text-gray-700">
-                            Your Domain Costs
-                          </span>
-                          <span className="font-semibold text-green-600">
+                          </p>
+                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight mt-2">
+                            Domain Cost :
+                          </p>
+                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight">
                             {formatCurrency(
                               watch("ourOffer.costForDomains") *
                                 (watch("ourOffer.desiredDailyVolume") / 500)
                             )}
-                          </span>
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Auto Inbox Purchasing Badge */}
+                      <div className="absolute top-[25px] right-[25px]">
+                        <div className="bg-[rgba(255,224,175,0)] border border-[darkorange] rounded-[55.224px] px-3 py-1">
+                          <p className="text-[#ddd7f9] text-xs font-medium tracking-tight">
+                            Auto Inbox Purchasing Enabled
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Decorative Ellipse */}
+                      <div className="absolute h-[92px] left-[446px] top-[234px] w-[126px] opacity-20">
+                        {/* Ellipse decorative element would go here */}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Savings Summary - Matching Selected Figma Frame */}
+              <div className="relative h-[120px] w-[794px]">
+                <div className="absolute inset-0 backdrop-blur-[4.6px] bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
+                  <div className="h-full relative">
+                    {/* Background Decorative Elements */}
+                    <div className="absolute flex inset-[-165.3%_-77.96%_-193.41%_-79.85%] items-center justify-center">
+                      <div className="flex-none h-[389.901px] rotate-[180deg] scale-y-[-100%] w-[2047px] opacity-20">
+                        {/* Union background image would go here */}
+                      </div>
+                    </div>
+
+                    {/* Main Content */}
+                    <div className="relative z-10 h-full flex flex-col justify-center items-center">
+                      {/* Main Text */}
+                      <div className="text-center mb-4">
+                        <p className="text-[20px] font-semibold text-[darkgrey] tracking-tight">
+                          Ready to start saving{" "}
+                          <span className="font-bold bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+                            {formatCurrency(results.totalSavings)}
+                          </span>{" "}
+                          per month?
+                        </p>
+                      </div>
+
+                      {/* Get Started Button */}
+                      <div className="relative">
+                        <div className="bg-gradient-to-b from-[#f4f4f4] via-[#565656] to-[#b3a293] rounded-[25.446px] px-6 py-3 border border-[#c9c9c9] shadow-lg">
+                          <div className="flex items-center gap-3">
+                            {/* Decorative Ellipse 1 */}
+                            <div className="w-6 h-6 opacity-60">
+                              {/* Ellipse decorative element would go here */}
+                            </div>
+                            
+                            {/* Button Text */}
+                            <button
+                              onClick={() => {
+                                window.location.href =
+                                  "https://cal.com/conrad-niedzielski/peeker-inboxes";
+                              }}
+                              className="text-[16px] font-semibold bg-gradient-to-b from-[#fcd292] from-[55.172%] to-[#1a1a1a] bg-clip-text text-transparent bg-transparent border-none cursor-pointer"
+                            >
+                              Get Started
+                            </button>
+                            
+                            {/* Decorative Ellipse 2 */}
+                            <div className="w-6 h-6 opacity-60">
+                              {/* Ellipse decorative element would go here */}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  <Separator className="my-6" />
-
-                  {/* Savings Summary */}
-                  <div className="bg-gradient-to-r from-red-50 via-yellow-50 to-green-50 rounded-xl p-6 border-2 border-gray-200">
-                    <div className="text-center flex flex-col justify-center items-center">
-                      <div className="text-lg font-semibold text-gray-800 mb-2">
-                        Ready to start saving{" "}
-                        {formatCurrency(results.totalSavings)} per month?
-                      </div>
-                      <div className="text-xl font-semibold text-green-600 mb-4"></div>
-
-                      <Button
-                        onClick={() => {
-                          window.location.href =
-                            "https://cal.com/conrad-niedzielski/peeker-inboxes";
-                        }}
-                        className="bg-emerald-500"
-                      >
-                        Start Saving
-                      </Button>
+                    {/* Decorative Ellipse */}
+                    <div className="absolute h-[31px] left-[220px] top-[77px] w-[115px] opacity-20">
+                      {/* Ellipse decorative element would go here */}
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
           )}
         </div>

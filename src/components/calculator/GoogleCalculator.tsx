@@ -10,32 +10,8 @@ import {
 import {
   calculateSavings,
   formatCurrency,
-  formatPercentage,
 } from "@/utils/calculator";
 import { CalculationResults } from "@/types/calculator";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
-import { Separator } from "@/components/ui/separator";
-import {
-  DollarSign,
-  TrendingUp,
-  Settings,
-  BarChart3,
-} from "lucide-react";
-import { cn } from "@/lib/utils";
-
-import Image from "next/image";
-import Link from "next/link";
 
 export default function GoogleCalculator() {
   const [googleResults, setGoogleResults] = useState<CalculationResults | null>(
@@ -47,9 +23,7 @@ export default function GoogleCalculator() {
     register: registerGoogle,
     handleSubmit: handleSubmitGoogle,
     watch: watchGoogle,
-    setValue: setValueGoogle,
     formState: { errors: errorsGoogle },
-    reset: resetGoogle,
   } = useForm<CalculatorFormSchema>({
     resolver: zodResolver(calculatorFormSchema),
     defaultValues: {
@@ -60,7 +34,7 @@ export default function GoogleCalculator() {
         numberOfDomains: 23,
         inboxesPerDomain: 3,
         costPerInbox: 7.2,
-        totalMonthlyCost: 497.7, // 23*3*7.2
+        totalMonthlyCost: 497.7,
         domainCost: 11.99,
       },
       ourOffer: {
@@ -77,7 +51,6 @@ export default function GoogleCalculator() {
   });
 
   // Google calculated values
-  const googleDailyVolume = watchGoogle("currentCosts.dailyEmailVolume");
   const googleInboxesPerDomain = watchGoogle("currentCosts.inboxesPerDomain");
   const googleDomains = watchGoogle("currentCosts.numberOfDomains");
   const googleCostPerInbox = watchGoogle("currentCosts.costPerInbox");
@@ -91,18 +64,11 @@ export default function GoogleCalculator() {
   const googleOfferUseExistingDomains = watchGoogle(
     "ourOffer.useExistingDomains"
   );
-  const googleOfferSequencerCost = watchGoogle("ourOffer.emailSequencerCost");
 
   // Google calculated fields
   const googleCurrentInboxes = googleDomains * googleInboxesPerDomain;
   const googleCurrentInboxCost = googleCurrentInboxes * googleCostPerInbox;
   const googleCurrentDomainCost = googleDomains * googleDomainCost;
-  const googleCurrentTotal =
-    googleCurrentInboxCost +
-    googleCurrentDomainCost +
-    watchGoogle("currentCosts.emailSequencerCost");
-  const googleCurrentSendsPerInbox =
-    googleDailyVolume / (googleDomains * googleInboxesPerDomain);
 
   const googleOfferSendsPerDomain =
     googleOfferInboxesPerDomain * googleOfferSendsPerInbox;
@@ -116,8 +82,6 @@ export default function GoogleCalculator() {
   const googleOfferDomainCost = googleOfferUseExistingDomains
     ? 0
     : googleOfferDomainsNeeded * googleOfferCostForDomains;
-  const googleOfferTotal =
-    googleOfferInboxCost + googleOfferDomainCost + googleOfferSequencerCost;
 
   const onSubmitGoogle = (data: CalculatorFormSchema) => {
     const calculatedResults = calculateSavings(
@@ -305,205 +269,294 @@ export default function GoogleCalculator() {
           {/* Results Section - Beside the calculator */}
           {googleResults && (
             <div className="flex-1 space-y-6">
-              {/* Main Savings Card */}
-              <Card className="bg-gradient-to-br from-green-500 via-emerald-500 to-teal-600 border-0 shadow-2xl overflow-hidden">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-black/10"></div>
-                  <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-white/10 rounded-full -translate-y-12 sm:-translate-y-16 translate-x-12 sm:translate-x-16"></div>
-                  <div className="absolute bottom-0 left-0 w-20 h-20 sm:w-24 sm:h-24 bg-white/10 rounded-full translate-y-10 sm:translate-y-12 -translate-x-10 sm:-translate-x-12"></div>
-                  <CardHeader className="text-center relative z-10 pb-4">
-                    <div className="mb-4">
-                      <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-3 sm:px-4 py-2 mb-4">
-                        <TrendingUp className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
-                        <span className="text-white font-medium text-sm sm:text-base">
-                          SAVINGS CALCULATED
-                        </span>
+              {/* Main Savings Card - Matching Figma Design */}
+              <div className="relative h-[181px] w-[794px]">
+                <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
+                
+                {/* Main Results Content */}
+                <div className="absolute inset-2 backdrop-blur-[4.6px] bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
+                  <div className="h-full relative">
+                    {/* Background Decorative Elements */}
+                    <div className="absolute inset-[-41.21%_-80.59%_-102.95%_-82.52%] flex items-center justify-center">
+                      <div className="flex-none h-[402.861px] rotate-[180deg] scale-y-[-100%] w-[2047.02px] opacity-20">
+                        {/* Union background image would go here */}
                       </div>
                     </div>
-                    <CardTitle className="text-4xl sm:text-6xl font-black text-white mb-2 drop-shadow-lg">
-                      {formatCurrency(googleResults.totalSavings)}
-                    </CardTitle>
-                    <CardDescription className="text-lg sm:text-2xl text-white/90 font-semibold mb-4">
-                      Monthly Savings •{" "}
-                      {formatPercentage(
-                        googleResults.totalSavingsPercentage
-                      )}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="relative z-10">
-                    <div className="text-center">
-                      <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-4 sm:p-6 inline-block">
-                        <div className="text-white/80 text-base sm:text-lg mb-2">
-                          Annual Savings
+
+                    {/* Results Content */}
+                    <div className="relative z-10 h-full flex flex-col justify-center">
+                      {/* Top Row - Labels */}
+                      <div className="flex justify-between items-center px-16 mb-4">
+                        <div className="text-center">
+                          <p className="text-[#72aa83] text-sm font-semibold tracking-tight">
+                            Savings Calculated :
+                          </p>
                         </div>
-                        <div className="text-3xl sm:text-4xl font-bold text-white">
-                          {formatCurrency(googleResults.totalSavings * 12)}
+                        <div className="text-center">
+                          <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight">
+                            Monthly Savings :
+                          </p>
+                        </div>
+                        <div className="text-center">
+                          <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight">
+                            Annual Savings :
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Bottom Row - Values */}
+                      <div className="flex justify-between items-center px-16">
+                        <div className="text-center">
+                          <p className="text-[48px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+                            {formatCurrency(googleResults.totalSavings)}
+                          </p>
+                        </div>
+                        <div className="text-center">
+                          <p className="text-[32px] font-medium text-[#b5b5b5] tracking-tight">
+                            {formatCurrency(googleResults.totalSavings)}
+                          </p>
+                        </div>
+                        <div className="text-center">
+                          <p className="text-[32px] font-medium text-[#b5b5b5] tracking-tight">
+                            {formatCurrency(googleResults.totalSavings * 12)}
+                          </p>
                         </div>
                       </div>
                     </div>
-                  </CardContent>
+
+                    {/* Decorative Ellipse */}
+                    <div className="absolute h-[115px] left-[63px] top-[164px] w-[158px] opacity-20">
+                      {/* Ellipse decorative element would go here */}
+                    </div>
+                  </div>
                 </div>
-              </Card>
-              {/* Savings Impact Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-green-200">
-                  <CardContent className="p-4 text-center">
-                    <div className="text-xl sm:text-2xl font-bold text-green-700 mb-1">
-                      {formatCurrency(googleResults.sequencerSavings)}
-                    </div>
-                    <div className="text-xs sm:text-sm text-green-600">
-                      Sequencer Savings
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card className="bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200">
-                  <CardContent className="p-4 text-center">
-                    <div className="text-xl sm:text-2xl font-bold text-blue-700 mb-1">
-                      {formatCurrency(googleResults.emailInboxSavings)}
-                    </div>
-                    <div className="text-xs sm:text-sm text-blue-600">
-                      Inbox Savings
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card className="bg-gradient-to-br from-purple-50 to-violet-50 border-purple-200">
-                  <CardContent className="p-4 text-center">
-                    <div className="text-xl sm:text-2xl font-bold text-purple-700 mb-1">
-                      {formatCurrency(googleResults.domainSavings)}
-                    </div>
-                    <div className="text-xs sm:text-sm text-purple-600">
-                      Domain Savings
-                    </div>
-                  </CardContent>
-                </Card>
               </div>
-              {/* Before and After Comparison */}
-              <Card className="border-2 border-green-200 shadow-lg">
-                <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50 border-b border-green-200">
-                  <CardTitle className="flex items-center gap-2 text-green-800">
-                    <BarChart3 className="h-5 w-5 sm:h-6 sm:w-6" />
-                    Before & After Comparison
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6 pt-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Before */}
-                    <div className="space-y-4">
-                      <div className="text-center">
-                        <h3 className="text-lg font-semibold text-red-700 mb-2">
-                          Current Costs
-                        </h3>
-                        <div className="text-3xl font-bold text-red-600">
-                          {formatCurrency(
-                            googleResults.currentTotalWithDomains -
-                              googleResults.currentDomainCost
-                          )}
-                        </div>
-                        <p className="text-sm text-gray-600">per month</p>
+
+              {/* Savings Impact Cards - Matching Figma Design */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Inbox Savings Card - Matching Selected Figma Frame */}
+                <div className="relative h-[149px] w-[391px]">
+                  <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
+                  
+                  {/* Main Card Content */}
+                  <div className="absolute inset-2 backdrop-blur-[4.6px] bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
+                    <div className="h-full relative">
+                      {/* Background Decorative Elements */}
+                      <div className="absolute h-[281px] left-[150px] top-[652px] w-[283px] opacity-20">
+                        {/* Ellipse decorative element would go here */}
                       </div>
-                      <div className="space-y-3">
-                        <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg border border-red-200">
-                          <span className="text-sm font-medium text-gray-700">
-                            Email Sequencer
-                          </span>
-                          <span className="font-semibold text-red-600">
+
+                      {/* Content */}
+                      <div className="relative z-10 h-full flex flex-col justify-center items-center">
+                        {/* Label */}
+                        <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight mb-2">
+                          Inbox Savings
+                        </p>
+                        
+                        {/* Value */}
+                        <p className="text-[48px] font-medium text-[#b5b5b5] tracking-tight">
+                          {formatCurrency(googleResults.emailInboxSavings)}
+                        </p>
+
+                        {/* Deliverability Badge */}
+                        <p className="text-[12px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent mt-2">
+                          (Deliverability &gt;98%)
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Domain Savings Card */}
+                <div className="relative h-[149px] w-[391px]">
+                  <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
+                  
+                  {/* Main Card Content */}
+                  <div className="absolute inset-2 backdrop-blur-[4.6px] bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
+                    <div className="h-full relative">
+                      {/* Background Decorative Elements */}
+                      <div className="absolute h-[281px] left-[150px] top-[652px] w-[283px] opacity-20">
+                        {/* Ellipse decorative element would go here */}
+                      </div>
+
+                      {/* Content */}
+                      <div className="relative z-10 h-full flex flex-col justify-center items-center">
+                        {/* Label */}
+                        <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight mb-2">
+                          Domain Savings
+                        </p>
+                        
+                        {/* Value */}
+                        <p className="text-[48px] font-medium text-[#b5b5b5] tracking-tight">
+                          {formatCurrency(googleResults.domainSavings)}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Before and After Comparison - Matching Selected Figma Frame */}
+              <div className="relative h-[265px] w-[794px]">
+                <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
+                
+                {/* Main Comparison Content */}
+                <div className="absolute inset-2 backdrop-blur-[4.6px] bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
+                  <div className="h-full relative">
+                    {/* Background Decorative Elements */}
+                    <div className="absolute flex inset-[-27.31%_-80.59%_-34.48%_-82.52%] items-center justify-center">
+                      <div className="flex-none h-[402.861px] rotate-[180deg] scale-y-[-100%] w-[2047.02px] opacity-20">
+                        {/* Union background image would go here */}
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="relative z-10 h-full">
+                      {/* Top Section - Current Cost vs Our Offer */}
+                      <div className="flex justify-between items-center px-16 pt-12">
+                        {/* Current Cost */}
+                        <div className="text-center">
+                          <p className="text-[#fc9292] text-sm font-semibold tracking-tight mb-2">
+                            Current Cost
+                          </p>
+                          <p className="text-[48px] font-medium tracking-tight bg-gradient-to-b from-[#fc9292] from-[16.848%] to-[#ff0000] to-[163.59%] bg-clip-text text-transparent">
                             {formatCurrency(
-                              watchGoogle("currentCosts.emailSequencerCost")
+                              googleResults.currentTotalWithDomains -
+                                googleResults.currentDomainCost
                             )}
-                          </span>
+                          </p>
+                          <p className="text-[#777777] text-sm font-semibold tracking-tight mt-1">
+                            / per month
+                          </p>
                         </div>
-                        <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg border border-red-200">
-                          <span className="text-sm font-medium text-gray-700">
-                            Inbox Costs
-                          </span>
-                          <span className="font-semibold text-red-600">
+
+                        {/* Our Offer */}
+                        <div className="text-center">
+                          <p className="text-[#72aa83] text-sm font-semibold tracking-tight mb-2">
+                            Our Offer
+                          </p>
+                          <p className="text-[48px] font-medium tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+                            {formatCurrency(googleResults.ourTotalCost)}
+                          </p>
+                          <p className="text-[#777777] text-sm font-semibold tracking-tight mt-1">
+                            / per month
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Bottom Section - Detailed Breakdown */}
+                      <div className="flex justify-between items-center px-16 mt-8">
+                        {/* Current Costs Breakdown */}
+                        <div className="text-center">
+                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight mb-2">
+                            Inbox Cost :
+                          </p>
+                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight">
                             {formatCurrency(googleCurrentInboxCost)}
-                          </span>
-                        </div>
-                        <div className="flex justify-center items-center">
-                          <span className="text-4xl font-extrabold text-gray-700">
-                            +
-                          </span>
-                        </div>
-                        <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg border border-red-200">
-                          <span className="text-sm font-medium text-gray-700">
-                            Domain Costs
-                          </span>
-                          <span className="font-semibold text-red-600">
+                          </p>
+                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight mt-2">
+                            Domain Cost :
+                          </p>
+                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight">
                             {formatCurrency(googleCurrentDomainCost)}
-                          </span>
+                          </p>
                         </div>
-                      </div>
-                    </div>
-                    {/* After */}
-                    <div className="space-y-4">
-                      <div className="text-center">
-                        <h3 className="text-lg font-semibold text-green-700 mb-2">
-                          Our Offer
-                        </h3>
-                        <div className="text-3xl font-bold text-green-600">
-                          {formatCurrency(googleResults.ourTotalCost)}
-                        </div>
-                        <p className="text-sm text-gray-600">per month</p>
-                      </div>
-                      <div className="space-y-3">
-                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg border border-green-200">
-                          <span className="text-sm font-medium text-gray-700">
-                            Our Email Sequencer
-                          </span>
-                          <span className="font-semibold text-green-600">
-                            {formatCurrency(
-                              watchGoogle("ourOffer.emailSequencerCost")
-                            )}
-                          </span>
-                        </div>
-                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg border border-green-200">
-                          <span className="text-sm font-medium text-gray-700">
-                            Our Inbox Costs
-                          </span>
-                          <span className="font-semibold text-green-600">
+
+                        {/* Our Offer Breakdown */}
+                        <div className="text-center">
+                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight mb-2">
+                            Inbox Cost :
+                          </p>
+                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight">
                             {formatCurrency(googleOfferInboxCost)}
-                          </span>
-                        </div>
-                        <div className="flex justify-center items-center">
-                          <span className="text-4xl font-extrabold text-gray-700">
-                            +
-                          </span>
-                        </div>
-                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg border border-green-200">
-                          <span className="text-sm font-medium text-gray-700">
-                            Your Domain Costs
-                          </span>
-                          <span className="font-semibold text-green-600">
+                          </p>
+                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight mt-2">
+                            Domain Cost :
+                          </p>
+                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight">
                             {formatCurrency(googleOfferDomainCost)}
-                          </span>
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Auto Inbox Purchasing Badge */}
+                      <div className="absolute top-[25px] right-[25px]">
+                        <div className="bg-[rgba(255,224,175,0)] border border-[darkorange] rounded-[55.224px] px-3 py-1">
+                          <p className="text-[#ddd7f9] text-xs font-medium tracking-tight">
+                            Auto Inbox Purchasing Enabled
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Decorative Ellipse */}
+                      <div className="absolute h-[92px] left-[446px] top-[234px] w-[126px] opacity-20">
+                        {/* Ellipse decorative element would go here */}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Savings Summary - Matching Selected Figma Frame */}
+              <div className="relative h-[120px] w-[794px]">
+                <div className="absolute inset-0 backdrop-blur-[4.6px] bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
+                  <div className="h-full relative">
+                    {/* Background Decorative Elements */}
+                    <div className="absolute flex inset-[-165.3%_-77.96%_-193.41%_-79.85%] items-center justify-center">
+                      <div className="flex-none h-[389.901px] rotate-[180deg] scale-y-[-100%] w-[2047px] opacity-20">
+                        {/* Union background image would go here */}
+                      </div>
+                    </div>
+
+                    {/* Main Content */}
+                    <div className="relative z-10 h-full flex flex-col justify-center items-center">
+                      {/* Main Text */}
+                      <div className="text-center mb-4">
+                        <p className="text-[20px] font-semibold text-[darkgrey] tracking-tight">
+                          Ready to start saving{" "}
+                          <span className="font-bold bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+                            {formatCurrency(googleResults.totalSavings)}
+                          </span>{" "}
+                          per month?
+                        </p>
+                      </div>
+
+                      {/* Get Started Button */}
+                      <div className="relative">
+                        <div className="bg-gradient-to-b from-[#f4f4f4] via-[#565656] to-[#b3a293] rounded-[25.446px] px-6 py-3 border border-[#c9c9c9] shadow-lg">
+                          <div className="flex items-center gap-3">
+                            {/* Decorative Ellipse 1 */}
+                            <div className="w-6 h-6 opacity-60">
+                              {/* Ellipse decorative element would go here */}
+                            </div>
+                            
+                            {/* Button Text */}
+                            <button
+                              onClick={() => {
+                                window.location.href =
+                                  "https://cal.com/conrad-niedzielski/peeker-inboxes";
+                              }}
+                              className="text-[16px] font-semibold bg-gradient-to-b from-[#fcd292] from-[55.172%] to-[#1a1a1a] bg-clip-text text-transparent bg-transparent border-none cursor-pointer"
+                            >
+                              Get Started
+                            </button>
+                            
+                            {/* Decorative Ellipse 2 */}
+                            <div className="w-6 h-6 opacity-60">
+                              {/* Ellipse decorative element would go here */}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <Separator className="my-6" />
-                  {/* Savings Summary */}
-                  <div className="bg-gradient-to-r from-red-50 via-yellow-50 to-green-50 rounded-xl p-6 border-2 border-gray-200">
-                    <div className="text-center flex flex-col justify-center items-center">
-                      <div className="text-lg font-semibold text-gray-800 mb-2">
-                        Ready to start saving{" "}
-                        {formatCurrency(googleResults.totalSavings)} per
-                        month?
-                      </div>
-                      <div className="text-xl font-semibold text-green-600 mb-4"></div>
-                      <Button
-                        onClick={() => {
-                          window.location.href =
-                            "https://cal.com/conrad-niedzielski/peeker-inboxes";
-                        }}
-                        className="bg-emerald-500"
-                      >
-                        Start Saving
-                      </Button>
+
+                    {/* Decorative Ellipse */}
+                    <div className="absolute h-[31px] left-[220px] top-[77px] w-[115px] opacity-20">
+                      {/* Ellipse decorative element would go here */}
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
           )}
         </div>
