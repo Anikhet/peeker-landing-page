@@ -45,7 +45,7 @@ export function Hero() {
           width={100}
           height={36}
           priority
-          className="absolute left-[-120px] hidden lg:block top-[250px] h-[80px] w-[130px] sm:h-[100px] sm:w-[160px] md:h-[150px] md:w-[240px] lg:h-[250px] lg:w-[400px] xl:h-[316px] xl:w-[508px] xl:left-[-120px] xl:top-[250px]"
+          className="absolute left-[-120px] hidden lg:block top-[250px] h-[80px] w-[130px] sm:h-[100px] sm:w-[160px] md:h-[150px] md:w-[240px] lg:h-[250px] lg:w-[400px] xl:h-[316px] xl:w-[508px] xl:left-[-120px] xl:top-[250px] z-20"
         />
       </motion.div>
 
