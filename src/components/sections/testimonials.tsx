@@ -77,6 +77,7 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto">
         <TestimonialCarousel testimonials={testimonialData} />
       </div>
+      <Image src="/orangeTint.svg" alt="Peeker" width={100} height={36} className="absolute w-1/2 bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-40" />
     </section>
   );
 }

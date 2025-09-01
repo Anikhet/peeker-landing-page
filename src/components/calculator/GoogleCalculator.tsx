@@ -279,13 +279,13 @@ export default function GoogleCalculator() {
 
           {/* Results Section - Beside the calculator */}
           {googleResults && (
-            <div className="flex-1 space-y-6">
+            <div className="flex-1 space-y-6 lg:space-y-6">
               {/* Main Savings Card - Matching Figma Design */}
-              <div className="relative h-[181px] w-[794px]">
+              <div className="relative h-[181px] w-full lg:w-[794px]">
                 <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
                 
                 {/* Main Results Content */}
-                <div className="absolute inset-2 bg-white/2 rounded-[16px] border border-white/20 overflow-hidden">
+                <div className="absolute inset-2 bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
                   <div className="h-full relative">
                     {/* Background Decorative Elements */}
                     <div className="absolute inset-[-41.21%_-80.59%_-102.95%_-82.52%] flex items-center justify-center">
@@ -299,17 +299,17 @@ export default function GoogleCalculator() {
                       {/* Top Row - Labels */}
                       <div className="flex justify-between items-center px-16 mb-4">
                         <div className="text-left">
-                          <p className="text-[#72aa83] text-sm font-semibold tracking-tight">
+                          <p className="text-[#72aa83] text-xs lg:text-sm font-semibold tracking-tight">
                             Savings Calculated :
                           </p>
                         </div>
                         <div className="text-left">
-                          <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight">
+                          <p className="text-[#b5b5b5] text-xs lg:text-sm font-semibold tracking-tight">
                             Monthly Savings :
                           </p>
                         </div>
                         <div className="text-left">
-                          <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight">
+                          <p className="text-[#b5b5b5] text-xs lg:text-sm font-semibold tracking-tight">
                             Annual Savings :
                           </p>
                         </div>
@@ -321,17 +321,17 @@ export default function GoogleCalculator() {
                       {/* Bottom Row - Values */}
                       <div className="flex justify-between items-center px-16">
                         <div className="text-left">
-                          <p className="text-[48px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+                          <p className="text-[32px] lg:text-[48px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
                             {formatCurrency(googleResults.totalSavings)}
                           </p>
                         </div>
                         <div className="text-left">
-                          <p className="text-[32px] font-medium text-[#b5b5b5] tracking-tight">
+                          <p className="text-[24px] lg:text-[32px] font-medium text-[#b5b5b5] tracking-tight">
                             {formatCurrency(googleResults.totalSavings)}
                           </p>
                         </div>
                         <div className="text-left">
-                          <p className="text-[32px] font-medium text-[#b5b5b5] tracking-tight">
+                          <p className="text-[24px] lg:text-[32px] font-medium text-[#b5b5b5] tracking-tight">
                             {formatCurrency(googleResults.totalSavings * 12)}
                           </p>
                         </div>
@@ -346,7 +346,7 @@ export default function GoogleCalculator() {
               {/* Savings Impact Cards - Matching Figma Design */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Inbox Savings Card - Matching Selected Figma Frame */}
-                <div className="relative h-[149px] w-[391px]">
+                <div className="relative h-[149px] w-full lg:w-[391px]">
                   <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
                   
                   {/* Main Card Content */}
@@ -360,17 +360,17 @@ export default function GoogleCalculator() {
                       {/* Content */}
                       <div className="relative z-10 h-full flex flex-col justify-center items-center">
                         {/* Label */}
-                        <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight mb-2">
+                        <p className="text-[#b5b5b5] text-xs lg:text-sm font-semibold tracking-tight mb-2">
                           Inbox Savings
                         </p>
                         <div className="flex items-center gap-2">
                         {/* Value */}
-                        <p className="text-[48px] font-medium text-[#b5b5b5] tracking-tight">
+                        <p className="text-[32px] lg:text-[48px] font-medium text-[#b5b5b5] tracking-tight">
                           {formatCurrency(googleResults.emailInboxSavings)}
                           
                         </p>
    {/* Deliverability Badge */}
-   <p className="text-[12px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent mt-5">
+   <p className="text-[10px] lg:text-[12px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent mt-5">
                           (Deliverability &gt;98%)
                         </p>
                         </div>
@@ -380,7 +380,7 @@ export default function GoogleCalculator() {
                 </div>
 
                 {/* Domain Savings Card */}
-                <div className="relative h-[149px] w-[391px]">
+                <div className="relative h-[149px] w-full lg:w-[391px]">
                   <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
                   
                   {/* Main Card Content */}
@@ -394,12 +394,12 @@ export default function GoogleCalculator() {
                       {/* Content */}
                       <div className="relative z-10 h-full flex flex-col justify-center items-center">
                         {/* Label */}
-                        <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight mb-2">
+                        <p className="text-[#b5b5b5] text-xs lg:text-sm font-semibold tracking-tight mb-2">
                           Domain Savings
                         </p>
                         
                         {/* Value */}
-                        <p className="text-[48px] font-medium text-[#b5b5b5] tracking-tight">
+                        <p className="text-[32px] lg:text-[48px] font-medium text-[#b5b5b5] tracking-tight">
                           {formatCurrency(googleResults.domainSavings)}
                         </p>
                       </div>
@@ -409,7 +409,7 @@ export default function GoogleCalculator() {
               </div>
 
               {/* Before and After Comparison - Matching Selected Figma Frame */}
-              <div className="relative h-[265px] w-[794px]">
+              <div className="relative h-[265px] w-full lg:w-[794px]">
                 <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
                 
                 {/* Main Comparison Content */}
@@ -428,21 +428,21 @@ export default function GoogleCalculator() {
                       <div className="flex justify-between items-center px-16 pt-10 ">
                         {/* Current Cost */}
                         <div className="text-left">
-                          <p className="text-[#fc9292] text-sm font-semibold tracking-tight">
+                          <p className="text-[#fc9292] text-xs lg:text-sm font-semibold tracking-tight">
                             Current Cost 
                           </p>
-                          <p className="text-[48px] font-medium tracking-tight bg-gradient-to-b from-[#fc9292] from-[16.848%] to-[#ff0000] to-[163.59%] bg-clip-text text-transparent">
+                          <p className="text-[32px] lg:text-[48px] font-medium tracking-tight bg-gradient-to-b from-[#fc9292] from-[16.848%] to-[#ff0000] to-[163.59%] bg-clip-text text-transparent">
                             {formatCurrency(
                               googleResults.currentTotalWithDomains -
                                 googleResults.currentDomainCost
-                            )} <span className="text-[#777777] text-sm font-medium tracking-tight mt-1">/ per month</span>
+                            )} <span className="text-[#777777] text-xs lg:text-sm font-medium tracking-tight mt-1">/ per month</span>
                           </p>
                           <div className="text-left space-y-2">
-                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight ">
+                          <p className="text-[#b5b5b5] text-xs lg:text-sm font-medium tracking-tight">
                             Inbox Cost :  {formatCurrency(googleCurrentInboxCost)}
                           </p>
                         
-                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight ">
+                          <p className="text-[#b5b5b5] text-xs lg:text-sm font-medium tracking-tight">
                             Domain Cost :   {formatCurrency(googleCurrentDomainCost)}
                           </p>
                        
@@ -452,23 +452,23 @@ export default function GoogleCalculator() {
 
                         {/* Our Offer */}
                         <div className="text-left ">
-                          <p className="text-[#72aa83] text-sm font-semibold tracking-tight mb-2 flex items-center justify-center gap-4">
-                            Our Offer
+                        <p className="text-[#72aa83] text-xs lg:text-sm font-semibold tracking-tight mb-2 flex items-center justify-center gap-4">
+                        Our Offer
 
                       {/* Auto Inbox Purchasing Badge */}
              <Image src="/Calculator Images/Auto Purchase Enabled.svg" alt="Auto Inbox Purchasing Badge" width={100} height={100} className="w-[200px] h-[30px]" />
                           </p>
-                          <p className="text-[48px] font-medium tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
-                            {formatCurrency(googleResults.ourTotalCost)} <span className="text-[#777777] text-sm font-medium tracking-tight mt-1">/ per month</span>
+                          <p className="text-[32px] lg:text-[48px] font-medium tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+                            {formatCurrency(googleResults.ourTotalCost)} <span className="text-[#777777] text-xs lg:text-sm font-medium tracking-tight mt-1">/ per month</span>
                           </p>
 
                                  {/* Our Offer Breakdown */}
                         <div className="text-left space-y-2">
-                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight ">
+                          <p className="text-[#b5b5b5] text-xs lg:text-sm font-medium tracking-tight">
                             Inbox Cost :   {formatCurrency(googleOfferInboxCost)}
                           </p>
                          
-                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight ">
+                          <p className="text-[#b5b5b5] text-xs lg:text-sm font-medium tracking-tight">
                             Domain Cost :  {formatCurrency(googleOfferDomainCost)}
                           </p>
                       
@@ -495,64 +495,34 @@ export default function GoogleCalculator() {
               </div>
 
               {/* Savings Summary - Matching Selected Figma Frame */}
-              <div className="relative h-[120px] w-[794px]">
-                <div className="absolute inset-0 backdrop-blur-[4.6px] bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
-                  <div className="h-full relative">
-                    {/* Background Decorative Elements */}
-                    <div className="absolute flex inset-[-165.3%_-77.96%_-193.41%_-79.85%] items-center justify-center">
-                      <div className="flex-none h-[389.901px] rotate-[180deg] scale-y-[-100%] w-[2047px] opacity-20">
-                        {/* Union background image would go here */}
-                      </div>
-                    </div>
+              <div className="relative h-[90px] w-full lg:w-[794px] border border-white/10 rounded-[16px] overflow-hidden">
+                {/* Main Content */}
+                <div className="relative w-full h-full flex flex-row justify-center items-center gap-8">
+                  {/* Auto Inbox Purchasing Badge */}
+                  <Image src="/orangeTint.svg" alt="Auto Inbox Purchasing Badge" width={100} height={100} className="absolute w-[400px] h-[120px] bottom-0 z-[100] blur-lg" />
+                  
+                  {/* Main Text */}
+                  <div className="text-center">
+                    <p className="font-['Inter:Medium',_sans-serif] font-medium text-[16px] lg:text-[20px] text-[darkgrey] tracking-[-0.8px] leading-[normal]">
+                      Ready to start saving{" "}
+                      <span className="font-bold bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+                        {formatCurrency(googleResults.totalSavings)}
+                      </span>{" "}
+                      per month?
+                    </p>
+                  </div>
 
-                    {/* Main Content */}
-                    <div className="relative z-10 h-full flex justify-center items-center">
-                                            {/* Auto Inbox Purchasing Badge */}
-             <Image src="/orangeTint.svg" alt="Auto Inbox Purchasing Badge" width={100} height={100} className="w-[400px] h-[120px] absolute bottom-0 z-[100] blur-lg" />
-                      {/* Main Text */}
-                      <div className="text-left mb-4">
-                        <p className="font-['Inter:Medium',_sans-serif] font-medium text-[20px] text-[darkgrey] tracking-[-0.8px] leading-[normal]">
-                          Ready to start saving{" "}
-                          <span className="font-bold bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
-                            {formatCurrency(googleResults.totalSavings)}
-                          </span>{" "}
-                          per month?
-                        </p>
-                      </div>
-
-                        {/* Get Started Button */}
-                        <div className="relative">
-
-<div className="flex items-center gap-3">
-  {/* Decorative Ellipse 1 */}
-
-  
-  {/* Button Text */}
-
-  <button
-    onClick={() => {
-      window.location.href =
-        "https://cal.com/conrad-niedzielski/peeker-inboxes";
-    }}
-    className=" cursor-pointer"
-  >
-    <FigmaButton> Get Started</FigmaButton>
- 
-  </button>
-  
-  {/* Decorative Ellipse 2 */}
-  <div className="w-6 h-6 opacity-60">
-    {/* Ellipse decorative element would go here */}
-  </div>
-</div>
-
-</div>
-                    </div>
-
-                    {/* Decorative Ellipse */}
-                    <div className="absolute h-[31px] left-[220px] top-[77px] w-[115px] opacity-20">
-                      {/* Ellipse decorative element would go here */}
-                    </div>
+                  {/* Get Started Button */}
+                  <div className="relative">
+                    <button
+                      onClick={() => {
+                        window.location.href =
+                          "https://cal.com/conrad-niedzielski/peeker-inboxes";
+                      }}
+                      className="cursor-pointer"
+                    >
+                      <Image src="/GetStarted.svg" alt="Get Started" width={100} height={100} className="w-[150px] h-[100px] cursor-pointer hover:scale-105 transition-transform" />
+                    </button>
                   </div>
                 </div>
               </div>

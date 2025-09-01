@@ -178,9 +178,9 @@ const HowItWorks = () => {
                   </div>
 
                   {/* Help Text */}
-                  <div className="absolute flex flex-col help-chat-text left-[113px] text-center text-nowrap text-white top-[34px] translate-x-[-50%] translate-y-[-100%]">
-                    <p className="leading-[1.208] whitespace-pre">
-                      What if I need help with this?
+                  <div className="absolute flex flex-col help-chat-text left-[153px] text-center text-nowrap text-white top-[34px] translate-x-[-50%] translate-y-[-100%]">
+                    <p className="leading-[1.208] whitespace-pre ">
+                    What if I don’t know how many inboxes I need?
                     </p>
                   </div>
 
@@ -256,7 +256,7 @@ const HowItWorks = () => {
               <div className="help-chat-bubble relative">
                 <div className="overflow-clip relative w-full h-full">
                   {/* Ellipse Image */}
-                  <div className="absolute h-[31px] left-[77px] top-11 w-[115px]">
+                  <div className="absolute h-[21px] left-[77px] top-11 w-[215px]">
                     <div className="absolute help-chat-ellipse">
                       <Image
                         alt=""
@@ -269,9 +269,9 @@ const HowItWorks = () => {
                   </div>
 
                   {/* Help Text */}
-                  <div className="absolute flex flex-col help-chat-text left-[113px] text-center text-nowrap text-white top-[34px] translate-x-[-50%] translate-y-[-100%]">
+                  <div className="absolute flex flex-col help-chat-text left-[133px] text-center text-nowrap text-white top-[34px] translate-x-[-50%] translate-y-[-100%]">
                     <p className="leading-[1.208] whitespace-pre">
-                      What if I need help with this?
+                    What if I have special set up requests?
                     </p>
                   </div>
 

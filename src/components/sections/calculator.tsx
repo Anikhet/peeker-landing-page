@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 const Calculator = () => {
   return (
-    <div className="min-h-screen py-20">
+    <div className="min-h-screen">
       <div className="max-w-7xl mx-auto px-4">
         {/* Calculator Header - From Figma Frame */}
         <div className="text-center mb-16">

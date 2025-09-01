@@ -18,7 +18,7 @@ const ProblemSection = () => {
   }, []);
 
   return (
-    <div className="relative h-screen lg:h-[800px] px-4 py-8 lg:py-0">
+    <div className="relative h-screen lg:h-[800px] px-4 py-8 lg:py-0 overflow-hidden">
       {/* Right Side Image */}
       <Image
         src="/The Problem Section/Right Side Image.svg"
@@ -26,6 +26,14 @@ const ProblemSection = () => {
         width={100}
         height={36}
         className="absolute right-[-70px] top-[50px] h-[40px] w-[30px] lg:h-[400px] lg:w-[300px] lg:right-0 lg:top-[220px] z-10"
+      />
+
+      <Image
+        src="/orangeTint.svg"
+        alt="Peeker"
+        width={100}
+        height={36}
+        className=" absolute w-1/2 top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-60 z-10 scale-y-[-1]"
       />
 
       {/* Left Side Image */}
