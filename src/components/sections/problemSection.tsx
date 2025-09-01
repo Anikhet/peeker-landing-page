@@ -18,14 +18,14 @@ const ProblemSection = () => {
   }, []);
 
   return (
-    <div className="relative min-h-[500px] lg:h-[700px] px-4 py-8 lg:py-0">
+    <div className="relative h-screen lg:h-[800px] px-4 py-8 lg:py-0">
       {/* Right Side Image */}
       <Image
         src="/The Problem Section/Right Side Image.svg"
         alt="Peeker"
         width={100}
         height={36}
-        className="absolute right-[-70px] top-[50px] h-[40px] w-[30px] lg:h-[400px] lg:w-[220px] lg:right-0 lg:top-[30px z-10"
+        className="absolute right-[-70px] top-[50px] h-[40px] w-[30px] lg:h-[400px] lg:w-[300px] lg:right-0 lg:top-[220px] z-10"
       />
 
       {/* Left Side Image */}
@@ -34,7 +34,7 @@ const ProblemSection = () => {
         alt="Peeker"
         width={100}
         height={36}
-        className="absolute left-[-130px] top-[120px] h-[100px] w-[250px] lg:h-[400px] lg:w-[516px] lg:top-[90px]"
+        className="absolute left-[-130px] top-[120px] h-[100px] w-[250px] lg:h-[400px] lg:w-[516px] lg:top-[220px] z-10"
       />
 
       {/* Background Image */}
@@ -43,7 +43,7 @@ const ProblemSection = () => {
         alt="Peeker"
         width={100}
         height={36}
-        className="absolute right-[-150px] top-[60px] h-[40px] w-[35px] lg:h-[280px] lg:w-[556px] lg:top-[120px]"
+        className="absolute right-[-100px] top-[60px] h-[40px] w-[35px] lg:h-[280px] lg:w-[606px] lg:top-[270px]"
       />
 
            {/* Background Image */}
@@ -52,7 +52,7 @@ const ProblemSection = () => {
         alt="Peeker"
         width={100}
         height={36}
-        className="absolute left-0 top-[60px] h-[40px] w-[35px] lg:h-[280px] lg:w-[556px] lg:top-[120px]"
+        className="absolute left-[-160px] top-[60px] h-[40px] w-[35px] lg:h-[280px] lg:w-[556px] lg:top-[260px] backdrop-blur-2xl "
       />
 
       <div className="flex flex-col items-center justify-center min-h-[400px] lg:h-full">

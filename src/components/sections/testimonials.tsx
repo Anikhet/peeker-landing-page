@@ -7,7 +7,7 @@ const testimonialData: Testimonial[] = [
     name: 'Lance Goldman',
     title: 'Co - Founder - Opp.Agency',
     videoThumbnail: '/lance.svg',
-    videoUrl: "https://www.youtube.com/embed/qloFLq3A_3s?start=11", // Replace with actual video IDs
+    videoUrl: "https://www.youtube.com/embed/qloFLq3A_3s", // Replace with actual video IDs
     quote: 'Really Easy Deliverability Tracking'
   },
   {
@@ -15,7 +15,7 @@ const testimonialData: Testimonial[] = [
     name: 'Clark Gonek',
     title: 'Head of Growth @ Boardy.ai',
     videoThumbnail: '/human1.svg',
-    videoUrl: 'https://www.youtube.com/embed/U_L9J5yOK_g?start=14',
+    videoUrl: 'https://www.youtube.com/embed/U_L9J5yOK_g',
     quote: 'Love the automatic inbox replacement'
   },
   {
@@ -31,7 +31,7 @@ const testimonialData: Testimonial[] = [
     name: 'Ryan Kaufman',
     title: 'Co- Founder @ 1Price.co',
     videoThumbnail: '/ryan.png',
-    videoUrl: 'https://www.youtube.com/embed/VCr-Rt0osSE?start=64',
+    videoUrl: 'https://www.youtube.com/embed/VCr-Rt0osSE',
     quote: 'Customer Support is unmatched'
   }
 ];
@@ -47,7 +47,7 @@ export default function Testimonials() {
 
 
       {/* Header */}
-      <div className="text-center lg:text-left w-full lg:w-1/2 px-4 lg:px-44">
+      <div className="text-center lg:text-left w-full lg:w[1100px] px-4 lg:px-55">
       <Image 
               src="/Testimonial Section/Eye-brow Text.svg" 
               alt="Problem Badge" 

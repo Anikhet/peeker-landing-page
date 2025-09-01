@@ -29,7 +29,7 @@ const Calculator = () => {
           {/* Subtitle - From Selected Figma Frame */}
           <div className="flex flex-col font-['Inter:Medium',_sans-serif] font-medium justify-end leading-[0] not-italic relative size-full text-[#bcbcbc] text-[16px] text-center tracking-[-0.64px] mt-6">
             <p className="leading-[normal]">
-              Uncover your true inbox costs and how Peeker automates deliverability, replacements, and support.
+              Uncover your true inbox costs and how Peeker <br/> automates deliverability, replacements, and support.
             </p>
           </div>
         </div>

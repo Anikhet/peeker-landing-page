@@ -101,11 +101,12 @@ export default function GoogleCalculator() {
         <div className="flex gap-8 items-start">
           {/* Calculator Card */}
           <div className="flex-none">
+            
             <div className="relative h-[850px] w-[442px]">
               <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
               
               {/* Main Calculator Content */}
-              <div className="absolute inset-2 backdrop-blur-[4.6px] bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
+              <div className="absolute inset-2 backdrop-blur-[4.6px] bg-white/2 rounded-[16px] border border-white/20 overflow-hidden">
                 <div className="p-6 h-full">
                   {/* Header */}
                   <div className="text-left mb-8">
@@ -124,7 +125,7 @@ export default function GoogleCalculator() {
                       <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         Email sequencer cost (per month)
                       </label>
-                      <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
+                      <div className="bg-[rgba(217,217,217,0.17)]/10 rounded-[6px] h-[50px] flex items-center justify-center">
                         <input
                           type="number"
                           {...registerGoogle("currentCosts.emailSequencerCost", {
@@ -146,7 +147,7 @@ export default function GoogleCalculator() {
                       <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         How many emails do you send per day currently?
                       </label>
-                      <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
+                      <div className="bg-[rgba(217,217,217,0.17)]/10 rounded-[6px] h-[50px] flex items-center justify-center">
                         <input
                           type="number"
                           {...registerGoogle("currentCosts.dailyEmailVolume", {
@@ -168,7 +169,7 @@ export default function GoogleCalculator() {
                       <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         How many inboxes do you have on each domain?
                       </label>
-                      <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
+                      <div className="bg-[rgba(217,217,217,0.17)]/10 rounded-[6px] h-[50px] flex items-center justify-center">
                         <input
                           type="number"
                           {...registerGoogle("currentCosts.inboxesPerDomain", {
@@ -190,13 +191,13 @@ export default function GoogleCalculator() {
                       <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         How many domains did you purchase to send this volume?
                       </label>
-                      <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
+                      <div className="bg-[rgba(217,217,217,0.17)]/10 rounded-[6px] h-[50px] flex items-center justify-center">
                         <input
                           type="number"
                           {...registerGoogle("currentCosts.numberOfDomains", {
                             valueAsNumber: true,
                           })}
-                          className="bg-transparent text-white text-xl font-medium text-left w-full h-full px-4 tracking-tight"
+                       className="bg-transparent text-white text-xl font-medium text-left w-full h-full px-4 tracking-tight"
                           placeholder="23"
                         />
                       </div>
@@ -212,7 +213,7 @@ export default function GoogleCalculator() {
                       <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         Current cost per inbox per month?
                       </label>
-                      <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
+                      <div className="bg-[rgba(217,217,217,0.17)]/10 rounded-[6px] h-[50px] flex items-center justify-center">
                         <input
                           type="number"
                           step="0.01"
@@ -235,7 +236,7 @@ export default function GoogleCalculator() {
                       <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         Cost per domain?
                       </label>
-                      <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
+                      <div className="bg-[rgba(217,217,217,0.17)]/10 rounded-[6px] h-[50px] flex items-center justify-center">
                         <input
                           type="number"
                           step="0.01"
@@ -252,22 +253,23 @@ export default function GoogleCalculator() {
                         </p>
                       )}
                     </div>
-                        {/* Calculate Button */}
-                        <div className="absolute bottom-6 left-6 right-6">
-                    <motion.button
-                      onClick={handleSubmitGoogle(onSubmitGoogle)}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 400,
-                        damping: 17
-                      }}
-                    >
-                      <Image src="/CalculateSavings.svg" alt="Get Started" width={100} height={100} className="w-[200px] h-[100px]" />
-                    </motion.button>
+                     
+                    <div className="flex justify-center items-center mt-8">
+                      <motion.button
+                        onClick={handleSubmitGoogle(onSubmitGoogle)}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 17
+                        }}
+                      >
+                        <Image src="/CalculateSavings.svg" alt="Get Started" width={100} height={100} className="w-[200px] h-[100px]" />
+                      </motion.button>
+                    </div>
                   </div>
-                  </div>
+              
 
                   
                 </div>
@@ -283,7 +285,7 @@ export default function GoogleCalculator() {
                 <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
                 
                 {/* Main Results Content */}
-                <div className="absolute inset-2  bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
+                <div className="absolute inset-2 bg-white/2 rounded-[16px] border border-white/20 overflow-hidden">
                   <div className="h-full relative">
                     {/* Background Decorative Elements */}
                     <div className="absolute inset-[-41.21%_-80.59%_-102.95%_-82.52%] flex items-center justify-center">

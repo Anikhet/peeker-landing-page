@@ -50,8 +50,8 @@ const FAQ = () => {
   };
 
   return (
-    <div className="min-h-screen py-20">
-      <div className="max-w-7xl mx-auto space-y-20">
+    <div className="min-h-screen py-10 lg:py-20">
+      <div className="max-w-7xl mx-auto space-y-10 lg:space-y-20 px-4 lg:px-0">
         {/* Header Section */}
         <div className="flex flex-col items-center justify-center gap-2">
           <Image
@@ -59,7 +59,7 @@ const FAQ = () => {
             alt="Eye-brow Text"
             width={100}
             height={100}
-            className="h-[60px] w-[100px]"
+            className="h-[40px] w-[80px] lg:h-[60px] lg:w-[100px]"
           />
 
           <div className="text-center">
@@ -69,8 +69,7 @@ const FAQ = () => {
                 fontFamily: "Inter",
                 fontStyle: "normal",
                 fontWeight: "500",
-                fontSize: "44px",
-              
+                fontSize: "clamp(28px, 5vw, 44px)",
                 letterSpacing: "-0.05em",
                 background:
                   "linear-gradient(177.56deg, #FFBF7E 27.53%, #FFA041 54.43%, #FFBF7E 85.38%, #FFFFFF 118.96%)",
@@ -81,7 +80,7 @@ const FAQ = () => {
             >
               <h2>Scale With Clarity</h2>
             </div>
-            <p className="text-[16px] font-medium text-[#bcbcbc] tracking-[-0.64px] max-w-[311px] mx-auto">
+            <p className="text-[14px] lg:text-[16px] font-medium text-[#bcbcbc] tracking-[-0.64px] max-w-[280px] lg:max-w-[311px] mx-auto px-4 lg:px-0">
               Everything you need to know before getting started with Peeker
               Inboxes.
             </p>
@@ -89,30 +88,30 @@ const FAQ = () => {
         </div>
 
         {/* FAQ Accordion */}
-        <div className="space-y-6">
+        <div className="space-y-4 lg:space-y-6">
           <Accordion
             type="single"
             collapsible
             value={openItem}
             onValueChange={handleValueChange}
-            className="space-y-4 w-[860px] h-[48px] mx-auto"
+            className="space-y-3 lg:space-y-4 w-full lg:w-[860px] mx-auto"
           >
             {faqItems.map((item, index) => (
               <AccordionItem key={item.id} value={item.id} className="relative">
                 {/* Main FAQ Content - Exact Figma styling */}
-                <div className="relative backdrop-filter rounded-[16px] border border-white/5 overflow-hidden">
+                <div className="relative backdrop-filter rounded-[12px] lg:rounded-[16px] border border-white/5 overflow-hidden">
                   <div className="relative">
                     {/* Content */}
                     <div className="relative z-10">
                       {/* Question - Exact Figma styling */}
-                      <AccordionTrigger className="p-8 text-left hover:no-underline">
+                      <AccordionTrigger className="p-4 lg:p-8 text-left hover:no-underline">
                         <div
                           className="text-center transition-all duration-300"
                           style={{
                             fontFamily: "Inter",
                             fontStyle: "normal",
                             fontWeight: "500",
-                            fontSize: "20px",
+                            fontSize: "clamp(16px, 4vw, 20px)",
                             letterSpacing: "-0.05em",
                             background: openItem === item.id
                               ? "linear-gradient(177.56deg, #FFBF7E 27.53%, #FFA041 54.43%, #FFBF7E 85.38%, #FFFFFF 118.96%)"
@@ -127,8 +126,8 @@ const FAQ = () => {
                       </AccordionTrigger>
 
                       {/* Answer - Exact Figma styling */}
-                      <AccordionContent className="px-8 pb-8">
-                        <p className="font-['Inter:Medium',_sans-serif] font-medium text-[20px] text-white tracking-[-0.8px] leading-[normal]">
+                      <AccordionContent className="px-4 lg:px-8 pb-4 lg:pb-8">
+                        <p className="font-['Inter:Medium',_sans-serif] font-medium text-[16px] lg:text-[20px] text-white tracking-[-0.8px] leading-[normal]">
                           {item.answer}
                         </p>
                       </AccordionContent>
@@ -138,7 +137,7 @@ const FAQ = () => {
                   {/* Border - Exact Figma styling */}
                   <div
                     aria-hidden="true"
-                    className="absolute border border-solid border-white/10 inset-0 pointer-events-none rounded-[16px]"
+                    className="absolute border border-solid border-white/10 inset-0 pointer-events-none rounded-[12px] lg:rounded-[16px]"
                   />
                 </div>
               </AccordionItem>

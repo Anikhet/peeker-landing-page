@@ -3,7 +3,7 @@ import React from 'react'
 
 const SolutionSection = () => {
   return (
-    <div className='min-h-[400px] lg:min-h-[700px] flex flex-col justify-center items-center py-12 lg:py-20 px-4 lg:px-0'>
+    <div className='min-h-[600px] lg:min-h-[800px] flex flex-col justify-center items-center py-12 lg:py-20 px-4 lg:px-0'>
      <div className="flex flex-col justify-center opacity-40 text-white font-['Inter:Medium',_sans-serif] font-medium leading-[1.2] lg:leading-[0] text-[32px] sm:text-[40px] md:text-[50px] lg:text-[70px] text-center tracking-[-2px] sm:tracking-[-2.5px] md:tracking-[-3px] lg:tracking-[-4px] mb-6 lg:mb-8 px-2 lg:px-0">
         <p className="leading-[1.2] lg:leading-[normal] text-nowrap whitespace-pre">Struggle with Spam No Longer</p>
       </div>

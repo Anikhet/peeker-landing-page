@@ -66,14 +66,14 @@ export default function OutlookCalculator() {
     <div className="relative py-20 px-4">
       {/* Calculator Container */}
       <div className="max-w-7xl mx-auto">
-        <div className="flex gap-8 items-start">
+        <div className="flex flex-col lg:flex-row gap-8 items-start">
           {/* Calculator Card */}
           <div className="flex-none relative">
-            <div className="relative h-[750px] w-[442px]">
+            <div className="relative h-[850px] w-[442px] ">
               <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
               
               {/* Main Calculator Content */}
-              <div className="absolute inset-2 backdrop-blur-[4.6px] bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
+              <div className="absolute inset-2 backdrop-blur-[4.6px] bg-white/2 rounded-[16px] border border-white/20 overflow-hidden">
                 <div className="p-6 h-full">
                   {/* Header */}
                   <div className="text-left mb-8">
@@ -86,19 +86,20 @@ export default function OutlookCalculator() {
                   <div className="w-full h-px bg-[#474747] mb-8" />
 
                   {/* Input Fields */}
-                  <div className="space-y-6">
+                  <div className="flex flex-col gap-5">
                     {/* Email Sequencer Cost */}
                     <div className="relative">
                       <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         Email sequencer cost (per month)
                       </label>
-                      <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
+                      <div className="bg-[rgba(217,217,217,0.17)]/10  rounded-[6px] h-[50px] flex items-center justify-center">
                         <input
                           type="number"
                           {...register("currentCosts.emailSequencerCost", {
                             valueAsNumber: true,
                           })}
                           className="bg-transparent text-white text-xl font-medium text-left w-full h-full px-4 tracking-tight"
+                          style={{ color: 'white' }}
                           placeholder="97"
                         />
                       </div>
@@ -114,13 +115,14 @@ export default function OutlookCalculator() {
                       <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         How many emails do you send per day currently?
                       </label>
-                      <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
+                      <div className="bg-[rgba(217,217,217,0.17)]/10 rounded-[6px] h-[50px] flex items-center justify-center">
                         <input
                           type="number"
                           {...register("currentCosts.dailyEmailVolume", {
                             valueAsNumber: true,
                           })}
                           className="bg-transparent text-white text-xl font-medium text-left w-full h-full px-4 tracking-tight"
+                          style={{ color: 'white' }}
                           placeholder="2000"
                         />
                       </div>
@@ -136,13 +138,14 @@ export default function OutlookCalculator() {
                       <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         How many domains did you purchase to send this volume?
                       </label>
-                      <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
+                      <div className="bg-[rgba(217,217,217,0.17)]/10 rounded-[6px] h-[50px] flex items-center justify-center">
                         <input
                           type="number"
                           {...register("currentCosts.numberOfDomains", {
                             valueAsNumber: true,
                           })}
                           className="bg-transparent text-white text-xl font-medium text-left w-full h-full px-4 tracking-tight"
+                          style={{ color: 'white' }}
                           placeholder="23"
                         />
                       </div>
@@ -158,7 +161,7 @@ export default function OutlookCalculator() {
                       <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         Current cost of inboxes per month?
                       </label>
-                      <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
+                      <div className="bg-[rgba(217,217,217,0.17)]/10 rounded-[6px] h-[50px] flex items-center justify-center">
                         <input
                           type="number"
                           step="0.01"
@@ -166,6 +169,7 @@ export default function OutlookCalculator() {
                             valueAsNumber: true,
                           })}
                           className="bg-transparent text-white text-xl font-medium text-left w-full h-full px-4 tracking-tight"
+                          style={{ color: 'white' }}
                           placeholder="400"
                         />
                       </div>
@@ -176,18 +180,19 @@ export default function OutlookCalculator() {
                       )}
                     </div>
 
-                    {/* Cost Per Domain */}
+                                        {/* Cost Per Domain */}
                     <div className="relative">
                       <label className="block text-[rgba(255,255,255,0.7)] text-sm font-medium text-left mb-2 tracking-tight">
                         Cost per domain?
                       </label>
-                      <div className="bg-[rgba(217,217,217,0.17)] opacity-20 rounded-[6px] h-[50px] flex items-center justify-center">
+                      <div className="bg-[rgba(217,217,217,0.17)]/10 rounded-[6px] h-[50px] flex items-center justify-center">
                         <input
                           type="number"
                           {...register("currentCosts.domainCost", {
                             valueAsNumber: true,
                           })}
                           className="bg-transparent text-white text-xl font-medium text-left w-full h-full px-4 tracking-tight"
+                          style={{ color: 'white' }}
                           placeholder="11.99"
                         />
                       </div>
@@ -197,24 +202,23 @@ export default function OutlookCalculator() {
                         </p>
                       )}
                     </div>
-                  </div>
 
-                  {/* Calculate Button */}
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <motion.button
-                      onClick={handleSubmit(onSubmit)}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 400,
-                        damping: 17
-                      }}
-                    >
-                      <Image src="/CalculateSavings.svg" alt="Get Started" width={100} height={100} className="w-[200px] h-[100px] " />
-                    </motion.button>
-
-                  </div>
+                    {/* Calculate Button */}
+                    <div className="flex justify-center items-center mt-8">
+                      <motion.button
+                        onClick={handleSubmit(onSubmit)}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 17
+                        }}
+                      >
+                        <Image src="/CalculateSavings.svg" alt="Get Started" width={100} height={100} className="w-[200px] h-[100px]" />
+                      </motion.button>
+                    </div>
+                  </div>               
                 </div>
               </div>
             </div>
@@ -223,9 +227,9 @@ export default function OutlookCalculator() {
 
           {/* Results Section - Beside the calculator */}
           {results && (
-            <div className="flex-1 space-y-6">
+            <div className="flex-1 space-y-6 lg:space-y-6">
               {/* Main Savings Card - Matching Figma Design */}
-              <div className="relative h-[181px] w-[794px]">
+              <div className="relative h-[181px] w-full lg:w-[794px]">
                 <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
                 
                 {/* Main Results Content */}
@@ -243,17 +247,17 @@ export default function OutlookCalculator() {
                       {/* Top Row - Labels */}
                       <div className="flex justify-between items-center px-16 mb-4">
                         <div className="text-left">
-                          <p className="text-[#72aa83] text-sm font-semibold tracking-tight">
+                          <p className="text-[#72aa83] text-xs lg:text-sm font-semibold tracking-tight">
                             Savings Calculated :
                           </p>
                         </div>
                         <div className="text-left">
-                          <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight">
+                          <p className="text-[#b5b5b5] text-xs lg:text-sm font-semibold tracking-tight">
                             Monthly Savings :
                           </p>
                         </div>
                         <div className="text-left">
-                          <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight">
+                          <p className="text-[#b5b5b5] text-xs lg:text-sm font-semibold tracking-tight">
                             Annual Savings :
                           </p>
                         </div>
@@ -262,17 +266,17 @@ export default function OutlookCalculator() {
                       {/* Bottom Row - Values */}
                       <div className="flex justify-between items-center px-16">
                         <div className="text-left">
-                          <p className="text-[48px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+                          <p className="text-[32px] lg:text-[48px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
                             {formatCurrency(results.totalSavings)}
                           </p>
                         </div>
                         <div className="text-left">
-                          <p className="text-[32px] font-medium text-[#b5b5b5] tracking-tight">
+                          <p className="text-[24px] lg:text-[32px] font-medium text-[#b5b5b5] tracking-tight">
                             {formatCurrency(results.totalSavings)}
                           </p>
                         </div>
                         <div className="text-left">
-                          <p className="text-[32px] font-medium text-[#b5b5b5] tracking-tight">
+                          <p className="text-[24px] lg:text-[32px] font-medium text-[#b5b5b5] tracking-tight">
                             {formatCurrency(results.totalSavings * 12)}
                           </p>
                         </div>
@@ -287,7 +291,7 @@ export default function OutlookCalculator() {
               {/* Savings Impact Cards - Matching Figma Design */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Inbox Savings Card - Matching Selected Figma Frame */}
-                <div className="relative h-[149px] w-[391px]">
+                <div className="relative h-[149px] w-full lg:w-[391px]">
                   <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
                   
                   {/* Main Card Content */}
@@ -301,17 +305,17 @@ export default function OutlookCalculator() {
                       {/* Content */}
                       <div className="relative z-10 h-full flex flex-col justify-center items-center">
                         {/* Label */}
-                        <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight mb-2">
+                        <p className="text-[#b5b5b5] text-xs lg:text-sm font-semibold tracking-tight mb-2">
                           Inbox Savings
                         </p>
                         
                         {/* Value */}
-                        <p className="text-[48px] font-medium text-[#b5b5b5] tracking-tight">
+                        <p className="text-[32px] lg:text-[48px] font-medium text-[#b5b5b5] tracking-tight">
                           {formatCurrency(results.emailInboxSavings)}
                         </p>
 
                         {/* Deliverability Badge */}
-                        <p className="text-[12px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent mt-2">
+                        <p className="text-[10px] lg:text-[12px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent mt-2">
                           (Deliverability &gt;98%)
                         </p>
                       </div>
@@ -320,7 +324,7 @@ export default function OutlookCalculator() {
                 </div>
 
                 {/* Domain Savings Card */}
-                <div className="relative h-[149px] w-[391px]">
+                <div className="relative h-[149px] w-full lg:w-[391px]">
                   <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
                   
                   {/* Main Card Content */}
@@ -334,12 +338,12 @@ export default function OutlookCalculator() {
                       {/* Content */}
                       <div className="relative z-10 h-full flex flex-col justify-center items-center">
                         {/* Label */}
-                        <p className="text-[#b5b5b5] text-sm font-semibold tracking-tight mb-2">
+                        <p className="text-[#b5b5b5] text-xs lg:text-sm font-semibold tracking-tight mb-2">
                           Domain Savings
                         </p>
                         
                         {/* Value */}
-                        <p className="text-[48px] font-medium text-[#b5b5b5] tracking-tight">
+                        <p className="text-[32px] lg:text-[48px] font-medium text-[#b5b5b5] tracking-tight">
                           {formatCurrency(results.domainSavings)}
                         </p>
                       </div>
@@ -349,7 +353,7 @@ export default function OutlookCalculator() {
               </div>
 
               {/* Before and After Comparison - Matching Selected Figma Frame */}
-              <div className="relative h-[265px] w-[794px]">
+              <div className="relative h-[265px] w-full lg:w-[794px]">
                 <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
                 
                 {/* Main Comparison Content */}
@@ -368,14 +372,14 @@ export default function OutlookCalculator() {
                       <div className="flex justify-between items-center px-16 pt-10">
                         {/* Current Cost */}
                         <div className="text-left">
-                          <p className="text-[#fc9292] text-sm font-semibold tracking-tight">
+                          <p className="text-[#fc9292] text-xs lg:text-sm font-semibold tracking-tight">
                             Current Cost 
                           </p>
-                          <p className="text-[48px] font-medium tracking-tight bg-gradient-to-b from-[#fc9292] from-[16.848%] to-[#ff0000] to-[163.59%] bg-clip-text text-transparent">
+                          <p className="text-[32px] lg:text-[48px] font-medium tracking-tight bg-gradient-to-b from-[#fc9292] from-[16.848%] to-[#ff0000] to-[163.59%] bg-clip-text text-transparent">
                             {formatCurrency(
                               results.currentTotalWithDomains -
                                 results.currentDomainCost
-                            )} <span className="text-[#777777] text-sm font-medium tracking-tight mt-1">/ per month</span>
+                            )} <span className="text-[#777777] text-xs lg:text-sm font-medium tracking-tight mt-1">/ per month</span>
                           </p>
                           <div className="text-left space-y-2">
                             <p className="text-[#b5b5b5] text-sm font-medium tracking-tight">
@@ -392,14 +396,14 @@ export default function OutlookCalculator() {
 
                         {/* Our Offer */}
                         <div className="text-left">
-                          <p className="text-[#72aa83] text-sm font-semibold tracking-tight mb-2 flex items-center justify-center gap-4">
+                          <p className="text-[#72aa83] text-xs lg:text-sm font-semibold tracking-tight mb-2 flex items-center justify-center gap-4">
                             Our Offer
 
                             {/* Auto Inbox Purchasing Badge */}
                             <Image src="/Calculator Images/Auto Purchase Enabled.svg" alt="Auto Inbox Purchasing Badge" width={100} height={100} className="w-[200px] h-[30px]" />
                           </p>
-                          <p className="text-[48px] font-medium tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
-                            {formatCurrency(results.ourTotalCost)} <span className="text-[#777777] text-sm font-medium tracking-tight mt-1">/ per month</span>
+                          <p className="text-[32px] lg:text-[48px] font-medium tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+                            {formatCurrency(results.ourTotalCost)} <span className="text-[#777777] text-xs lg:text-sm font-medium tracking-tight mt-1">/ per month</span>
                           </p>
 
                           {/* Our Offer Breakdown */}
@@ -433,7 +437,7 @@ export default function OutlookCalculator() {
               </div>
 
               {/* Savings Summary - Matching Selected Figma Frame */}
-              <div className="relative h-[90px] w-[794px] border border-white/10 rounded-[16px] overflow-hidden">
+              <div className="relative h-[90px] w-full lg:w-[794px] border border-white/10 rounded-[16px] overflow-hidden">
                 {/* Main Content */}
                 <div className="relative w-full h-full flex flex-row justify-center items-center gap-8">
                   {/* Auto Inbox Purchasing Badge */}
@@ -441,7 +445,7 @@ export default function OutlookCalculator() {
                   
                   {/* Main Text */}
                   <div className="text-center">
-                    <p className="font-['Inter:Medium',_sans-serif] font-medium text-[20px] text-[darkgrey] tracking-[-0.8px] leading-[normal]">
+                    <p className="font-['Inter:Medium',_sans-serif] font-medium text-[16px] lg:text-[20px] text-[darkgrey] tracking-[-0.8px] leading-[normal]">
                       Ready to start saving{" "}
                       <span className="font-bold bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
                         {formatCurrency(results.totalSavings)}
