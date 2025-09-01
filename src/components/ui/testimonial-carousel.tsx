@@ -165,12 +165,9 @@ export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) 
           </div>
         ))}
       </div>
-      <div className="flex justify-center gap-2 mt-24">
-        {/* <Image src="/orangeTint.svg" alt="Peeker" width={100} height={36} className="absolute w-1/2 bottom-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-40" /> */}
-      </div>
 
       {/* Dots Indicator */}
-      {/* <div className="flex justify-center gap-2 mt-8">
+      <div className="flex justify-center gap-2 mt-8">
         {testimonials.map((_, index) => (
           <button
             key={index}
@@ -182,7 +179,7 @@ export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) 
             }`}
           />
         ))}
-      </div> */}
+      </div>
     </div>
   );
 }

@@ -116,8 +116,8 @@ export function Hero() {
             Built for Cold Emailers
           </p> */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
           >
             <Image 
@@ -134,24 +134,46 @@ export function Hero() {
             className={`mx-auto z-20 w-full lg:w-[544px] text-center font-medium ${inter.className}
                 text-[24px] leading-[32px] lg:text-[32px] lg:leading-[40px] xl:text-[60px] xl:leading-[73px] tracking-[-0.05em]
                 bg-clip-text text-transparent hero-title-gradient`}
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
           >
-            Self-Healing Inboxes
+            {["Self-Healing", "Inboxes"].map((word, index) => (
+              <motion.span
+                key={word}
+                className="inline-block mr-2 bg-clip-text text-transparent hero-title-gradient"
+                initial={{ opacity: 0, y: 40, filter: "blur(15px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ 
+                  duration: 0.7, 
+                  delay: 0.3 + (index * 0.1), 
+                  ease: "easeOut" 
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
           </motion.h1>
 
           <motion.h1
             className={`lg:ml-32 relative z-20 text-white max-w-[900px] text-balance text-center font-medium leading-[100%] tracking-[-0.05em] ${inter.className} text-[24px] leading-[32px] lg:text-[32px] lg:leading-[40px] xl:text-[60px] flex flex-col lg:flex-row items-center justify-center gap-2 lg:gap-3`}
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
           >
-            for Cold Email
+            {["for", "Cold", "Email"].map((word, index) => (
+              <motion.span
+                key={word}
+                className="inline-block mr-2"
+                initial={{ opacity: 0, y: 40, filter: "blur(15px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ 
+                  duration: 0.7, 
+                  delay: 0.4 + (index * 0.1), 
+                  ease: "easeOut" 
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
             <motion.div
-              initial={{ opacity: 0, rotate: -10, scale: 0.8 }}
-              animate={{ opacity: 1, rotate: 0, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+              initial={{ opacity: 0, rotate: -10, scale: 0.8, filter: "blur(10px)" }}
+              animate={{ opacity: 1, rotate: 0, scale: 1, filter: "blur(0px)" }}
+              transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -169,14 +191,38 @@ export function Hero() {
 
         <motion.p 
           className="mx-auto z-20 mt-3 lg:mt-4 max-w-[720px] text-pretty text-xs lg:text-sm text-neutral-300 px-2 lg:px-4"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
         >
-          Auto-create (Gsuite & MS Azure) inboxes, track deliverability, and
-          replace <br className="hidden md:block" />
-          burned infrastructure so your outreach stays in the primary inbox,
-          never spam.
+          {["Auto-create", "(Gsuite", "&", "MS", "Azure)", "inboxes,", "track", "deliverability,", "and", "replace"].map((word, index) => (
+            <motion.span
+              key={`${word}-${index}`}
+              className="inline-block mr-1"
+              initial={{ opacity: 0, y: 30, filter: "blur(12px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ 
+                duration: 0.6, 
+                delay: 0.5 + (index * 0.05), 
+                ease: "easeOut" 
+              }}
+            >
+              {word}
+            </motion.span>
+          ))}
+          <br className="hidden md:block" />
+          {["burned", "infrastructure", "so", "your", "outreach", "stays", "in", "the", "primary", "inbox,", "never", "spam."].map((word, index) => (
+            <motion.span
+              key={`${word}-${index}`}
+              className="inline-block mr-1"
+              initial={{ opacity: 0, y: 30, filter: "blur(12px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ 
+                duration: 0.6, 
+                delay: 0.5 + (10 * 0.05) + (index * 0.05), 
+                ease: "easeOut" 
+              }}
+            >
+              {word}
+            </motion.span>
+          ))}
         </motion.p>
 
         {/* video mock */}
