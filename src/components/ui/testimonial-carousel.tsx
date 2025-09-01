@@ -1,12 +1,14 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import Image from 'next/image';
 
 export interface Testimonial {
   id: string;
   name: string;
   title: string;
   videoThumbnail: string;
+  videoUrl?: string; // Optional video URL for embedding
   quote: string;
 }
 
@@ -16,6 +18,7 @@ interface TestimonialCarouselProps {
 
 export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [playingVideos, setPlayingVideos] = useState<{ [key: string]: boolean }>({});
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const scrollToIndex = (index: number) => {
@@ -42,6 +45,13 @@ export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) 
 
   const canScrollLeft = currentIndex > 0;
   const canScrollRight = currentIndex < testimonials.length - 1;
+
+  const handleVideoPlay = (testimonialId: string) => {
+    setPlayingVideos(prev => ({
+      ...prev,
+      [testimonialId]: true
+    }));
+  };
 
   return (
     <div className="relative w-full">
@@ -84,32 +94,56 @@ export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) 
           >
             {/* Testimonial Card */}
             <div className="relative h-[464px] rounded-[20px] border border-dashed border-[#373737] overflow-hidden">
-              {/* Video/Image Background with Blur */}
-              <div className="absolute inset-0">
-                <div 
-                  className="absolute inset-[-50px] blur-[23.6px] opacity-80"
-                  style={{
-                    backgroundImage: `url(${testimonial.videoThumbnail})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                  }}
+              {testimonial.videoUrl && playingVideos[testimonial.id] ? (
+                /* Embedded Video - Show when playing */
+                <iframe
+                  src={testimonial.videoUrl}
+                  title={`${testimonial.name} testimonial`}
+                  className="w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
                 />
-                <div 
-                  className="absolute inset-0"
-                  style={{
-                    backgroundImage: `url(${testimonial.videoThumbnail})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                  }}
-                />
-              </div>
+              ) : (
+                /* Thumbnail with Play Button - Show initially */
+                <>
+                  {/* Blurred Background */}
+                  <div className="absolute inset-0">
+                    <div 
+                      className="absolute inset-0 blur-[20px] opacity-60"
+                      style={{
+                        backgroundImage: `url(${testimonial.videoThumbnail})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
+                      }}
+                    />
+                  </div>
 
-              {/* Play Button Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-[78px] h-[78px] bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer hover:bg-white/30 transition-all">
-                  <div className="w-0 h-0 border-l-[20px] border-l-white border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1" />
-                </div>
-              </div>
+                  {/* Centered Thumbnail Image */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="relative w-[300px] h-[464px] rounded-lg overflow-hidden">
+                      <Image
+                        src={testimonial.videoThumbnail}
+                        alt={`${testimonial.name} thumbnail`}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Play Button Overlay - Clickable when video available */}
+                  {testimonial.videoUrl && (
+                    <div 
+                      className="absolute inset-0 flex items-center justify-center cursor-pointer"
+                      onClick={() => handleVideoPlay(testimonial.id)}
+                    >
+                      <div className="w-[78px] h-[78px] bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all">
+                        <div className="w-0 h-0 border-l-[20px] border-l-white border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1" />
+                      </div>
+                    </div>
+                  )}
+                </>
+              )}
 
               {/* Name and Title */}
               <div className="absolute bottom-8 left-8 text-white">
