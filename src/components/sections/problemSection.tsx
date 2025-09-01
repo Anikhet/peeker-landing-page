@@ -48,7 +48,7 @@ const ProblemSection = () => {
 
            {/* Background Image */}
            <Image
-        src="/rightBG.svg"
+        src="/leftBG.svg"
         alt="Peeker"
         width={100}
         height={36}
