@@ -68,7 +68,7 @@ export default function OutlookCalculator() {
       <div className="max-w-7xl mx-auto">
         <div className="flex gap-8 items-start">
           {/* Calculator Card */}
-          <div className="flex-none">
+          <div className="flex-none relative">
             <div className="relative h-[750px] w-[442px]">
               <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
               
@@ -211,12 +211,14 @@ export default function OutlookCalculator() {
                         damping: 17
                       }}
                     >
-                      <Image src="/CalculateSavings.svg" alt="Get Started" width={100} height={100} className="w-[200px] h-[100px]" />
+                      <Image src="/CalculateSavings.svg" alt="Get Started" width={100} height={100} className="w-[200px] h-[100px] " />
                     </motion.button>
+
                   </div>
                 </div>
               </div>
             </div>
+            <Image src="/orangeTint.svg" alt="Auto Inbox Purchasing Badge" width={100} height={100} className="w-[500px] blur-2xl h-[120px]  absolute bottom-0 right-0 z-[100] " />
           </div>
 
           {/* Results Section - Beside the calculator */}
@@ -363,21 +365,29 @@ export default function OutlookCalculator() {
                     {/* Content */}
                     <div className="relative z-10 h-full">
                       {/* Top Section - Current Cost vs Our Offer */}
-                      <div className="flex justify-between items-center px-16 pt-12">
+                      <div className="flex justify-between items-center px-16 pt-10">
                         {/* Current Cost */}
                         <div className="text-left">
-                          <p className="text-[#fc9292] text-sm font-semibold tracking-tight mb-2">
-                            Current Cost
+                          <p className="text-[#fc9292] text-sm font-semibold tracking-tight">
+                            Current Cost 
                           </p>
                           <p className="text-[48px] font-medium tracking-tight bg-gradient-to-b from-[#fc9292] from-[16.848%] to-[#ff0000] to-[163.59%] bg-clip-text text-transparent">
                             {formatCurrency(
                               results.currentTotalWithDomains -
                                 results.currentDomainCost
-                            )}
+                            )} <span className="text-[#777777] text-sm font-medium tracking-tight mt-1">/ per month</span>
                           </p>
-                          <p className="text-[#777777] text-sm font-semibold tracking-tight mt-1">
-                            / per month
-                          </p>
+                          <div className="text-left space-y-2">
+                            <p className="text-[#b5b5b5] text-sm font-medium tracking-tight">
+                              Inbox Cost : {formatCurrency(watch("currentCosts.totalMonthlyCost"))}
+                            </p>
+                            <p className="text-[#b5b5b5] text-sm font-medium tracking-tight">
+                              Domain Cost : {formatCurrency(
+                                watch("currentCosts.numberOfDomains") *
+                                watch("currentCosts.domainCost")
+                              )}
+                            </p>
+                          </div>
                         </div>
 
                         {/* Our Offer */}
@@ -389,64 +399,33 @@ export default function OutlookCalculator() {
                             <Image src="/Calculator Images/Auto Purchase Enabled.svg" alt="Auto Inbox Purchasing Badge" width={100} height={100} className="w-[200px] h-[30px]" />
                           </p>
                           <p className="text-[48px] font-medium tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
-                            {formatCurrency(results.ourTotalCost)}
+                            {formatCurrency(results.ourTotalCost)} <span className="text-[#777777] text-sm font-medium tracking-tight mt-1">/ per month</span>
                           </p>
-                          <p className="text-[#777777] text-sm font-semibold tracking-tight mt-1">
-                            / per month
-                          </p>
+
+                          {/* Our Offer Breakdown */}
+                          <div className="text-left space-y-2">
+                            <p className="text-[#b5b5b5] text-sm font-medium tracking-tight">
+                              Inbox Cost : {formatCurrency(
+                                results.domainsNeeded *
+                                watch("ourOffer.costPerDomain")
+                              )}
+                            </p>
+                            <p className="text-[#b5b5b5] text-sm font-medium tracking-tight">
+                              Domain Cost : {formatCurrency(
+                                watch("ourOffer.costForDomains") *
+                                (watch("ourOffer.desiredDailyVolume") / 500)
+                              )}
+                            </p>
+                          </div>
                         </div>
                       </div>
 
                       {/* Bottom Section - Detailed Breakdown */}
-                      <div className="flex justify-between items-center px-16 mt-8">
+                      <div className="flex justify-between items-center px-16">
                         {/* Current Costs Breakdown */}
-                        <div className="text-left">
-                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight mb-2">
-                            Inbox Cost :
-                          </p>
-                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight">
-                            {formatCurrency(watch("currentCosts.totalMonthlyCost"))}
-                          </p>
-                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight mt-2">
-                            Domain Cost :
-                          </p>
-                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight">
-                            {formatCurrency(
-                              watch("currentCosts.numberOfDomains") *
-                                watch("currentCosts.domainCost")
-                            )}
-                          </p>
-                        </div>
-
-                        {/* Our Offer Breakdown */}
-                        <div className="text-left">
-                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight mb-2">
-                            Inbox Cost :
-                          </p>
-                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight">
-                            {formatCurrency(
-                              results.domainsNeeded *
-                                watch("ourOffer.costPerDomain")
-                            )}
-                          </p>
-                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight mt-2">
-                            Domain Cost :
-                          </p>
-                          <p className="text-[#b5b5b5] text-sm font-medium tracking-tight">
-                            {formatCurrency(
-                              watch("ourOffer.costForDomains") *
-                                (watch("ourOffer.desiredDailyVolume") / 500)
-                            )}
-                          </p>
-                        </div>
-
+                        
                         {/* Auto Inbox Purchasing Badge */}
-                        <Image src="/greenTint.svg" alt="Auto Inbox Purchasing Badge" width={100} height={100} className="w-[400px] h-[120px] absolute bottom-0 right-0 z-[100] blur-lg" />
-                      </div>
-
-                      {/* Decorative Ellipse */}
-                      <div className="absolute h-[92px] left-[446px] top-[234px] w-[126px] opacity-20">
-                        {/* Ellipse decorative element would go here */}
+                        <Image src="/greenTint.svg" alt="Auto Inbox Purchasing Badge" width={100} height={100} className="w-[400px] h-[160px] absolute bottom-0 right-0 z-[100] blur-lg" />
                       </div>
                     </div>
                   </div>
@@ -454,60 +433,34 @@ export default function OutlookCalculator() {
               </div>
 
               {/* Savings Summary - Matching Selected Figma Frame */}
-              <div className="relative h-[120px] w-[794px]">
-                <div className="absolute inset-0 backdrop-blur-[4.6px] bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
-                  <div className="h-full relative">
-                    {/* Background Decorative Elements */}
-                    <div className="absolute flex inset-[-165.3%_-77.96%_-193.41%_-79.85%] items-center justify-center">
-                      <div className="flex-none h-[389.901px] rotate-[180deg] scale-y-[-100%] w-[2047px] opacity-20">
-                        {/* Union background image would go here */}
-                      </div>
-                    </div>
+              <div className="relative h-[90px] w-[794px] border border-white/10 rounded-[16px] overflow-hidden">
+                {/* Main Content */}
+                <div className="relative w-full h-full flex flex-row justify-center items-center gap-8">
+                  {/* Auto Inbox Purchasing Badge */}
+                  <Image src="/orangeTint.svg" alt="Auto Inbox Purchasing Badge" width={100} height={100} className="absolute w-[400px] h-[120px] bottom-0 z-[100] blur-lg" />
+                  
+                  {/* Main Text */}
+                  <div className="text-center">
+                    <p className="font-['Inter:Medium',_sans-serif] font-medium text-[20px] text-[darkgrey] tracking-[-0.8px] leading-[normal]">
+                      Ready to start saving{" "}
+                      <span className="font-bold bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+                        {formatCurrency(results.totalSavings)}
+                      </span>{" "}
+                      per month?
+                    </p>
+                  </div>
 
-                    {/* Main Content */}
-                    <div className="relative z-10 h-full flex justify-center items-center">
-                      {/* Auto Inbox Purchasing Badge */}
-                      <Image src="/orangeTint.svg" alt="Auto Inbox Purchasing Badge" width={100} height={100} className="w-[400px] h-[120px] absolute bottom-0 z-[100] blur-lg" />
-                      
-                      {/* Main Text */}
-                      <div className="text-left mb-4">
-                        <p className="text-[20px] font-semibold text-[darkgrey] tracking-tight">
-                          Ready to start saving{" "}
-                          <span className="font-bold bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
-                            {formatCurrency(results.totalSavings)}
-                          </span>{" "}
-                          per month?
-                        </p>
-                      </div>
-
-                      {/* Get Started Button */}
-                      <div className="relative">
-                        <div className="flex items-center gap-3">
-                          {/* Decorative Ellipse 1 */}
-                          
-                          {/* Button Text */}
-                          <button
-                            onClick={() => {
-                              window.location.href =
-                                "https://cal.com/conrad-niedzielski/peeker-inboxes";
-                            }}
-                            className="cursor-pointer"
-                          >
-                            <FigmaButton>Get Started</FigmaButton>
-                          </button>
-                          
-                          {/* Decorative Ellipse 2 */}
-                          <div className="w-6 h-6 opacity-60">
-                            {/* Ellipse decorative element would go here */}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Decorative Ellipse */}
-                    <div className="absolute h-[31px] left-[220px] top-[77px] w-[115px] opacity-20">
-                      {/* Ellipse decorative element would go here */}
-                    </div>
+                  {/* Get Started Button */}
+                  <div className="relative">
+                    <button
+                      onClick={() => {
+                        window.location.href =
+                          "https://cal.com/conrad-niedzielski/peeker-inboxes";
+                      }}
+                      className="cursor-pointer"
+                    >
+                      <Image src="/GetStarted.svg" alt="Get Started" width={100} height={100} className="w-[150px] h-[100px] cursor-pointer hover:scale-105 transition-transform" />
+                    </button>
                   </div>
                 </div>
               </div>

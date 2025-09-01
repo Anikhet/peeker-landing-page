@@ -6,156 +6,154 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <div className="bg-[#070707] relative ">
-      <div className="max-w-7xl mx-auto relative">
+    <div className="bg-[#070707] relative  ">
+      <Image
+        src="/footerTint.svg"
+        alt="Footer BG"
+        width={100}
+        height={100}
+        className="w-full absolute top-0 left-0"
+      />
+      <div className=" relative">
         {/* Background Decorative Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          {/* Large background ellipses */}
-          <div className="absolute h-80 w-[2289px] -left-12 -top-20 opacity-20">
-            {/* Large ellipse decorative element */}
-          </div>
-
-          {/* Multiple decorative ellipses positioned around */}
-          <div className="absolute h-80 w-[411px] left-3 top-[694px] opacity-20">
-            {/* Ellipse decorative element */}
-          </div>
-          <div className="absolute h-80 w-[411px] -left-64 top-[722px] opacity-20">
-            {/* Ellipse decorative element */}
-          </div>
-          <div className="absolute h-80 w-[411px] right-[-256px] top-[650px] opacity-20">
-            {/* Ellipse decorative element */}
-          </div>
-          <div className="absolute h-80 w-[411px] right-[1167px] top-[722px] opacity-20">
-            {/* Ellipse decorative element */}
-          </div>
-          <div className="absolute h-80 w-[411px] right-[1062px] top-[728px] opacity-20">
-            {/* Ellipse decorative element */}
-          </div>
-          <div className="absolute h-80 w-[411px] right-[679px] top-[757px] opacity-20">
-            {/* Ellipse decorative element */}
-          </div>
-          <div className="absolute h-80 w-[411px] right-[379px] top-[757px] opacity-20">
-            {/* Ellipse decorative element */}
-          </div>
-        </div>
-
-        {/* Blurred Background Text */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="text-[250px] font-semibold text-center tracking-[-10px] blur-[4.65px] opacity-20">
-            Peeker Inboxes
-          </div>
-          <div className="text-[250px] font-semibold text-center tracking-[-10px] blur-[50px] opacity-20">
-            Peeker Inboxes
-          </div>
-        </div>
 
         {/* Main Content */}
-        <div className="relative z-10">
+        <div className="relative z-10 justify-between flex  p-20 pb-60">
           {/* Top Section - Call to Action */}
-          <div className="text-center mb-20">
-            <h2 className="text-[36px] font-medium text-white tracking-tight mb-6">
+          <div className="text-left space-y-6">
+            <h2 className="font-['Inter:Medium',_sans-serif] font-medium text-[36px] text-white tracking-[-1.8px] leading-tight">
               Ready to use self healing inboxes?
             </h2>
 
             {/* Feature Points */}
-            <div className="space-y-4 mb-8">
-              <p className="text-[20px] font-medium text-[#bcbcbc] tracking-tight">
-                <span className="bg-clip-text bg-gradient-to-b from-[#72aa83] to-[#9dff00] text-transparent">
+            <div className=" ">
+              <div className="text-left flex flex-row items-center ">
+                <h2
+                  style={{
+                    fontFamily: "Inter",
+                    fontStyle: "normal",
+                    fontWeight: "500",
+                    fontSize: "20px",
+
+                    letterSpacing: "-0.05em",
+                    background:
+                      "linear-gradient(177.56deg, #FFBF7E 27.53%, #FFA041 54.43%, #FFBF7E 85.38%, #FFFFFF 118.96%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
                   Month-to-month plans
+                </h2>
+                <span className="text-[#bcbcbc]">
+                  {" "}
+                  — cancel anytime, no long-term lock-in
                 </span>
-                {" — cancel anytime, no long-term lock-in"}
-              </p>
-              <p className="text-[20px] font-medium text-[#bcbcbc] tracking-tight">
-                <span className="bg-clip-text bg-gradient-to-b from-[#72aa83] to-[#9dff00] text-transparent">
+              </div>
+              <div className="text-left flex flex-row  items-center ">
+                <h2
+                  style={{
+                    fontFamily: "Inter",
+                    fontStyle: "normal",
+                    fontWeight: "500",
+                    fontSize: "20px",
+
+                    letterSpacing: "-0.05em",
+                    background:
+                      "linear-gradient(177.56deg, #FFBF7E 27.53%, #FFA041 54.43%, #FFBF7E 85.38%, #FFFFFF 118.96%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
                   Free automatic setup
+                </h2>{" "}
+                <span className="text-[#bcbcbc]">
+                  {" "}
+                  — we handle the entire inbox and tracking configuration for
+                  you
                 </span>
-                {
-                  " — we handle the entire inbox and tracking configuration for you"
-                }
-              </p>
+              </div>
+            </div>
+
+            {/* Middle Section - Community Call to Action */}
+            <div className="text-left mt-40">
+              <h3 className="font-['Inter:Medium',_sans-serif] font-medium text-[36px] text-white tracking-[-1.8px] leading-tight">
+                Join our Cold Email Slack community
+              </h3>
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              {/* Get Started Button */}
-              <div className="relative">
-                {/* Decorative Ellipse 1 */}
-
-                {/* Button Text */}
+            <div className="flex flex-col sm:flex-row gap-4   items-center">
+              {/* Badge */}
+              <div
+                className=" flex justify-center items-center gap-3 rounded-full px-3 py-1 text-[21px]  text-neutral-300 ring-1 ring-white/10"
+                style={{
+                  background: `
+              radial-gradient(27% 93.87% at 15.6% 0%, rgba(218, 182, 243, 0.3) 0%, rgba(0, 0, 0) 100%),
+              linear-gradient(180deg, rgba(187, 175, 255, 0) 23.61%, rgba(187, 175, 255, 0.2) 137.5%),
+              rgba(187, 175, 255, 0.09)
+            `,
+                  backgroundBlendMode: "screen",
+                }}
+              >
                 <Image
-                  src="GetStarted.svg"
-                  alt="Get Started"
-                  width={100}
-                  height={100}
-                  className="w-[100px] h-[100px]"
-                />
-
-                {/* Decorative Ellipse 2 */}
-                <div className="w-6 h-6 opacity-60">
-                  {/* Ellipse decorative element */}
-                </div>
-              </div>
-
-              {/* Join Slack Button */}
-              <div className="bg-[rgba(187,175,255,0.09)] border border-[#dab6f3] rounded-[88.359px] p-2 flex items-center gap-3">
-                <Image
-                  src="Slack.svg"
+                  src="/slack.svg"
                   alt="Slack"
                   width={100}
                   height={100}
                   className="w-[20px] h-[20px]"
                 />
-
-                <span className="text-[#ddd7f9] text-[10px] font-medium tracking-tight">
-                  Join our Slack
-                </span>
+                <p className="text-[#DDD7F9] font-medium">Join our Slack</p>
+              </div>
+              {/* Get Started Button */}
+              <div className="relative">
+                <Image
+                  src="/GetStarted.svg"
+                  alt="Get Started"
+                  width={100}
+                  height={100}
+                  className="w-[150px] h-[100px] cursor-pointer hover:scale-105 transition-transform"
+                />
               </div>
             </div>
           </div>
 
-          {/* Middle Section - Community Call to Action */}
-          <div className="text-center mb-16">
-            <h3 className="text-[36px] font-medium text-white tracking-tight">
-              Join our Cold Email Slack community
-            </h3>
-          </div>
-
           {/* Bottom Section - Navigation and Legal */}
-          <div className="flex flex-col lg:flex-row justify-between items-center lg:items-start gap-8">
+          <div className="flex flex-col lg:flex-col justify-between items-center lg:items-startborder-t border-white/10">
             {/* Left Side - Navigation */}
             <div className="flex flex-col space-y-4">
               <Link
                 href="/pricing"
-                className="text-[20px] font-medium text-white tracking-tight hover:text-[#bcbcbc] transition-colors"
+                className="font-['Inter:Medium',_sans-serif] font-medium text-[20px] text-white tracking-[-0.8px] leading-[normal] hover:text-[#bcbcbc] transition-colors"
               >
                 Pricing
               </Link>
               <Link
                 href="/process"
-                className="text-[20px] font-medium text-white tracking-tight hover:text-[#bcbcbc] transition-colors"
+                className="font-['Inter:Medium',_sans-serif] font-medium text-[20px] text-white tracking-[-0.8px] leading-[normal] hover:text-[#bcbcbc] transition-colors"
               >
                 Process
               </Link>
               <Link
                 href="/reviews"
-                className="text-[20px] font-medium text-white tracking-tight hover:text-[#bcbcbc] transition-colors"
+                className="font-['Inter:Medium',_sans-serif] font-medium text-[20px] text-white tracking-[-0.8px] leading-[normal] hover:text-[#bcbcbc] transition-colors"
               >
                 Reviews
               </Link>
               <Link
                 href="/features"
-                className="text-[20px] font-medium text-white tracking-tight hover:text-[#bcbcbc] transition-colors"
+                className="font-['Inter:Medium',_sans-serif] font-medium text-[20px] text-white tracking-[-0.8px] leading-[normal] hover:text-[#bcbcbc] transition-colors"
               >
                 Features
               </Link>
             </div>
-
             {/* Right Side - Legal and Copyright */}
             <div className="text-right">
-              <p className="text-[20px] font-medium text-white tracking-tight mb-2">
+              <p className="font-['Inter:Medium',_sans-serif] font-medium text-[20px] text-white tracking-[-0.8px] leading-[normal] ">
                 © 2025 Peeker Inboxes. All rights reserved.
               </p>
-              <div className="text-[20px] font-medium text-white tracking-tight">
+              <div className="font-['Inter:Medium',_sans-serif] font-medium text-[20px] text-white tracking-[-0.8px] leading-[normal]">
                 <Link
                   href="/privacy"
                   className="hover:text-[#bcbcbc] transition-colors"
@@ -173,19 +171,18 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
-        {/* Additional Decorative Elements */}
-        <div className="absolute h-80 w-[292px] left-[277px] top-[453px] opacity-20">
-          {/* Ellipse decorative element */}
-        </div>
       </div>
-      <Image
-        src="/Footer/Footer Text.svg"
-        alt="Footer Text"
-        width={100}
-        height={100}
-        className="w-[2000px] h-[400px]"
-      />
+
+      {/* Footer Background Image */}
+      <div className="relative ">
+        <Image
+          src="/Footer/Footer Text.svg"
+          alt="Footer Text"
+          width={100}
+          height={100}
+          className="w-full absolute bottom-0  "
+        />
+      </div>
     </div>
   );
 };

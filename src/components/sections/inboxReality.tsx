@@ -35,12 +35,12 @@ const InboxReality = () => {
             alt="Inbox Reality Badge" 
             width={100} 
             height={100} 
-            className="h-[60px] w-[120px]" 
+            className="h-[40px] w-[80px] sm:h-[50px] sm:w-[100px] lg:h-[60px] lg:w-[120px]" 
           />
         </motion.div>
         
         <motion.h1 
-          className="font-['Inter:Medium',_sans-serif] font-medium text-[32px] lg:text-[44px] text-white tracking-[-2.2px] leading-tight"
+          className="font-['Inter:Medium',_sans-serif] font-medium text-[24px] sm:text-[28px] md:text-[32px] lg:text-[44px] text-white tracking-[-1.5px] sm:tracking-[-1.8px] md:tracking-[-2px] lg:tracking-[-2.2px] leading-tight px-2 lg:px-0 max-w-[350px] sm:max-w-[450px] md:max-w-[600px] lg:max-w-none"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ 

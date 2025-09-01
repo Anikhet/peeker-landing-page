@@ -8,38 +8,35 @@ const reviews = [
     name: "Jack",
     username: "@jack",
     body: "I've never seen anything like this before. It's amazing. I love it.",
-    img: "https://avatar.vercel.sh/jack",
+    img: "/Boardy.svg",
   },
   {
     name: "Jill",
     username: "@jill",
     body: "I don't know what to say. I'm speechless. This is amazing.",
-    img: "https://avatar.vercel.sh/jill",
+    img: "/EverOutbound.svg",
   },
   {
     name: "John",
     username: "@john",
     body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/john",
+    img: "/image 33.svg",
   },
-  {
-    name: "Jane",
-    username: "@jane",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/jane",
-  },
+
   {
     name: "Jenny",
     username: "@jenny",
     body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/jenny",
+    img: "/Full-Logo-e1662465385135 1.svg",
   },
+
   {
-    name: "James",
-    username: "@james",
+    name: "Jenny",
+    username: "@jenny",
     body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/james",
+    img: "/Full Logo White.svg",
   },
+
 ];
 
 const firstRow = reviews.slice(0, reviews.length / 2);
@@ -65,24 +62,25 @@ const ReviewCard = ({
         "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
       )}
     >
-      <div className="flex flex-row items-center gap-2">
-        {/* <Image className="rounded-full" width={32} height={32} alt="" src={img} /> */}
+      <div className="flex flex-row items-center justify-center">
+        <Image className="text-white h-[32px] w-[100px]" width={100} height={32} alt="" src={img} />
         <div className="flex flex-col">
-          <figcaption className="text-sm font-medium dark:text-white">
+          {/* <figcaption className="text-sm font-medium dark:text-white">
             {name}
-          </figcaption>
-          <p className="text-xs font-medium dark:text-white/40">{username}</p>
+          </figcaption> */}
+          {/* <p className="text-xs font-medium dark:text-white/40">{username}</p> */}
         </div>
       </div>
-      <blockquote className="mt-2 text-sm">{body}</blockquote>
+      {/* <blockquote className="mt-2 text-sm">{body}</blockquote> */}
     </figure>
   );
 };
 
 export function MarqueeDemo() {
   return (
-    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-      <Marquee pauseOnHover className="[--duration:20s] w-[648px]">
+    <div className="relative flex w-full flex-col items-center justify-center gap-4overflow-hidden">
+      <p className="text-[14px] lg:text-[14px] font-medium text-[#7b7b7b] tracking-tight">Trusted By Leading Giants:</p>
+      <Marquee pauseOnHover className="[--duration:5s] w-[648px]">
         {firstRow.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
