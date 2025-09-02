@@ -10,7 +10,7 @@ const ProblemSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <div ref={ref} className="relative h-screen lg:h-[800px] px-4 py-8 lg:py-0 overflow-hidden">
+    <div ref={ref} className="relative h-[600px] lg:h-[800px] px-4 py-8 lg:py-0 overflow-hidden">
       {/* Right Side Image */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}

@@ -58,7 +58,7 @@ export function Hero() {
           width={100}
           height={36}
           priority
-          className="absolute right-0 top-[190px] hidden lg:block h-[80px] w-[70px] lg:h-[280px] lg:w-[250px] object-contain"
+          className="absolute right-10 top-[240px] hidden lg:block h-[80px] w-[70px] lg:h-[280px] lg:w-[250px] object-contain"
         />
       </motion.div>
 
