@@ -151,12 +151,12 @@ export function Hero() {
           </motion.h1>
 
           <motion.h1
-            className={`lg:ml-32 relative z-20 text-white max-w-[900px] text-balance text-center font-medium leading-[100%] tracking-[-0.05em] ${inter.className} text-[24px] leading-[32px] lg:text-[32px] lg:leading-[40px] xl:text-[60px] flex flex-col lg:flex-row items-center justify-center gap-2 lg:gap-3`}
+            className={`lg:ml-32 relative z-20 text-white max-w-[900px] text-balance text-center font-medium leading-[100%] tracking-[-0.05em] ${inter.className} text-[24px] leading-[32px] lg:text-[32px] lg:leading-[40px] xl:text-[60px] flex flex-row whitespace-nowrap lg:flex-row items-center justify-center gap-1 lg:gap-3`}
           >
             {["for", "Cold", "Email"].map((word, index) => (
               <motion.span
                 key={word}
-                className="inline-block mr-2"
+                className="inline-block lg:mr-2"
                 initial={{ opacity: 0, y: 40, filter: "blur(15px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{ 
@@ -225,7 +225,7 @@ export function Hero() {
 
         {/* video mock */}
         <motion.div 
-          className="mx-auto mt-8 lg:mt-12 w-full max-w-[737px] h-[150px] lg:h-[200px] xl:h-[250px] 2xl:h-[300px] rounded-xl lg:rounded-2xl border border-white/10 bg-white/5 p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur"
+          className="mx-auto mt-8 lg:mt-12 w-full max-w-[300px]  lg:max-w-[737px] h-[150px] lg:h-[200px] xl:h-[250px] 2xl:h-[300px] rounded-xl lg:rounded-2xl border border-white/10 bg-white/5 p-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur"
           initial={{ opacity: 0, y: 50, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
@@ -240,7 +240,7 @@ export function Hero() {
       </div>
 
       <motion.form 
-        className="mx-auto mt-6 lg:mt-8 flex w-full max-w-[320px] lg:max-w-md items-center gap-4 lg:gap-8 border border-white/10 rounded-full px-2 lg:px-0"
+        className="mx-auto mt-6 lg:mt-2 flex w-full max-w-[320px] lg:max-w-md items-center lg:gap-8 border border-white/5 rounded-full lg:px-0"
         initial={{ opacity: 0, y: 30, scale: 0.9 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
@@ -259,7 +259,7 @@ export function Hero() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-        <Image src="/GetStarted.svg" alt="Get Started" width={100} height={100} className="z-10 h-[32px] w-[140px] lg:h-[40px] lg:w-[180px] xl:h-[50px] xl:w-[150px]" />
+        <Image src="/GetStarted.svg" alt="Get Started" width={100} height={100} className="z-10 h-[30px] w-[100px] lg:h-[40px] lg:w-[180px] xl:h-[50px] xl:w-[150px]" />
         </motion.div>
       </motion.form>
 
