@@ -3,15 +3,13 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 
-import { FigmaButton } from "../ui/figma-button";
 import { motion } from "framer-motion";
-import { WindowIcon } from "../icons";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export function Hero() {
   return (
-    <section className="relative isolate">
+    <section className="relative  isolate">
       {/* background glows */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         {/* add GlowOrb components or gradient layers */}
@@ -24,12 +22,12 @@ export function Hero() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <Image
-          src="/heroRight.svg"
+          src="/Hero Section/Right.png"
           alt="Peeker"
-          width={100}
-          height={36}
+          width={1230}
+          height={1800}
           priority
-          className="absolute z-10 right-0 hidden lg:block top-[30px]  h-[120px] w-[60px] sm:h-[150px] sm:w-[75px] md:h-[250px] md:w-[130px] lg:h-[400px] lg:w-[220px] xl:h-[506px] xl:w-[278px] xl:right-0 xl:top-[30px]"
+          className="absolute z-10 right-0 hidden lg:block top-[110px] h-[120px] w-[60px] lg:h-[400px] lg:w-[260px] object-contain"
         />
       </motion.div>
 
@@ -40,12 +38,12 @@ export function Hero() {
         transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
       >
         <Image
-          src="/heroLeft.svg"
+          src="/Hero Section/Left.png"
           alt="Peeker"
-          width={100}
-          height={36}
+          width={1072}
+          height={1264}
           priority
-          className="absolute left-[-120px] hidden lg:block top-[250px] h-[80px] w-[130px] sm:h-[100px] sm:w-[160px] md:h-[150px] md:w-[240px] lg:h-[250px] lg:w-[400px] xl:h-[316px] xl:w-[508px] xl:left-[-120px] xl:top-[250px] z-20"
+          className="absolute left-[-120px] hidden lg:block top-[270px] h-[80px] w-[130px] lg:h-[260px] lg:w-[400px] z-20 object-contain"
         />
       </motion.div>
 
@@ -55,12 +53,12 @@ export function Hero() {
         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
       >
         <Image
-          src="/rightBG.svg"
+          src="/rightBG.png"
           alt="Peeker"
           width={100}
           height={36}
           priority
-          className="absolute right-0 top-[190px] hidden lg:block h-[80px] w-[70px] sm:h-[100px] sm:w-[85px] md:h-[180px] md:w-[160px] lg:h-[280px] lg:w-[250px] xl:h-[369px] xl:w-[325px] xl:right-0 xl:top-[190px]"
+          className="absolute right-0 top-[190px] hidden lg:block h-[80px] w-[70px] lg:h-[280px] lg:w-[250px] object-contain"
         />
       </motion.div>
 
@@ -70,12 +68,12 @@ export function Hero() {
         transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
       >
         <Image
-          src="/leftBG.svg"
+          src="/leftBG.png"
           alt="Peeker"
           width={100}
           height={36}
           priority
-          className="absolute left-[-20px] top-[170px] hidden lg:block h-[80px] w-[130px] sm:h-[100px] sm:w-[160px] md:h-[150px] md:w-[240px] lg:h-[250px] lg:w-[400px] xl:h-[316px] xl:w-[508px] xl:left-[-20px] xl:top-[170px]"
+          className="absolute left-[-20px] top-[170px] hidden lg:block h-[80px] w-[130px] lg:h-[250px] lg:w-[400px] object-contain"
         />
       </motion.div>
 
@@ -282,7 +280,7 @@ export function Hero() {
           width={100}
           height={36}
           priority
-          className="absolute z-10 right-0 sm:hidden top-[70px]  h-[300px] w-[200px]"
+          className="absolute z-10 right-0 top-[70px] h-[300px] w-[200px] object-contain"
         />
       </motion.div>
 
@@ -298,7 +296,7 @@ export function Hero() {
           width={100}
           height={36}
           priority
-          className="absolute left-0   sm:hidden top-[30px]  h-[200px] w-[150px]"
+          className="absolute left-0 top-[30px] h-[200px] w-[150px] object-contain"
         />
       </motion.div>
     </div>

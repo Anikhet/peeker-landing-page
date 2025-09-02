@@ -1,16 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { motion, useInView } from "framer-motion";
 
 const FAQ = () => {
-  const [openItem, setOpenItem] = useState<string | undefined>();
+  const [openItem, setOpenItem] = useState<string | undefined>("item-1");
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   
   const faqItems = [
     {
@@ -50,20 +53,31 @@ const FAQ = () => {
   };
 
   return (
-    <div className="min-h-screen py-10 lg:py-20">
+    <div ref={ref} className="min-h-screen py-10 lg:py-20">
       <div className="max-w-7xl mx-auto space-y-10 lg:space-y-20 px-4 lg:px-0">
         {/* Header Section */}
-        <div className="flex flex-col items-center justify-center gap-2">
-          <Image
-            src="/FAQS/Eye-brow Text.svg"
-            alt="Eye-brow Text"
-            width={100}
-            height={100}
-            className="h-[40px] w-[80px] lg:h-[60px] lg:w-[100px]"
-          />
+        <motion.div 
+          className="flex flex-col items-center justify-center gap-2"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+            animate={isInView ? { opacity: 1, scale: 1, filter: "blur(0px)" } : { opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+          >
+            <Image
+              src="/FAQS/Eye-brow Text.svg"
+              alt="Eye-brow Text"
+              width={100}
+              height={100}
+              className="h-[40px] w-[80px] lg:h-[60px] lg:w-[100px]"
+            />
+          </motion.div>
 
           <div className="text-center">
-            <div
+            <motion.div
               className="text-center"
               style={{
                 fontFamily: "Inter",
@@ -77,18 +91,31 @@ const FAQ = () => {
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
               }}
+              initial={{ opacity: 0, y: 40, filter: "blur(15px)" }}
+              animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : { opacity: 0, y: 40, filter: "blur(15px)" }}
+              transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
             >
               <h2>Scale With Clarity</h2>
-            </div>
-            <p className="text-[14px] lg:text-[16px] font-medium text-[#bcbcbc] tracking-[-0.64px] max-w-[280px] lg:max-w-[311px] mx-auto px-4 lg:px-0">
+            </motion.div>
+            <motion.p 
+              className="text-[14px] lg:text-[16px] font-medium text-[#bcbcbc] tracking-[-0.64px] max-w-[280px] lg:max-w-[311px] mx-auto px-4 lg:px-0"
+              initial={{ opacity: 0, y: 30, filter: "blur(12px)" }}
+              animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : { opacity: 0, y: 30, filter: "blur(12px)" }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            >
               Everything you need to know before getting started with Peeker
               Inboxes.
-            </p>
+            </motion.p>
           </div>
-        </div>
+        </motion.div>
 
         {/* FAQ Accordion */}
-        <div className="space-y-4 lg:space-y-6">
+        <motion.div 
+          className="space-y-4 lg:space-y-6"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+        >
           <Accordion
             type="single"
             collapsible
@@ -104,7 +131,7 @@ const FAQ = () => {
                     {/* Content */}
                     <div className="relative z-10">
                       {/* Question - Exact Figma styling */}
-                      <AccordionTrigger className="p-4 lg:p-8 text-left hover:no-underline">
+                      <AccordionTrigger className="p-4 lg:p-8 text-left hover:no-underline flex items-center justify-between">
                         <div
                           className="text-center transition-all duration-300"
                           style={{
@@ -122,6 +149,25 @@ const FAQ = () => {
                           }}
                         >
                           <h2>{item.question}</h2>
+                        </div>
+                        <div className="ml-4 flex-shrink-0">
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            className={`transition-transform duration-200 ${
+                              openItem === item.id ? "rotate-180" : "rotate-0"
+                            }`}
+                          >
+                            <path
+                              d="M4 6L8 10L12 6"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
                         </div>
                       </AccordionTrigger>
 
@@ -143,7 +189,7 @@ const FAQ = () => {
               </AccordionItem>
             ))}
           </Accordion>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

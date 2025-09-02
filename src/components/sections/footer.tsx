@@ -1,24 +1,39 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion, useInView } from "framer-motion";
 
 const Footer = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <div className="bg-[#070707] relative  ">
-      <Image
-        src="/footerTint.svg"
-        alt="Footer BG"
-        width={100}
-        height={100}
-        className="w-full absolute top-0 left-0"
-      />
+    <div ref={ref} className="bg-[#070707] relative  ">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+        animate={isInView ? { opacity: 1, scale: 1, filter: "blur(0px)" } : { opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <Image
+          src="/footerTint.svg"
+          alt="Footer BG"
+          width={100}
+          height={100}
+          className="w-full absolute top-0 left-0"
+        />
+      </motion.div>
       <div className=" relative">
         {/* Background Decorative Elements */}
 
         {/* Main Content */}
-        <div className="relative z-10 justify-between flex flex-col lg:flex-row p-8 lg:p-20 pb-20 lg:pb-60">
+        <motion.div 
+          className="relative z-10 justify-between flex flex-col lg:flex-row p-8 lg:p-20 pb-20 lg:pb-60"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+        >
           {/* Top Section - Call to Action */}
           <div className="text-left space-y-6">
             <h2 className="font-['Inter:Medium',_sans-serif] font-medium text-[24px] lg:text-[36px] text-white tracking-[-1.8px] leading-tight">
@@ -84,8 +99,11 @@ const Footer = () => {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4   items-center">
               {/* Badge */}
-              <div
-                className=" flex justify-center items-center gap-3 rounded-full px-3 py-1 text-[16px] lg:text-[21px]  text-neutral-300 ring-1 ring-white/10"
+              <Link 
+                href="https://join.slack.com/t/peeker-ai/shared_invite/zt-35kcp2grr-oHmSyQaKY95waCfD9TlIsg"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex justify-center items-center gap-3 rounded-full px-3 py-1 text-[16px] lg:text-[21px] text-neutral-300 ring-1 ring-white/10 hover:ring-white/20 transition-all duration-300 cursor-pointer"
                 style={{
                   background: `
               radial-gradient(27% 93.87% at 15.6% 0%, rgba(218, 182, 243, 0.3) 0%, rgba(0, 0, 0) 100%),
@@ -103,7 +121,7 @@ const Footer = () => {
                   className="w-[16px] h-[16px] lg:w-[20px] lg:h-[20px]"
                 />
                 <p className="text-[#DDD7F9] font-medium">Join our Slack</p>
-              </div>
+              </Link>
               {/* Get Started Button */}
               <div className="relative">
                 <Image
@@ -168,19 +186,25 @@ const Footer = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Footer Background Image */}
-      <div className="relative ">
+      <motion.div 
+        className="relative"
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+      >
         <Image
-          src="/Footer/Footer Text.svg"
+          src="/footer.png"
           alt="Footer Text"
-          width={100}
-          height={100}
-          className="w-full absolute bottom-0  "
+          width={7680}
+          height={1840}
+          sizes="100vw"
+          className="w-full absolute bottom-0"
         />
-      </div>
+      </motion.div>
     </div>
   );
 };

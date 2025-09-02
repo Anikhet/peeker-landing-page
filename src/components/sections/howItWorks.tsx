@@ -1,25 +1,55 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
+import React, { useRef } from "react";
+import Link from "next/link";
+import { motion, useInView } from "framer-motion";
 
 const HowItWorks = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <div className="min-h-screen py-12 lg:py-20 px-4 lg:px-0">
+    <div ref={ref} className="min-h-screen py-12 lg:py-20 px-4 lg:px-0 relative ">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+              animate={isInView ? { opacity: 0.1, scale: 1, filter: "blur(3xl)" } : { opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <Image src="orangeTint.svg" alt="orangeTint" width={100} height={101} className="w-60 h-40 object-cover absolute top-10 blur-3xl opacity-10 left-0" />
+            </motion.div>
       <div className="max-w-7xl mx-auto space-y-12 lg:space-y-20">
         {/* Header Section */}
-        <div className="flex flex-col items-center justify-center gap-6 lg:gap-10">
-          <Image
-            src="/How It Works Section/Eye-brow Text.svg"
-            alt="Eye-brow Text"
-            width={100}
-            height={100}
-            className="h-[40px] w-[80px] sm:h-[50px] sm:w-[100px] lg:h-[60px] lg:w-[120px]"
-          />
+        <motion.div 
+          className="flex flex-col items-center justify-center gap-6 lg:gap-10"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+            animate={isInView ? { opacity: 1, scale: 1, filter: "blur(0px)" } : { opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+          >
+            <Image
+              src="/How It Works Section/Eye-brow Text.svg"
+              alt="Eye-brow Text"
+              width={100}
+              height={100}
+              className="h-[40px] w-[80px] sm:h-[50px] sm:w-[100px] lg:h-[60px] lg:w-[120px]"
+            />
+          </motion.div>
 
           <div className="text-center px-2 lg:px-0">
-            <h1 className="font-['Inter:Medium',_sans-serif] font-medium text-[24px] sm:text-[28px] md:text-[40px] lg:text-[44px] text-white tracking-[-1.5px] sm:tracking-[-1.8px] md:tracking-[-2.2px] lg:tracking-[-2.2px] leading-tight mb-4 max-w-[350px] sm:max-w-[450px] md:max-w-[600px] lg:max-w-none mx-auto">
+            <motion.h1 
+              className="font-['Inter:Medium',_sans-serif] font-medium text-[24px] sm:text-[28px] md:text-[40px] lg:text-[44px] text-white tracking-[-1.5px] sm:tracking-[-1.8px] md:tracking-[-2.2px] lg:tracking-[-2.2px] leading-tight mb-4 max-w-[350px] sm:max-w-[450px] md:max-w-[600px] lg:max-w-none mx-auto"
+              initial={{ opacity: 0, y: 40, filter: "blur(15px)" }}
+              animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : { opacity: 0, y: 40, filter: "blur(15px)" }}
+              transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
+            >
               From Setup To Tracking To Replacement
-            </h1>
-            <div
+            </motion.h1>
+            <motion.div
               className="how-it-works-title-gradient how-it-works-title-container"
               style={{
                 fontSize: "clamp(24px, 6vw, 44px)",
@@ -29,27 +59,45 @@ const HowItWorks = () => {
                 fontWeight: "500",
                 letterSpacing: "-0.05em",
               }}
+              initial={{ opacity: 0, y: 40, filter: "blur(15px)" }}
+              animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : { opacity: 0, y: 40, filter: "blur(15px)" }}
+              transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
             >
               <p className="leading-[1.2] lg:leading-[normal]">
                 We Handle Everything
               </p>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Steps Grid */}
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+        <motion.section 
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+        >
           {/* Step 1 */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+          >
+            <Image
+              src="/How It Works Section/1st card.png"
+              alt="step1"
+              width={800}
+              height={600}
+              className="w-full h-full object-contain"
+            />
+          </motion.div>
 
-          <Image
-            src="/How It Works Section/Step 1 Card.svg"
-            alt="step1"
-            width={65}
-            height={19}
-            className="w-full h-full object-cover"
-          />
-
-          <div className="space-y-4 flex flex-col justify-center mb-8 lg:mb-10 px-2 lg:px-0">
+          <motion.div 
+            className="space-y-4 flex flex-col justify-center mb-8 lg:mb-10 px-2 lg:px-0"
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
+          >
             <Image
               src="step1.svg"
               alt="step1"
@@ -101,13 +149,15 @@ const HowItWorks = () => {
                   </div>
 
                   {/* Book a Call Button */}
-                  <div className="absolute help-chat-button left-[330px] overflow-clip translate-y-[-50%] help-chat-button-top">
-                    <div className="absolute flex flex-col help-chat-button-text left-1/2 text-center text-nowrap translate-x-[-50%] translate-y-[-100%] help-chat-button-text-top">
-                      <p className="leading-[1.208] whitespace-pre">
-                        Book a Call
-                      </p>
+                  <Link href="https://app.peeker.ai/signup" target="_blank" rel="noopener noreferrer">
+                    <div className="absolute help-chat-button left-[330px] overflow-clip translate-y-[-50%] help-chat-button-top cursor-pointer">
+                      <div className="absolute flex flex-col help-chat-button-text left-1/2 text-center text-nowrap translate-x-[-50%] translate-y-[-100%] help-chat-button-text-top">
+                        <p className="leading-[1.208] whitespace-pre">
+                          Get Started
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
 
                 {/* Border */}
@@ -117,19 +167,35 @@ const HowItWorks = () => {
                 />
               </div>
             </div>
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
 
         {/* Step 2 */}
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-          <Image
-            src="/How It Works Section/Step 2 Card.svg"
-            alt="step2"
-            width={65}
-            height={19}
-            className="w-full h-full object-cover"
-          />
-          <div className="space-y-4 flex flex-col justify-center mb-16 lg:mb-20 px-2 lg:px-0">
+        <motion.section 
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+        >
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
+          >
+            <Image
+              src="/How It Works Section/2nd card.png"
+              alt="step2"
+              width={800}
+              height={600}
+              className="w-full h-full object-contain"
+            />
+          </motion.div>
+          <motion.div 
+            className="space-y-4 flex flex-col justify-center mb-16 lg:mb-20 px-2 lg:px-0"
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
+          >
             <Image
               src="/How It Works Section/Step 2 text.svg"
               alt="step2"
@@ -185,13 +251,15 @@ const HowItWorks = () => {
                   </div>
 
                   {/* Book a Call Button */}
-                  <div className="absolute help-chat-button left-[330px] overflow-clip translate-y-[-50%] help-chat-button-top">
-                    <div className="absolute flex flex-col help-chat-button-text left-1/2 text-center text-nowrap translate-x-[-50%] translate-y-[-100%] help-chat-button-text-top">
-                      <p className="leading-[1.208] whitespace-pre">
-                        Book a Call
-                      </p>
+                  <Link href="https://app.peeker.ai/signup" target="_blank" rel="noopener noreferrer">
+                    <div className="absolute help-chat-button left-[330px] overflow-clip translate-y-[-50%] help-chat-button-top cursor-pointer">
+                      <div className="absolute flex flex-col help-chat-button-text left-1/2 text-center text-nowrap translate-x-[-50%] translate-y-[-100%] help-chat-button-text-top">
+                        <p className="leading-[1.208] whitespace-pre">
+                          Get Started
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
 
                 {/* Border */}
@@ -201,21 +269,36 @@ const HowItWorks = () => {
                 />
               </div>
             </div>
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
 
         {/* Step 3 */}
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-          <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] lg:h-[380px] border rounded-2xl bg-gray-800/20">
+        <motion.section 
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8, delay: 1.1, ease: "easeOut" }}
+        >
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
+          >
             <Image
-              src="/How It Works Section/Step 3 Card.svg"
+              src="/How It Works Section/3rd card.png"
               alt="step3"
-              width={65}
-              height={19}
-            className="w-full h-full object-cover"
+              width={800}
+              height={600}
+              className="w-full h-full object-contain"
             />
-          </div>
-          <div className="space-y-4 flex flex-col justify-center mb-8 lg:mb-10 px-2 lg:px-0">
+          </motion.div>
+         
+          <motion.div 
+            className="space-y-4 flex flex-col justify-center mb-8 lg:mb-10 px-2 lg:px-0"
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            transition={{ duration: 0.8, delay: 1.3, ease: "easeOut" }}
+          >
             <Image
               src="/How It Works Section/Step 3 Text.svg"
               alt="step3"
@@ -276,13 +359,15 @@ const HowItWorks = () => {
                   </div>
 
                   {/* Book a Call Button */}
-                  <div className="absolute help-chat-button left-[330px] overflow-clip translate-y-[-50%] help-chat-button-top">
-                    <div className="absolute flex flex-col help-chat-button-text left-1/2 text-center text-nowrap translate-x-[-50%] translate-y-[-100%] help-chat-button-text-top">
-                      <p className="leading-[1.208] whitespace-pre">
-                        Book a Call
-                      </p>
+                  <Link href="https://app.peeker.ai/signup" target="_blank" rel="noopener noreferrer">
+                    <div className="absolute help-chat-button left-[330px] overflow-clip translate-y-[-50%] help-chat-button-top cursor-pointer">
+                      <div className="absolute flex flex-col help-chat-button-text left-1/2 text-center text-nowrap translate-x-[-50%] translate-y-[-100%] help-chat-button-text-top">
+                        <p className="leading-[1.208] whitespace-pre">
+                          Get Started
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
 
                 {/* Border */}
@@ -292,9 +377,19 @@ const HowItWorks = () => {
                 />
               </div>
             </div>
-          </div>
-        </section>
+          </motion.div>
+
+        </motion.section>
+        
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+        animate={isInView ? { opacity: 0.1, scale: 1, filter: "blur(3xl)" } : { opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+        transition={{ duration: 0.8, delay: 1.4, ease: "easeOut" }}
+      >
+        <Image src="orangeTint.svg" alt="orangeTint" width={205} height={101} className="w-60 h-full object-cover absolute bottom-10 blur-3xl opacity-10 left-0" />
+      </motion.div>
     </div>
   );
 };

@@ -18,7 +18,7 @@ export default function Page() {
     <main className="relative min-h-screen w-screen overflow-x-hidden">
       {/* <SmoothCursor /> */}
       <div className="relative space-y-10">
-        <div className="relative h-screen space-y-90 lg:space-y-10">
+        <div className="relative min-h-screen space-y-90 lg:space-y-10">
           <Hero />
           <MarqueeDemo />
         </div>
