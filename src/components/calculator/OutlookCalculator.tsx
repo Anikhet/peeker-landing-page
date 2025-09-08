@@ -226,7 +226,7 @@ function CheaperResults({ results }: { results: SimpleResults }) {
                 {formatCurrency(results.ourCost)}/month
               </p>
               <p className="text-[#b5b5b5] text-sm mt-2">
-                {results.domainsNeeded} domains • {results.inboxesNeeded} inboxes
+                {results.domainsNeeded} domains
               </p>
             </div>
             <BonusBullets/>
