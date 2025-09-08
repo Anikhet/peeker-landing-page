@@ -28,7 +28,7 @@ export default function InboxCalculator({ mode }: InboxCalculatorProps) {
             val && setProvider(val as "outlook" | "google")
           }
         >
-          <TabsList className="bg-white/2 rounded-lg h-[44px] space-x-4 ">
+          <TabsList className="bg-white/2 rounded-lg h-[44px] space-x-4  ">
          
            
 
@@ -71,6 +71,8 @@ export default function InboxCalculator({ mode }: InboxCalculatorProps) {
                 </span>
               )}
             </TabsTrigger>
+
+            
           </TabsList> 
           <TabsContent value="google">
             <GoogleCalculator mode="comparison" />
@@ -93,7 +95,7 @@ function PricingView({ provider, setProvider }: { provider: "outlook" | "google"
     if (provider === 'google') {
       // Google: 3.5 per inbox = 20 cents per day
       // 1 domain = 3 inboxes = 60 emails per day
-      const domainsNeeded = Math.ceil(dailyEmails / 20);
+      const domainsNeeded = Math.ceil(dailyEmails / 60);
       const inboxesNeeded = domainsNeeded * 3;
     
       const monthlyCost = domainsNeeded * 3.5;
@@ -236,8 +238,8 @@ function PricingView({ provider, setProvider }: { provider: "outlook" | "google"
                         </div>
                         <p className="text-[#b5b5b5] text-sm">
                           {provider === 'google' 
-                            ? `${results.domainsNeeded} domains • ${Math.ceil(dailyEmails / 20) * 3} inboxes `
-                            : `${results.domainsNeeded} domains`
+                            ? `${results.domainsNeeded} domains • ${results.inboxesNeeded} inboxes `
+                            : `${results.domainsNeeded} domains • ${results.domainsNeeded * 99} inboxes`
                           }
                         </p>
                       </div>
@@ -257,11 +259,11 @@ function PricingView({ provider, setProvider }: { provider: "outlook" | "google"
 
 function BonusBullets() {
   const bullets = [
-    "Deliverability >98%",
-    " Free Deliverability Tracker",
-    "24/7 support",
-    "Advanced analytics",
-    "Spam protection"
+    "Free Deliverability Tracker",
+    "Free Inbox Placement Tests",
+    "Track Inboxes From Other Providers",
+    "Domain & Inbox Auto-Rotation",
+    "Premium Slack Support"
   ];
 
   return (

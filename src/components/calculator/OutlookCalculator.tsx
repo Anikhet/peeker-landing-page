@@ -55,12 +55,12 @@ export default function OutlookCalculator({ }: OutlookCalculatorProps) {
   };
 
   return (
-    <div className="relative py-20 px-4">
+    <div className="relative py-20">
       <div className="max-w-7xl mx-auto">
         <div className="flex gap-8 items-start">
           {/* Calculator Card */}
           <div className="flex-none">
-            <div className="relative h-[500px] w-[500px]">
+            <div className="relative h-[500px] w-[500px] overflow-hidden">
               <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
               
               <div className="absolute inset-2 backdrop-blur-[4.6px] bg-white/2 rounded-[16px] border border-white/20 overflow-hidden">
@@ -113,7 +113,7 @@ export default function OutlookCalculator({ }: OutlookCalculatorProps) {
                       )}
                     </div>
 
-                    <div className="flex justify-center items-center mt-8">
+                    <div className="flex justify-center items-center ">
                       <motion.button
                         type="submit"
                         whileHover={{ scale: 1.05 }}
@@ -124,14 +124,15 @@ export default function OutlookCalculator({ }: OutlookCalculatorProps) {
                           damping: 17
                         }}
                       >
-                        <Image src="/CalculateSavings.svg" alt="Calculate" width={100} height={100} className="w-[200px] h-[100px]" />
+                        <Image src="/CalculateSavings.svg" alt="Calculate" width={100} height={100} className="w-[200px] h-[100px] cursor-pointer" />
                       </motion.button>
                     </div>
                   </form>
                 </div>
               </div>
+              <Image src="/orangeTint.svg" alt="Background" width={100} height={100} className="w-[500px] blur-2xl h-[120px] absolute bottom-0 right-0 z-[-1]" />
             </div>
-            <Image src="/orangeTint.svg" alt="Background" width={100} height={100} className="w-[500px] blur-2xl h-[120px] absolute bottom-0 right-0 z-[100]" />
+         
           </div>
 
           {/* Results Section */}
@@ -201,7 +202,8 @@ function CheaperResults({ results }: { results: SimpleResults }) {
       </div>
 
       {/* Cost Comparison */}
-      <div className="relative h-[240px] w-full lg:w-[900px]">
+        {/* Cost Comparison */}
+        <div className="relative h-[240px] w-full lg:w-[900px]">
         <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
         
         <div className="absolute inset-2 bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
@@ -210,7 +212,7 @@ function CheaperResults({ results }: { results: SimpleResults }) {
               <p className="text-[#fc9292] text-sm font-semibold tracking-tight mb-2">
                 Your Current Cost
               </p>
-              <p className="text-[40px] font-medium tracking-tight bg-gradient-to-b from-[#fc9292] from-[16.848%] to-[#ff0000] to-[163.59%] bg-clip-text text-transparent">
+              <p className="text-[32px] font-medium tracking-tight bg-gradient-to-b from-[#fc9292] from-[16.848%] to-[#ff0000] to-[163.59%] bg-clip-text text-transparent">
                 {formatCurrency(results.ourCost + results.savings)}/month
               </p>
             </div>
@@ -220,13 +222,14 @@ function CheaperResults({ results }: { results: SimpleResults }) {
                 Our Offer
                 <Image src="/Calculator Images/Auto Purchase Enabled.svg" alt="Auto Purchase" width={100} height={100} className="w-[200px] h-[30px]" />
               </p>
-              <p className="text-[40px] font-medium tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+              <p className="text-[32px] font-medium tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
                 {formatCurrency(results.ourCost)}/month
               </p>
               <p className="text-[#b5b5b5] text-sm mt-2">
-                {results.domainsNeeded} domains
+                {results.domainsNeeded} domains • {results.inboxesNeeded} inboxes
               </p>
             </div>
+            <BonusBullets/>
           </div>
         </div>
       </div>
@@ -279,17 +282,23 @@ function NotCheaperResults({ results }: { results: SimpleResults }) {
               Let&apos;s discuss how we can help optimize your setup.
             </p>
             
-            <div className="space-y-4">
+            <div className="space-y-4 flex flex-col items-center">
               <BonusBullets />
               
-              <button
-                onClick={() => {
+              <div className="flex justify-center items-center gap-10">
+                <button onClick={() => {
                   window.location.href = "https://cal.com/conrad-niedzielski/peeker-inboxes";
-                }}
-                className="mt-6"
-              >
-                <Image src="/GetStarted.svg" alt="Let's Talk" width={100} height={100} className="w-[150px] h-[100px] cursor-pointer hover:scale-105 transition-transform" />
-              </button>
+                }} className="bg-white text-black font-medium px-6 py-3 rounded-full cursor-pointer hover:scale-105 transition-transform">
+                  Book a Call
+                </button>
+                <button
+                  onClick={() => {
+                    window.location.href = "https://cal.com/conrad-niedzielski/peeker-inboxes";
+                  }}
+                >
+                  <Image src="/GetStarted.svg" alt="Let's Talk" width={100} height={100} className="w-[150px] h-[100px] cursor-pointer hover:scale-105 transition-transform" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -300,11 +309,11 @@ function NotCheaperResults({ results }: { results: SimpleResults }) {
 
 function BonusBullets() {
   const bullets = [
-    "Deliverability >98%",
-    "Free Deliverability Tracker", 
-    "24/7 support",
-    "Advanced analytics",
-    "Spam protection"
+    "Free Deliverability Tracker",    
+    "Free Inbox Placement Tests",
+    "Track Inboxes From Other Providers",
+    "Domain & Inbox Auto-Rotation",
+    "Premium Slack Support" 
   ];
 
   return (

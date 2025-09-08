@@ -117,7 +117,7 @@ export default function GoogleCalculator({ }: GoogleCalculatorProps) {
                       )}
                     </div>
 
-                    <div className="flex justify-center items-center mt-8">
+                    <div className="flex justify-center items-center ">
                       <motion.button
                         type="submit"
                         whileHover={{ scale: 1.05 }}
@@ -128,7 +128,7 @@ export default function GoogleCalculator({ }: GoogleCalculatorProps) {
                           damping: 17
                         }}
                       >
-                        <Image src="/CalculateSavings.svg" alt="Calculate" width={100} height={100} className="w-[200px] h-[100px]" />
+                        <Image src="/CalculateSavings.svg" alt="Calculate" width={100} height={100} className="w-[200px] h-[100px] cursor-pointer" />
                       </motion.button>
                     </div>
                   </form>
@@ -213,7 +213,7 @@ function CheaperResults({ results }: { results: SimpleResults }) {
               <p className="text-[#fc9292] text-sm font-semibold tracking-tight mb-2">
                 Your Current Cost
               </p>
-              <p className="text-[40px] font-medium tracking-tight bg-gradient-to-b from-[#fc9292] from-[16.848%] to-[#ff0000] to-[163.59%] bg-clip-text text-transparent">
+              <p className="text-[32px] font-medium tracking-tight bg-gradient-to-b from-[#fc9292] from-[16.848%] to-[#ff0000] to-[163.59%] bg-clip-text text-transparent">
                 {formatCurrency(results.ourCost + results.savings)}/month
               </p>
             </div>
@@ -223,13 +223,14 @@ function CheaperResults({ results }: { results: SimpleResults }) {
                 Our Offer
                 <Image src="/Calculator Images/Auto Purchase Enabled.svg" alt="Auto Purchase" width={100} height={100} className="w-[200px] h-[30px]" />
               </p>
-              <p className="text-[40px] font-medium tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+              <p className="text-[32px] font-medium tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
                 {formatCurrency(results.ourCost)}/month
               </p>
               <p className="text-[#b5b5b5] text-sm mt-2">
                 {results.domainsNeeded} domains • {results.inboxesNeeded} inboxes
               </p>
             </div>
+            <BonusBullets/>
           </div>
         </div>
       </div>
@@ -282,17 +283,23 @@ function NotCheaperResults({ results }: { results: SimpleResults }) {
               Let&apos;s discuss how we can help optimize your setup.
             </p>
             
-            <div className="space-y-4">
+            <div className="space-y-4 flex flex-col items-center">
               <BonusBullets />
               
-              <button
-                onClick={() => {
+              <div className="flex justify-center items-center gap-10">
+                <button onClick={() => {
                   window.location.href = "https://cal.com/conrad-niedzielski/peeker-inboxes";
-                }}
-                className="mt-6"
-              >
-                <Image src="/GetStarted.svg" alt="Let's Talk" width={100} height={100} className="w-[150px] h-[100px] cursor-pointer hover:scale-105 transition-transform" />
-              </button>
+                }} className="bg-white text-black font-medium px-6 py-3 rounded-full cursor-pointer hover:scale-105 transition-transform">
+                  Book a Call
+                </button>
+                <button
+                  onClick={() => {
+                    window.location.href = "https://cal.com/conrad-niedzielski/peeker-inboxes";
+                  }}
+                >
+                  <Image src="/GetStarted.svg" alt="Let's Talk" width={100} height={100} className="w-[150px] h-[100px] cursor-pointer hover:scale-105 transition-transform" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -303,11 +310,11 @@ function NotCheaperResults({ results }: { results: SimpleResults }) {
 
 function BonusBullets() {
   const bullets = [
-    "Deliverability >98%",
-    "Auto inbox replacement", 
-    "24/7 support",
-    "Advanced analytics",
-    "Spam protection"
+    "Free Deliverability Tracker",    
+    "Free Inbox Placement Tests",
+    "Track Inboxes From Other Providers",
+    "Domain & Inbox Auto-Rotation",
+    "Premium Slack Support" 
   ];
 
   return (
