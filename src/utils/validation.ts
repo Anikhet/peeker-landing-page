@@ -27,4 +27,13 @@ export const calculatorFormSchema = z.object({
   ourOffer: ourOfferSchema,
 });
 
-export type CalculatorFormSchema = z.infer<typeof calculatorFormSchema>; 
+export type CalculatorFormSchema = z.infer<typeof calculatorFormSchema>;
+
+// Simplified schemas for new calculator modes
+export const simpleComparisonSchema = z.object({
+  dailyEmails: z.number().min(1, 'Daily email volume must be at least 1'),
+  currentCost: z.number().min(0, 'Current cost must be 0 or greater'),
+  provider: z.enum(['google', 'outlook']),
+});
+
+export type SimpleComparisonSchema = z.infer<typeof simpleComparisonSchema>; 

@@ -123,7 +123,7 @@ const FAQ = () => {
             onValueChange={handleValueChange}
             className="space-y-3 lg:space-y-4 w-full lg:w-[860px] mx-auto"
           >
-            {faqItems.map((item, index) => (
+            {faqItems.map((item) => (
               <AccordionItem key={item.id} value={item.id} className="relative">
                 {/* Main FAQ Content - Exact Figma styling */}
                 <div className="relative backdrop-filter rounded-[12px] lg:rounded-[16px] border border-white/5 overflow-hidden">

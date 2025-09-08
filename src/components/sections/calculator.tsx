@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import InboxCalculator from '../calculator/InboxCalculator'
 import { motion, useInView } from 'framer-motion'
 
@@ -10,6 +10,7 @@ const inter = Inter({ subsets: ['latin'] })
 const Calculator = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [calculatorMode, setCalculatorMode] = useState<'pricing' | 'comparison'>('pricing');
 
   return (
     <div ref={ref} className="min-h-screen">
@@ -56,13 +57,44 @@ const Calculator = () => {
           </motion.div>
         </motion.div>
 
+        {/* Mode Toggle */}
+        <motion.div
+          className="flex justify-center mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+        >
+          <div className="flex bg-white/5 rounded-lg p-1 border border-white/20">
+            <button
+              onClick={() => setCalculatorMode('pricing')}
+              className={`px-6 py-3 rounded-md transition-all duration-200 ${
+                calculatorMode === 'pricing'
+                  ? 'bg-white/10 text-white'
+                  : 'text-white/70 hover:text-white'
+              }`}
+            >
+              View Pricing
+            </button>
+            <button
+              onClick={() => setCalculatorMode('comparison')}
+              className={`px-6 py-3 rounded-md transition-all duration-200 ${
+                calculatorMode === 'comparison'
+                  ? 'bg-white/10 text-white'
+                  : 'text-white/70 hover:text-white'
+              }`}
+            >
+              Compare Your Costs
+            </button>
+          </div>
+        </motion.div>
+
         {/* Calculator Component */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
         >
-          <InboxCalculator />
+          <InboxCalculator mode={calculatorMode} />
         </motion.div>
       </div>
     </div>

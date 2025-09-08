@@ -10,7 +10,6 @@ import Testimonials from "@/components/sections/testimonials";
 import { MarqueeDemo } from "@/components/ui/marquee";
 import FAQ from "@/components/sections/faq";
 import Footer from "@/components/sections/footer";
-import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
 export default function Page() {
   
