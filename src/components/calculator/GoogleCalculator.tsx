@@ -34,7 +34,7 @@ export default function GoogleCalculator({ }: GoogleCalculatorProps) {
     resolver: zodResolver(simpleComparisonSchema),
     defaultValues: {
       dailyEmails: 2000,
-      currentCost: 250,
+      currentCost: 500,
       provider: 'google',
     },
   });
@@ -164,28 +164,21 @@ function CheaperResults({ results }: { results: SimpleResults }) {
         
         <div className="absolute inset-2 bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
           <div className="h-full relative flex flex-col justify-center">
-            <div className="flex flex-col lg:flex-row justify-between items-center px-4 lg:px-16 py-4 lg:py-0">
+            <div className="flex flex-col lg:flex-row justify-center gap-36 items-center px-4 lg:px-16 py-4 lg:py-0">
               <div className="text-center lg:text-left mb-4 lg:mb-0">
                 <p className="text-[#72aa83] text-sm lg:text-sm font-semibold tracking-tight mb-1">
-                  Savings Calculated:
+                  Monthly Savings :
                 </p>
                 <p className="text-[32px] lg:text-[40px] xl:text-[56px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
                   {formatCurrency(results.savings)}
                 </p>
               </div>
-              <div className="text-center lg:text-left mb-4 lg:mb-0">
-                <p className="text-[#b5b5b5] text-sm lg:text-sm font-semibold tracking-tight mb-1">
-                  Monthly Savings:
-                </p>
-                <p className="text-[24px] lg:text-[24px] xl:text-[32px] font-medium text-[#b5b5b5] tracking-tight">
-                  {formatCurrency(results.savings)}
-                </p>
-              </div>
+   
               <div className="text-center lg:text-left">
-                <p className="text-[#b5b5b5] text-sm lg:text-sm font-semibold tracking-tight mb-1">
+              <p className="text-[#72aa83] text-sm lg:text-sm font-semibold tracking-tight mb-1">
                   Annual Savings:
                 </p>
-                <p className="text-[24px] lg:text-[24px] xl:text-[32px] font-medium text-[#b5b5b5] tracking-tight">
+                <p className="text-[32px] lg:text-[40px] xl:text-[56px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
                   {formatCurrency(results.savings * 12)}
                 </p>
               </div>
@@ -224,7 +217,7 @@ function CheaperResults({ results }: { results: SimpleResults }) {
                   {results.domainsNeeded} domains • {results.inboxesNeeded} inboxes
                 </p>
               </div>
-              <div className="hidden lg:block">
+              <div className="hidden lg:block border border-white/20 p-5 rounded-[16px]">
                 <BonusBullets/>
               </div>
             </div>
