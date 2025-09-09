@@ -10,6 +10,7 @@ import {
 import { formatCurrency } from "@/utils/calculator";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import EyeBrowText from "@/components/ui/auto-purchase-enabled";
 
 interface GoogleCalculatorProps {
   mode: 'comparison';
@@ -208,7 +209,7 @@ function CheaperResults({ results }: { results: SimpleResults }) {
               <div className="text-center lg:text-left mb-4 lg:mb-0">
                 <p className="text-[#72aa83] text-sm lg:text-sm font-semibold tracking-tight mb-1 flex items-center justify-center lg:justify-start gap-2 lg:gap-4">
                   Our Offer
-                  <Image src="/Calculator Images/Auto Purchase Enabled.svg" alt="Auto Purchase" width={100} height={100} className="w-[100px] h-[15px] lg:w-[150px] lg:h-[20px]" />
+                  <EyeBrowText />
                 </p>
                 <p className="text-[24px] lg:text-[24px] font-medium tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
                   {formatCurrency(results.ourCost)}/month
