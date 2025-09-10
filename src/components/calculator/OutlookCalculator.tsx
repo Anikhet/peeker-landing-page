@@ -155,100 +155,172 @@ export default function OutlookCalculator({ }: OutlookCalculatorProps) {
 function CheaperResults({ results }: { results: SimpleResults }) {
   return (
     <>
-      {/* Main Savings Card */}
-      <div className="relative h-[400px] lg:h-[220px] w-full lg:w-[900px]">
+      {/* Mobile: Combined Results Card */}
+      <div className="lg:hidden relative h-[760px] w-full">
         <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
-        
         <div className="absolute inset-2 bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
-          <div className="h-full relative flex flex-col justify-center">
-            <div className="flex flex-col lg:flex-row justify-center gap-36 items-center px-4 lg:px-16 py-4 lg:py-0">
-              <div className="text-center lg:text-left mb-4 lg:mb-0">
-                <p className="text-[#72aa83] text-sm lg:text-sm font-semibold tracking-tight mb-1">
-                  Savings Calculated:
-                </p>
-                <p className="text-[32px] lg:text-[40px] xl:text-[56px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+          <div className="h-full relative flex flex-col justify-between px-4 py-6">
+            {/* Savings */}
+            <div className="flex flex-col items-center text-center gap-4">
+              <div>
+                <p className="text-[#72aa83] text-sm font-semibold tracking-tight mb-1">Savings Calculated:</p>
+                <p className="text-[32px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
                   {formatCurrency(results.savings)}
                 </p>
               </div>
-          
-              <div className="text-center lg:text-left">
-              <p className="text-[#72aa83] text-sm lg:text-sm font-semibold tracking-tight mb-1">
-                  Annual Savings:
-                </p>
-                <p className="text-[32px] lg:text-[40px] xl:text-[56px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+              <div>
+                <p className="text-[#72aa83] text-sm font-semibold tracking-tight mb-1">Annual Savings:</p>
+                <p className="text-[32px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
                   {formatCurrency(results.savings * 12)}
                 </p>
               </div>
             </div>
 
-            <Image src="/greenTint.svg" alt="Background" width={100} height={100} className="w-[300px] h-[80px] lg:w-[400px] lg:h-[120px] absolute bottom-0 z-[100] blur-lg" />
-          </div>
-        </div>
-      </div>
 
-      {/* Cost Comparison */}
-      <div className="relative h-[450px] lg:h-[240px] w-full lg:w-[900px]">
-        <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
-        
-        <div className="absolute inset-2 bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
-          <div className="h-full relative flex flex-col justify-center px-4 lg:px-16 py-4">
-            <div className="flex flex-col lg:flex-row justify-between items-center mb-4 lg:mb-0">
-              <div className="text-center lg:text-left mb-4 lg:mb-0">
-                <p className="text-[#fc9292] text-sm lg:text-sm font-semibold tracking-tight mb-1">
-                  Your Current Cost
-                </p>
-                <p className="text-[24px] lg:text-[24px] font-medium tracking-tight bg-gradient-to-b from-[#fc9292] from-[16.848%] to-[#ff0000] to-[163.59%] bg-clip-text text-transparent">
+            <div className="w-full h-px bg-[#474747] my-4 relative z-[200]" />
+
+            {/* Cost Comparison */}
+            <div className="flex flex-col items-center text-center gap-6">
+              <div>
+                <p className="text-[#fc9292] text-sm font-semibold tracking-tight mb-1">Your Current Cost</p>
+                <p className="text-[24px] font-medium tracking-tight bg-gradient-to-b from-[#fc9292] from-[16.848%] to-[#ff0000] to-[163.59%] bg-clip-text text-transparent">
                   {formatCurrency(results.ourCost + results.savings)}/month
                 </p>
               </div>
-
-              <div className="text-center lg:text-left mb-4 lg:mb-0">
-                <p className="text-[#72aa83] text-sm lg:text-sm font-semibold tracking-tight mb-1 flex items-center justify-center lg:justify-start gap-2 lg:gap-4">
+              <div>
+                <p className="text-[#72aa83] text-sm font-semibold tracking-tight mb-1 flex items-center justify-center gap-2">
                   Our Offer
                   <EyeBrowText />
                 </p>
-                <p className="text-[24px] lg:text-[24px] font-medium tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+                <p className="text-[24px] font-medium tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
                   {formatCurrency(results.ourCost)}/month
                 </p>
-                <p className="text-[#b5b5b5] text-xs lg:text-sm mt-2">
-                  {results.domainsNeeded} domains
-                </p>
+                <p className="text-[#b5b5b5] text-xs mt-2">{results.domainsNeeded} domains</p>
               </div>
-              <div className="hidden lg:block border border-white/20 p-5 rounded-[16px]">
-                <BonusBullets/>
-              </div>
+              <BonusBullets />
             </div>
-            <div className="lg:hidden">
-              <BonusBullets/>
+
+            <div className="w-full h-px bg-[#474747] my-4 relative z-[200]" />
+
+            {/* CTA */}
+            <div className="flex flex-col items-center justify-center gap-4">
+              <p className="font-['Inter:Medium',_sans-serif] font-medium text-[16px] text-[darkgrey] tracking-[-0.8px] leading-[normal] text-center">
+                Ready to start saving <span className="font-bold bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">{formatCurrency(results.savings)}</span> per month?
+              </p>
+              <button
+                onClick={() => {
+                  window.location.href = "https://cal.com/conrad-niedzielski/peeker-inboxes";
+                }}
+                className="cursor-pointer"
+              >
+                <Image src="/GetStarted.svg" alt="Get Started" width={100} height={100} className="w-[140px] h-[90px] cursor-pointer hover:scale-105 transition-transform" />
+              </button>
             </div>
+
+            <Image src="/greenTint.svg" alt="Background" width={100} height={100} className="w-[500px] h-[200px] absolute top-0 z-[100] blur-2xl" />
+
+            <Image src="/orangeTint.svg" alt="Background" width={100} height={100} className="w-[500px] h-[200px] absolute bottom-0 z-[100] blur-2xl" />
           </div>
         </div>
       </div>
 
-      {/* Call to Action */}
-      <div className="relative h-[200px] lg:h-[110px] w-full lg:w-[900px] border border-white/10 rounded-[16px] overflow-hidden">
-        <div className="relative w-full h-full flex flex-col lg:flex-row justify-center items-center lg:gap-8  lg:px-4 lg:py-4">
-          <Image src="/orangeTint.svg" alt="Background" width={100} height={100} className="absolute w-[300px] h-[80px] lg:w-[400px] lg:h-[120px] bottom-0 z-[100] blur-lg" />
+      {/* Desktop: Existing Results Cards */}
+      <div className="hidden lg:block">
+        {/* Main Savings Card */}
+        <div className="relative h-[220px] w-full lg:w-[900px]">
+          <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
           
-          <div className="text-center">
-            <p className="font-['Inter:Medium',_sans-serif] font-medium text-[16px] lg:text-[16px] xl:text-[20px] text-[darkgrey] tracking-[-0.8px] leading-[normal]">
-              Ready to start saving{" "}
-              <span className="font-bold bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
-                {formatCurrency(results.savings)}
-              </span>{" "}
-              per month?
-            </p>
-          </div>
+          <div className="absolute inset-2 bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
+            <div className="h-full relative flex flex-col justify-center">
+              <div className="flex flex-col lg:flex-row justify-center gap-10 lg:gap-36 items-center px-4 lg:px-16 py-4 lg:py-0">
+                <div className="text-center lg:text-left mb-4 lg:mb-0">
+                  <p className="text-[#72aa83] text-sm lg:text-sm font-semibold tracking-tight mb-1">
+                    Savings Calculated:
+                  </p>
+                  <p className="text-[32px] lg:text-[40px] xl:text-[56px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+                    {formatCurrency(results.savings)}
+                  </p>
+                </div>
+            
+                <div className="text-center lg:text-left">
+                  <p className="text-[#72aa83] text-sm lg:text-sm font-semibold tracking-tight mb-1">
+                    Annual Savings:
+                  </p>
+                  <p className="text-[32px] lg:text-[40px] xl:text-[56px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+                    {formatCurrency(results.savings * 12)}
+                  </p>
+                </div>
+              </div>
 
-          <div className="relative">
-            <button
-              onClick={() => {
-                window.location.href = "https://cal.com/conrad-niedzielski/peeker-inboxes";
-              }}
-              className="cursor-pointer"
-            >
-              <Image src="/GetStarted.svg" alt="Get Started" width={100} height={100} className="w-[140px] h-[90px] lg:w-[150px] lg:h-[100px] cursor-pointer hover:scale-105 transition-transform" />
-            </button>
+              <Image src="/greenTint.svg" alt="Background" width={100} height={100} className="w-[500px] h-[220px] absolute top-0 z-[100] blur-lg" />
+            </div>
+          </div>
+        </div>
+
+        {/* Cost Comparison */}
+        <div className="relative h-[240px] w-full lg:w-[900px] mt-6">
+          <div className="absolute inset-0 border border-dashed border-[#474747] rounded-[20px]" />
+          
+          <div className="absolute inset-2 bg-white/5 rounded-[16px] border border-white/20 overflow-hidden">
+            <div className="h-full relative flex flex-col justify-center px-4 lg:px-16 py-4">
+              <div className="flex flex-col lg:flex-row justify-between items-center mb-4 lg:mb-0">
+                <div className="text-center lg:text-left mb-4 lg:mb-0">
+                  <p className="text-[#fc9292] text-sm lg:text-sm font-semibold tracking-tight mb-1">
+                    Your Current Cost
+                  </p>
+                  <p className="text-[24px] lg:text-[24px] font-medium tracking-tight bg-gradient-to-b from-[#fc9292] from-[16.848%] to-[#ff0000] to-[163.59%] bg-clip-text text-transparent">
+                    {formatCurrency(results.ourCost + results.savings)}/month
+                  </p>
+                </div>
+
+                <div className="text-center lg:text-left mb-4 lg:mb-0">
+                  <p className="text-[#72aa83] text-sm lg:text-sm font-semibold tracking-tight mb-1 flex items-center justify-center lg:justify-start gap-2 lg:gap-4">
+                    Our Offer
+                    <EyeBrowText />
+                  </p>
+                  <p className="text-[24px] lg:text-[24px] font-medium tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+                    {formatCurrency(results.ourCost)}/month
+                  </p>
+                  <p className="text-[#b5b5b5] text-xs lg:text-sm mt-2">
+                    {results.domainsNeeded} domains
+                  </p>
+                </div>
+                <div className="hidden lg:block border border-white/20 p-5 rounded-[16px]">
+                  <BonusBullets/>
+                </div>
+              </div>
+              <div className="lg:hidden">
+                <BonusBullets/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Call to Action */}
+        <div className="relative h-[110px] w-full lg:w-[900px] mt-6 border border-white/10 rounded-[16px] overflow-hidden">
+          <div className="relative w-full h-full flex flex-col lg:flex-row justify-center items-center lg:gap-8  lg:px-4 lg:py-4">
+            <Image src="/orangeTint.svg" alt="Background" width={100} height={100} className="absolute w-[400px] h-[120px] bottom-0 z-[100] blur-lg" />
+            
+            <div className="text-center">
+              <p className="font-['Inter:Medium',_sans-serif] font-medium text-[16px] lg:text-[16px] xl:text-[20px] text-[darkgrey] tracking-[-0.8px] leading-[normal]">
+                Ready to start saving{" "}
+                <span className="font-bold bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+                  {formatCurrency(results.savings)}
+                </span>{" "}
+                per month?
+              </p>
+            </div>
+
+            <div className="relative">
+              <button
+                onClick={() => {
+                  window.location.href = "https://cal.com/conrad-niedzielski/peeker-inboxes";
+                }}
+                className="cursor-pointer"
+              >
+                <Image src="/GetStarted.svg" alt="Get Started" width={100} height={100} className="w-[150px] h-[100px] cursor-pointer hover:scale-105 transition-transform" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
