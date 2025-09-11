@@ -167,14 +167,14 @@ function CheaperResults({ results }: { results: SimpleResults }) {
             {/* Savings */}
             <div className="flex flex-col items-center text-center gap-4">
               <div>
-                <p className="text-[#72aa83] text-sm font-semibold tracking-tight mb-1">Savings Calculated:</p>
-                <p className="text-[32px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+                <p className="text-[#72aa83] text-sm font-semibold tracking-tight mb-1">Monthly Savings:</p>
+                <p className="text-[24px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
                   {formatCurrency(results.savings)}
                 </p>
               </div>
               <div>
                 <p className="text-[#72aa83] text-sm font-semibold tracking-tight mb-1">Annual Savings:</p>
-                <p className="text-[32px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
+                <p className="text-[24px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
                   {formatCurrency(results.savings * 12)}
                 </p>
               </div>
@@ -208,7 +208,7 @@ function CheaperResults({ results }: { results: SimpleResults }) {
             {/* CTA */}
             <div className="flex flex-col items-center justify-center gap-4">
               <p className="font-['Inter:Medium',_sans-serif] font-medium text-[16px] text-[darkgrey] tracking-[-0.8px] leading-[normal] text-center">
-                Ready to start saving <span className="font-bold bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">{formatCurrency(results.savings)}</span> per month?
+                Ready to start saving <span className="font-bold bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent"><br/> {formatCurrency(results.savings)}</span> per month?
               </p>
               <button
                 onClick={() => {
@@ -239,7 +239,7 @@ function CheaperResults({ results }: { results: SimpleResults }) {
               <div className="flex flex-col lg:flex-row justify-center gap-36 items-center px-4 lg:px-16 py-4 lg:py-0">
                 <div className="text-center lg:text-left mb-4 lg:mb-0">
                   <p className="text-[#72aa83] text-sm lg:text-sm font-semibold tracking-tight mb-1">
-                    Monthly Savings :
+                    Monthly Savings:
                   </p>
                   <p className="text-[32px] lg:text-[40px] xl:text-[56px] font-semibold tracking-tight bg-gradient-to-b from-[#72aa83] from-[16.848%] to-[#9dff00] to-[163.59%] bg-clip-text text-transparent">
                     {formatCurrency(results.savings)}
